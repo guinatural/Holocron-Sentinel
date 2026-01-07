@@ -33,7 +33,7 @@
 |----|--------|-------------|--------|
 | T-01 | Desenho da Arquitetura de Rede (VPC) | [Eu] | Done |
 | T-02 | Configuração do Bucket "Data Lake" (S3) | [Eu] | In Progress |
-| T-03 | Criação de Grupos IAM e MFA Enforcement | [Eu] | To Do |
+| T-03 | Criação de Grupos IAM e MFA Enforcement | [Eu] | **Code Ready** (Lab 02) |
 | T-04 | Documentação de Requisitos (RF/RNF) | [Eu] | **Done** |
 
 ### Sprint 2: Auditoria e Evidência (Semana 2)
@@ -41,10 +41,10 @@
 
 | ID | Tarefa | Responsável | Status |
 |----|--------|-------------|--------|
-| T-05 | Ativar CloudTrail e validar logs no S3 | [Eu] | To Do |
+| T-05 | Ativar CloudTrail e validar logs no S3 | [Eu] | **Code Ready** (Lab 01) |
 | T-06 | Criar Regras do AWS Config (Required Tags) | [Eu] | To Do |
 | T-07 | Simular Incidente (Acesso não autorizado) | [Eu] | To Do |
-| T-08 | Montar Apresentação Final (Pitch) | [Eu] | To Do |
+| T-08 | Montar Apresentação Final (Pitch) | [Eu] | **Done** (Script Criado) |
 
 ---
 

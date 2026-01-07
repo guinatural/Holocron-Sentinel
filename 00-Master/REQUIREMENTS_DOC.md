@@ -6,7 +6,7 @@
 
 ---
 
-## 1. 📝 Identificação do Problema
+## 1. Identificação do Problema
 
 ### Contexto
 Empresas brasileiras enfrentam multas de até R$ 50 milhões por violações da LGPD. O problema não é apenas "vazamento de dados", mas a **falta de governança e rastreabilidade**. Atualmente, muitas empresas não sabem onde os dados pessoais estão armazenados nem quem os acessa.
@@ -21,7 +21,7 @@ A implementação de uma arquitetura centralizada na AWS permite automatizar con
 
 ---
 
-## 2. 📋 Requisitos do Sistema
+## 2. Requisitos do Sistema
 
 ### 2.1 Requisitos Funcionais (O que o sistema FAZ)
 *   **[RF-001] Ingestão Segura:** O sistema deve permitir o upload de arquivos contendo PII (Personally Identifiable Information) apenas via canais criptografados.
@@ -38,7 +38,7 @@ A implementação de uma arquitetura centralizada na AWS permite automatizar con
 
 ---
 
-## 3. 🎯 Definição de MVP vs Evolução
+## 3. Planejamento de Entrega: MVP vs Evolução
 
 ### MVP (Minimum Viable Product) - Entrega do Curso
 *   Arquitetura Base (VPC, S3, IAM).

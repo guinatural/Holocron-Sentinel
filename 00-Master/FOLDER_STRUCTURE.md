@@ -1,12 +1,12 @@
-# Guia de Estrutura do Projeto
+# Guia de Organização do Repositório
 
 Este repositório segue uma estrutura profissional de engenharia de software, onde "nada é decorativo".
 
-*   **`00-Master`**: A "cabeça" do projeto. Contém a Visão Geral, Requisitos (RF/RNF) e Alinhamento com o Curso.
-*   **`01_SPRINTS`**: O "coração" ágil. Contém o Backlog priorizado e o planejamento das entregas semanais.
-*   **`02_ARCHITECTURE`**: O "esqueleto" técnico. Diagramas, mapas de serviços e documentos de conformidade (LGPD Mapping).
-*   **`03-Labs`**: A "bancada" experimental. Espaço para anotações cruas de laboratórios (limpo após consolidação).
-*   **`04_CODE`**: O "músculo". Scripts Python, Templates CloudFormation e Políticas IAM JSON.
-*   **`05_EVIDENCE`**: A "verdade". Logs, screenshots e relatórios de auditoria que provam que o sistema funciona.
-*   **`06_PRESENTATION`**: O "rosto". Material de vendas (Pitch) e apresentações para stakeholders.
-*   **`07_PORTFOLIO`**: O "legado". Estudos de caso e resumos para LinkedIn/GitHub.
+*   **`00-Master`**: Documentação estratégica contendo a Visão Geral, Requisitos (RF/RNF) e Alinhamento com o Currículo AWS re/Start.
+*   **`01_SPRINTS`**: Gestão ágil do projeto, contendo o Backlog priorizado e o planejamento das entregas.
+*   **`02_ARCHITECTURE`**: Artefatos técnicos, diagramas de arquitetura, mapas de serviços e o mapeamento de conformidade LGPD.
+*   **`03-Labs`**: Espaço destinado à documentação de experimentos técnicos e laboratórios práticos.
+*   **`04_CODE`**: Implementação técnica contendo scripts Python (Boto3), templates de infraestrutura e políticas de segurança JSON.
+*   **`05_EVIDENCE`**: Logs de auditoria, capturas de tela e relatórios que validam a eficácia dos controles implementados.
+*   **`06_PRESENTATION`**: Material de comunicação executiva, incluindo roteiros de apresentação e pitches.
+*   **`07_PORTFOLIO`**: Conteúdo formatado para divulgação profissional, estudos de caso e descrições para plataformas como LinkedIn.

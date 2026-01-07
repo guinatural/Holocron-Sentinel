@@ -1,4 +1,4 @@
-# 🛡️ Holocron Sentinel: Sistema de Conformidade LGPD na AWS
+# Holocron Sentinel: Sistema de Conformidade LGPD na AWS
 
 ![AWS Status](https://img.shields.io/badge/AWS-re%2FStart-orange)
 ![License](https://img.shields.io/badge/License-MIT-green)
@@ -10,16 +10,16 @@
 
 ---
 
-## 🎯 O Problema
+## Identificação do Problema
 Empresas brasileiras enfrentam desafios críticos de **soberania de dados** e **rastreabilidade** (Art. 37 LGPD). Soluções on-premise são caras e difíceis de auditar. Este projeto implementa uma **"Glass Box Architecture"** (Caixa de Vidro), onde cada acesso a dados sensíveis é registrado, criptografado e monitorado.
 
-## 🏗️ A Solução (Arquitetura)
+## Arquitetura da Solução
 O sistema é composto por 3 módulos principais:
 1.  **Governança:** IAM RBAC com MFA obrigatório e Segregação de Funções.
 2.  **Monitoramento:** CloudTrail e Config garantindo "Auditability by Design".
 3.  **Defesa:** Criptografia KMS e Detecção de Ameaças (Logs de Acesso).
 
-### 📂 Estrutura do Repositório
+### Estrutura do Repositório
 Este portfólio está organizado como um projeto de engenharia real:
 
 *   **[`00-Master/`](./00-Master/)**: Visão Geral, Requisitos e Alinhamento com o Curso.
@@ -31,7 +31,7 @@ Este portfólio está organizado como um projeto de engenharia real:
 
 ---
 
-## 🚀 Como Executar (Simulação)
+## Guia de Execução (Simulação)
 
 ### Pré-requisitos
 *   Python 3.8+
@@ -45,7 +45,7 @@ python 04_CODE/validate_audit_logs.py
 
 ---
 
-## 👨‍💻 Autor
+## Autor e Contexto do Projeto
 Desenvolvido como parte do programa **AWS re/Start**.
 *   **Foco:** Cloud Infrastructure & Security Compliance.
 *   **Tech Stack:** EC2, S3, IAM, CloudWatch, Python.

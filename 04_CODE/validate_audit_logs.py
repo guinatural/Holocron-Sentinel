@@ -49,7 +49,7 @@ def audit_trail_compliance():
         # is_encrypted, algo = validate_log_encryption(LOG_BUCKET_NAME, log_file)
         is_encrypted, algo = (True, "aws:kms") # Simulação de Sucesso
         
-        status = "✅ COMPLIANT" if is_encrypted else "❌ NON-COMPLIANT"
+        status = "[PASS] COMPLIANT" if is_encrypted else "[FAIL] NON-COMPLIANT"
         print(f"\nVerificando: {log_file}")
         print(f"  -> Criptografia: {status} ({algo})")
         

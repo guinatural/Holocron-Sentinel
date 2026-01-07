@@ -1,11 +1,11 @@
 # LGPD x AWS: Mapeamento de Conformidade (Holocron Sentinel)
 
-## 🎯 Objetivo
+## Objetivo do Documento
 Este documento traduz os requisitos jurídicos da **Lei Geral de Proteção de Dados (13.709/2018)** em configurações técnicas implementadas neste projeto.
 
 ---
 
-## 🏛️ Mapeamento Técnico
+## Mapeamento Técnico de Requisitos Legais
 
 ### 1. Soberania e Localização de Dados (Art. 3º)
 A LGPD se aplica ao tratamento realizado no território nacional ou sobre dados coletados aqui.
@@ -34,3 +34,8 @@ O controlador deve manter registro das operações de tratamento de dados pessoa
 ## 🔍 Evidência de Auditoria
 Para auditar estes controles, consulte os logs gerados no módulo de monitoramento:
 > `05_EVIDENCE/MONITORING_LAB_EVIDENCE.md`
+
+---
+
+## 5. Compromisso com a Privacidade do Titular
+Mais do que uma obrigação legal, o Holocron Sentinel prioriza a transparência. Cada componente técnico listado acima serve como uma camada de proteção aos direitos fundamentais de liberdade e privacidade do cidadão brasileiro, transformando a conformidade em um valor ético da organização.

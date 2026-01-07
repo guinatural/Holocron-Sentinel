@@ -69,8 +69,12 @@ sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -m ec2 -a 
 
 ---
 
-## 📸 Screenshots Adicionais
-*Espaço reservado para inserção de capturas de tela do console:*
+## Referências de Captura de Tela
 1. Gráfico de Métricas do CloudWatch (Memória vs CPU).
 2. Email recebido na caixa de entrada.
 3. Dashboard do AWS Config.
+
+---
+
+### Nota do Arquiteto
+Este relatório não é apenas uma coleção de logs, mas a prova de que a infraestrutura respeita a privacidade do usuário. Cada alerta gerado é um passo em direção a um ambiente digital mais seguro e transparente.
