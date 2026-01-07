@@ -1,0 +1,21 @@
+# General
+.DS_Store
+Thumbs.db
+*.swp
+
+# Python
+__pycache__/
+*.py[cod]
+*.venv
+.env
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# AWS
+aws_credentials
+*.pem
+*.csv
