@@ -75,5 +75,5 @@ Implementar uma solução em nuvem AWS que garanta a conformidade com a **Lei Ge
 
 ---
 
-## 8. Abordagem Humanizada e Ética
+## 8. Responsabilidade Ética e Privacidade
 O Holocron Sentinel entende que por trás de cada "dado pessoal" existe um cidadão e seus direitos fundamentais. A solução foi desenhada sob o conceito de **Privacy by Design**, garantindo que a tecnologia sirva à proteção do indivíduo, promovendo uma cultura de transparência e confiança digital entre a organização e seus clientes.
