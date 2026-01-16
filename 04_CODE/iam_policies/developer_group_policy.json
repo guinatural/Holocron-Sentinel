@@ -1,0 +1,72 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "DeveloperServicesAccess",
+            "Effect": "Allow",
+            "Action": [
+                "s3:*",
+                "lambda:*",
+                "apigateway:*",
+                "dynamodb:*",
+                "cloudwatch:*",
+                "logs:*",
+                "ec2:Describe*",
+                "ec2:StartInstances",
+                "ec2:StopInstances",
+                "rds:Describe*",
+                "sns:*",
+                "sqs:*",
+                "cloudformation:*"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "Bool": {
+                    "aws:MultiFactorAuthPresent": "true"
+                }
+            }
+        },
+        {
+            "Sid": "DenyIAMModifications",
+            "Effect": "Deny",
+            "Action": [
+                "iam:Create*",
+                "iam:Delete*",
+                "iam:Put*",
+                "iam:Update*",
+                "iam:Attach*",
+                "iam:Detach*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "DenyBillingAccess",
+            "Effect": "Deny",
+            "Action": [
+                "aws-portal:*",
+                "budgets:*",
+                "ce:*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "EnforceMFAForAllActions",
+            "Effect": "Deny",
+            "NotAction": [
+                "iam:CreateVirtualMFADevice",
+                "iam:EnableMFADevice",
+                "iam:GetUser",
+                "iam:ListMFADevices",
+                "iam:ListVirtualMFADevices",
+                "iam:ResyncMFADevice",
+                "sts:GetSessionToken"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "BoolIfExists": {
+                    "aws:MultiFactorAuthPresent": "false"
+                }
+            }
+        }
+    ]
+}

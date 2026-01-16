@@ -1,0 +1,51 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "ReadOnlyAccessAllServices",
+            "Effect": "Allow",
+            "Action": [
+                "s3:Get*",
+                "s3:List*",
+                "ec2:Describe*",
+                "rds:Describe*",
+                "cloudwatch:Describe*",
+                "cloudwatch:Get*",
+                "cloudwatch:List*",
+                "logs:Describe*",
+                "logs:Get*",
+                "logs:List*",
+                "logs:FilterLogEvents",
+                "cloudtrail:LookupEvents",
+                "cloudtrail:GetTrailStatus",
+                "cloudtrail:DescribeTrails",
+                "config:Describe*",
+                "config:Get*",
+                "config:List*",
+                "iam:Get*",
+                "iam:List*",
+                "iam:GenerateCredentialReport",
+                "kms:Describe*",
+                "kms:Get*",
+                "kms:List*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "DenyAllWriteActions",
+            "Effect": "Deny",
+            "Action": [
+                "*:Create*",
+                "*:Delete*",
+                "*:Put*",
+                "*:Update*",
+                "*:Modify*",
+                "*:Start*",
+                "*:Stop*",
+                "*:Terminate*",
+                "*:Reboot*"
+            ],
+            "Resource": "*"
+        }
+    ]
+}

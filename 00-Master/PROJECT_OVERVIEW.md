@@ -69,7 +69,7 @@ Implementar uma solução em nuvem AWS que garanta a conformidade com a **Lei Ge
 ---
 
 ## Cronograma e Roadmap de Implementação
-*   **Fase 1 (2 semanas):** Implementação da base de segurança (IAM, KMS, CloudTrail).
+*   **Fase 1 (2 semanas):** Implementação da base de segurança ([Guia de Setup IAM, KMS, CloudTrail](AWS_SECURITY_SETUP.md)).
 *   **Fase 2 (3 semanas):** Sistema de gestão de consentimento e portal do titular.
 *   **Fase 3 (2 semanas):** Automação de auditoria e relatórios de conformidade.
 

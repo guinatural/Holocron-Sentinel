@@ -2,7 +2,7 @@
 
 Este repositório segue uma estrutura profissional de engenharia de software, onde "nada é decorativo".
 
-*   **`00-Master`**: Documentação estratégica contendo a Visão Geral, Requisitos (RF/RNF) e Alinhamento com o Currículo AWS re/Start.
+*   **`00-Master`**: Documentação estratégica contendo a Visão Geral, Setup de Segurança, Requisitos (RF/RNF) e Alinhamento com o Currículo AWS re/Start.
 *   **`01_SPRINTS`**: Gestão ágil do projeto, contendo o Backlog priorizado e o planejamento das entregas.
 *   **`02_ARCHITECTURE`**: Artefatos técnicos, diagramas de arquitetura, mapas de serviços e o mapeamento de conformidade LGPD.
 *   **`03-Labs`**: Espaço destinado à documentação de experimentos técnicos e laboratórios práticos.
