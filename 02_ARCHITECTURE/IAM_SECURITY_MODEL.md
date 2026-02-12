@@ -1,17 +1,17 @@
 # Modelo de Segurança e Acesso (IAM RBAC)
 
-## 🎯 Objetivo
+## Objetivo
 Implementar o princípio de **Least Privilege** (Menor Privilégio) exigido pelo **Art. 6º** da LGPD (Princípio da Segurança).
 
 ---
 
-## 🔐 Política de MFA Obrigatório
+## Política de MFA Obrigatório
 Todos os usuários humanos devem possuir MFA ativado para realizar qualquer ação que não seja configurar o próprio MFA.
 **Implementação:** Política Anexada `iam_mfa_enforcement.json` (Veja pasta `04_CODE`).
 
 ---
 
-## 👥 Definição de Grupos e Funções (RBAC)
+## Definição de Grupos e Funções (RBAC)
 
 ### 1. `krayt-council` (Administradores)
 *   **Acesso:** Full Access (exceto Billing).
@@ -31,6 +31,6 @@ Todos os usuários humanos devem possuir MFA ativado para realizar qualquer aç�
 
 ---
 
-## 🚫 Estratégia de Bloqueio
+## Estratégia de Bloqueio
 *   **Root User:** Acesso desabilitado (senha complexa + MFA físico no cofre).
 *   **Access Keys:** Rotação a cada 90 dias (via AWS Config Rule).

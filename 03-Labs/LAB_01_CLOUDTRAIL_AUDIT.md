@@ -7,7 +7,7 @@
 
 ---
 
-## 🏗️ Parte 1: O Cofre Seguro (S3)
+## Parte 1: O Cofre Seguro (S3)
 A LGPD (Art. 46) exige segurança desde a concepção (Security by Design).
 
 1.  Acesse o **S3 Console**.
@@ -23,7 +23,7 @@ A LGPD (Art. 46) exige segurança desde a concepção (Security by Design).
 
 ---
 
-## 🕵️‍♂️ Parte 2: O Auditor (CloudTrail)
+## Parte 2: O Auditor (CloudTrail)
 Vamos ativar o registro de quem faz o que.
 
 1.  Acesse o **CloudTrail Console**.
@@ -35,11 +35,11 @@ Vamos ativar o registro de quem faz o que.
 7.  **Management Events:** ✅ Read & Write (All).
 8.  Clique em **Create trail**.
 
-> 📸 **PRINT 2:** Tire um print da tela de status do Trail mostrando "Logging status: Logging".
+> **PRINT 2:** Tire um print da tela de status do Trail mostrando "Logging status: Logging".
 
 ---
 
-## 🧪 Parte 3: Gerando Evidência (O Incidente)
+## Parte 3: Gerando Evidência (O Incidente)
 Vamos simular uma ação para ser auditada.
 
 1.  Vá ao **EC2 Console** ou **IAM Console**.
@@ -49,14 +49,14 @@ Vamos simular uma ação para ser auditada.
 
 ---
 
-## 🔍 Parte 4: A Auditoria (Validando)
+## Parte 4: A Auditoria (Validando)
 1.  Vá ao seu **Bucket S3** criado na Parte 1.
 2.  Navegue pelas pastas: `AWSLogs` -> `[Account ID]` -> `CloudTrail`... até chegar nos arquivos `.json.gz`.
 3.  Baixe um arquivo e abra. Procure pelo evento `CreateUser` ou a ação que você fez.
 
-> 📸 **PRINT 3:** Tire um print do arquivo JSON aberto (pode ser no VS Code) mostrando o campo `"eventName": "CreateUser"` e `"userName": "seu-usuario"`. **Isso prova Rastreabilidade (Art. 37).**
+> **PRINT 3:** Tire um print do arquivo JSON aberto (pode ser no VS Code) mostrando o campo `"eventName": "CreateUser"` e `"userName": "seu-usuario"`. **Isso prova Rastreabilidade (Art. 37).**
 
 ---
 
-## 📝 Parte 5: Documentando
+## Parte 5: Documentando
 Após tirar os prints, preencha o arquivo `03-Labs/LAB_TEMPLATE.md` com as imagens e mova para `05_EVIDENCE/AUDIT_LAB.md`.

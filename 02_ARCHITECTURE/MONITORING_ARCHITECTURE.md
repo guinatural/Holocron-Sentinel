@@ -1,9 +1,9 @@
 # Arquitetura de Monitoramento e Auditoria (Módulo LGPD: Art. 37)
 
-## 🏗️ Visão Geral da Arquitetura
+## Visão Geral da Arquitetura
 Este módulo implementa o **Requisito RF-003 (Auditoria de Acesso)** do Sistema de Conformidade LGPD. Ele garante que todas as operações nos servidores de aplicação sejam registradas e auditáveis, atendendo ao **Artigo 37 da LGPD** (Obrigação de registro de operações).
 
-## 🧩 Componentes da Solução
+## Componentes da Solução
 
 ### 1. Coleta Avançada (CloudWatch Agent)
 As métricas padrão do EC2 (Hypervisor level) são insuficientes para uma visão operacional completa (cegas para Memória e Disco).
@@ -38,7 +38,7 @@ Garantia de governança e padrões.
 
 ---
 
-## 📐 Diagrama de Fluxo de Dados
+## Diagrama de Fluxo de Dados
 
 ```mermaid
 graph TD
@@ -63,7 +63,7 @@ graph TD
     K[AWS Config] -->|Audit| L[Compliance Dashboard]
 ```
 
-## 🛡️ Justificativa de Conformidade (LGPD)
+## Justificativa de Conformidade (LGPD)
 Esta arquitetura resolve o gap de **Rastreabilidade**.
 *   **Art. 37 (Registro):** Logs de acesso (`HttpAccessLog`) provam *quem* acessou *o quê*.
 *   **Art. 46 (Segurança):** O Alarme de Erros 404 atua como um *Detect* no framework de segurança, identificando varreduras maliciosas antes que dados vazem.

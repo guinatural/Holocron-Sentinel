@@ -7,7 +7,7 @@
 
 ---
 
-## 🛡️ Parte 1: Criando a "Lei" (IAM Policy)
+## Parte 1: Criando a "Lei" (IAM Policy)
 Vamos pegar nosso código e colocar na AWS.
 
 1.  Acesse o **IAM Console** > **Policies**.
@@ -19,11 +19,11 @@ Vamos pegar nosso código e colocar na AWS.
 7.  Description: "Bloqueia todas ações exceto self-managed MFA se não estiver autenticado com token."
 8.  Clique em **Create policy**.
 
-> 📸 **PRINT 1:** Print da tela de Policies mostrando a `ForceMFA-Holocron` criada.
+> **PRINT 1:** Print da tela de Policies mostrando a `ForceMFA-Holocron` criada.
 
 ---
 
-## 🧪 Parte 2: A Cobai...digo, Usuário de Teste
+## Parte 2: A Cobai...digo, Usuário de Teste
 Vamos criar um usuário para testar se a trava funciona.
 
 1.  Vá em **Users** > **Create user**.
@@ -39,17 +39,17 @@ Vamos criar um usuário para testar se a trava funciona.
 
 ---
 
-## 🚫 Parte 3: O Bloqueio (Teste Negativo)
+## Parte 3: O Bloqueio (Teste Negativo)
 1.  Abra uma **Janela Anônima** no navegador.
 2.  Faça login com `test-mfa-user`.
 3.  Tente entrar no **S3 Console**.
 4.  **Resultado Esperado:** Você verá mensagens de "Access Denied" ou "You don't have permission" em tudo, mesmo tendo `S3FullAccess`.
 
-> 📸 **PRINT 2:** Tire um print dessa tela vermelha de erro. Isso prova que a política funciona!
+> **PRINT 2:** Tire um print dessa tela vermelha de erro. Isso prova que a política funciona!
 
 ---
 
-## 🔓 Parte 4: A Conformidade (Configurando MFA)
+## Parte 4: A Conformidade (Configurando MFA)
 Ainda como `test-mfa-user`:
 1.  Vá no menu do usuário (canto superior direito) > **Security credentials**.
 2.  Em **MFA**, clique em **Assign MFA device**.
@@ -59,14 +59,14 @@ Ainda como `test-mfa-user`:
 
 ---
 
-## ✅ Parte 5: O Sucesso (Teste Positivo)
+## Parte 5: O Sucesso (Teste Positivo)
 1.  Tente acessar o **S3 Console** novamente.
 2.  Agora você deve ver a lista de buckets normalmente.
 
-> 📸 **PRINT 3:** Print da lista de buckets visível, provando que com MFA o acesso é liberado.
+> **PRINT 3:** Print da lista de buckets visível, provando que com MFA o acesso é liberado.
 
 ---
 
-## 🧹 Parte 6: Limpeza
+## Parte 6: Limpeza
 *   Exclua o usuário `test-mfa-user` para não deixar brechas.
 *   (Não exclua a política, ela é parte do projeto).

@@ -1,11 +1,11 @@
-# ⚡ HOLOCRON GUIDE: Módulo de Auditoria Técnica
+# HOLOCRON GUIDE: Módulo de Auditoria Técnica
 **(Adaptação Avançada do Lab 186)**
 
 Este documento substitui as instruções originais para transformar o laboratório em uma entrega de portfólio de alto nível.
 
 ---
 
-## 🏗️ Fase 1: Infraestrutura Segura (Setup)
+## Fase 1: Infraestrutura Segura (Setup)
 
 ### 1. IAM Role (Identidade)
 *   **Original:** Criar `CloudWatchAgentRole`.
@@ -35,7 +35,7 @@ Este documento substitui as instruções originais para transformar o laboratór
 
 ---
 
-## 🕵️‍♂️ Fase 2: O Agente Espião (CloudWatch Agent)
+## Fase 2: O Agente Espião (CloudWatch Agent)
 
 ### 3. Configuração do Agente
 *   **Original:** Baixar um JSON genérico do S3 do curso.
@@ -53,7 +53,7 @@ Este documento substitui as instruções originais para transformar o laboratór
 
 ---
 
-## 🚨 Fase 3: Detecção de Incidentes (Alarms)
+## Fase 3: Detecção de Incidentes (Alarms)
 
 ### 5. Configurando o Alerta (SNS)
 *   **Original:** Alarme de CPU alta.
@@ -66,7 +66,7 @@ Este documento substitui as instruções originais para transformar o laboratór
 
 ---
 
-## 🧪 Fase 4: O Teste de Conformidade
+## Fase 4: O Teste de Conformidade
 
 ### 6. Simulação de Ataque
 Em vez de rodar `stress` (que só testa CPU), vamos rodar um `Scanning`:
@@ -79,7 +79,7 @@ Em vez de rodar `stress` (que só testa CPU), vamos rodar um `Scanning`:
 
 ---
 
-## 📸 Checklist de Evidências (Para o LinkedIn)
+## Checklist de Evidências (Para o LinkedIn)
 1.  [ ] Print das **Tags da EC2** mostrando a classificação de dados.
 2.  [ ] Print do **JSON customizado** no terminal.
 3.  [ ] Print do **E-mail de Alerta** recebido no celular/PC.

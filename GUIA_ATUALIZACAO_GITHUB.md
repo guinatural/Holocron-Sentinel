@@ -134,8 +134,8 @@ git push origin main
 ```
 
 **Autenticação:**
-- **Username:** guinatural
-- **Password:** Personal Access Token (não use senha do GitHub)
+- **Username:**
+- **Password:** 
 
 **Criar Personal Access Token:**
 1. GitHub → Settings → Developer settings
