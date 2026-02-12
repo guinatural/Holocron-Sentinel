@@ -44,22 +44,36 @@ def audit_trail_compliance():
     
     compliance_score = 0
     
+    report_lines = []
+    
     for log_file in sample_logs:
         # Mockando a chamada real para demonstração do portfólio
         # is_encrypted, algo = validate_log_encryption(LOG_BUCKET_NAME, log_file)
         is_encrypted, algo = (True, "aws:kms") # Simulação de Sucesso
         
         status = "[PASS] COMPLIANT" if is_encrypted else "[FAIL] NON-COMPLIANT"
-        print(f"\nVerificando: {log_file}")
-        print(f"  -> Criptografia: {status} ({algo})")
+        line_output = f"Verificando: {log_file} -> Criptografia: {status} ({algo})"
+        print(line_output)
+        report_lines.append(line_output)
         
         if is_encrypted: 
             compliance_score += 1
             
-    print(f"\n[=] Relatório Final: {compliance_score}/{len(sample_logs)} arquivos seguros.")
+    summary = f"\n[=] Relatório Final: {compliance_score}/{len(sample_logs)} arquivos seguros."
+    print(summary)
+    report_lines.append(summary)
+    
+    # Save report to file
+    with open("compliance_report.txt", "w") as f:
+        f.write(f"AUDIT REPORT - {datetime.now()}\n")
+        f.write("========================================\n")
+        for line in report_lines:
+            f.write(line + "\n")
+        f.write("========================================\n")
     
     if compliance_score == len(sample_logs):
         print("RESULTADO: O Ambiente atende aos requisitos do Artigo 46 da LGPD.")
+        print("[*] Relatório salvo em 'compliance_report.txt'")
     else:
         print("ALERTA: Violação de conformidade detectada.")
 
