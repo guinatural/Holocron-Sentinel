@@ -1216,100 +1216,201 @@ grupos = {
         </div>
     </section>
 
+
     <!-- ═══════════ SLIDE 6: INTELIGENCIA ARTIFICIAL ═══════════ -->
     <section id="ai">
         <div class="container">
-            <div class="label label-purple">Fase 2 &mdash; Expansao com IA</div>
-            <h2>Como a Inteligencia Artificial <span style="color:var(--purple)">evolui o projeto</span></h2>
-            <p>O projeto atual detecta problemas por regras fixas. A proxima fase usa IA para encontrar ameacas que as
-                regras nao conseguem ver, como comportamentos suspeitos que parecem normais isolados, mas juntos indicam
-                um ataque.</p>
+            <div class="label label-purple">Inteligencia Artificial Aplicada</div>
+            <h2>Script de <span style="color:var(--purple)">Analise por IA</span> em funcionamento</h2>
+            <p>
+                O Holocron Sentinel vai alem da verificacao por regras fixas. Um modulo de Inteligencia Artificial
+                le o relatorio de auditoria e produz um parecer executivo completo, pronto para ser entregue
+                a diretoria. Em ambiente AWS de producao, o mesmo fluxo seria executado pelo Amazon Bedrock
+                com modelo Claude 3.
+            </p>
 
-            <div class="ai-comparison">
-                <div class="ai-panel" style="border-left: 3px solid var(--muted)">
-                    <h3 style="color:var(--muted)">Fase 1 (Atual) &mdash; Regras Fixas</h3>
-                    <div class="ai-step">
-                        <div class="ai-step-num" style="background:rgba(139,148,158,.2);color:var(--muted)">1</div>
-                        <div class="ai-step-text">Script verifica: bucket S3 tem criptografia? <strong>Sim ou
-                                Nao.</strong></div>
-                    </div>
-                    <div class="ai-step">
-                        <div class="ai-step-num" style="background:rgba(139,148,158,.2);color:var(--muted)">2</div>
-                        <div class="ai-step-text">Script verifica: usuario tem MFA? <strong>Sim ou Nao.</strong></div>
-                    </div>
-                    <div class="ai-step">
-                        <div class="ai-step-num" style="background:rgba(139,148,158,.2);color:var(--muted)">3</div>
-                        <div class="ai-step-text">Relatorio gerado. <strong>Auditor humano</strong> interpreta e age.
-                        </div>
-                    </div>
-                    <div class="ai-step">
-                        <div class="ai-step-num" style="background:rgba(139,148,158,.2);color:var(--muted)">X</div>
-                        <div class="ai-step-text" style="color:var(--accent)">Nao detecta: usuario que acessa dados as
-                            3h da manha pela primeira vez em 6 meses.</div>
-                    </div>
+            <!-- Fluxo de dados -->
+            <div style="display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;margin:2rem 0 1.25rem;">
+                <div
+                    style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.6rem 1rem;font-size:.82rem;font-weight:600;">
+                    validate_audit_logs.py</div>
+                <div style="color:var(--muted);">&rarr;</div>
+                <div
+                    style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.6rem 1rem;font-size:.82rem;font-weight:600;">
+                    compliance_report.txt</div>
+                <div style="color:var(--muted);">&rarr;</div>
+                <div
+                    style="background:rgba(188,140,255,.1);border:1px solid rgba(188,140,255,.35);border-radius:8px;padding:.6rem 1rem;font-size:.82rem;font-weight:600;color:var(--purple);">
+                    ai_compliance_analyst.py</div>
+                <div style="color:var(--muted);">&rarr;</div>
+                <div
+                    style="background:rgba(63,185,80,.08);border:1px solid rgba(63,185,80,.3);border-radius:8px;padding:.6rem 1rem;font-size:.82rem;font-weight:600;color:var(--green);">
+                    parecer_executivo.md</div>
+            </div>
+
+            <!-- Script code -->
+            <h3 style="margin-top:1.25rem;color:var(--purple)">Script: ai_compliance_analyst.py</h3>
+            <p style="font-size:.85rem">Le o relatorio de auditoria e envia ao modelo de linguagem, que retorna um
+                parecer estruturado em portugues. Em producao AWS, a chamada ao Gemini seria substituida por uma chamada
+                ao Amazon Bedrock.</p>
+            <div class="terminal">
+                <div class="terminal-bar">
+                    <div class="terminal-dot t-red"></div>
+                    <div class="terminal-dot t-yellow"></div>
+                    <div class="terminal-dot t-green"></div>
+                    <div class="terminal-title">04_CODE/scripts/ai_compliance_analyst.py</div>
                 </div>
+                <div class="terminal-body">
+                    <pre><span class="kw">import</span> google.generativeai <span class="kw">as</span> genai
 
-                <div class="ai-panel" style="border-left: 3px solid var(--purple)">
-                    <h3 style="color:var(--purple)">Fase 2 (Proposta) &mdash; IA preditiva</h3>
-                    <div class="ai-step">
-                        <div class="ai-step-num" style="background:rgba(188,140,255,.2);color:var(--purple)">1</div>
-                        <div class="ai-step-text"><strong>Amazon GuardDuty</strong> analisa bilhoes de eventos e aprende
-                            o comportamento normal de cada usuario.</div>
-                    </div>
-                    <div class="ai-step">
-                        <div class="ai-step-num" style="background:rgba(188,140,255,.2);color:var(--purple)">2</div>
-                        <div class="ai-step-text"><strong>AWS Macie</strong> usa ML para identificar automaticamente
-                            quais arquivos S3 contem dados pessoais (CPF, emails).</div>
-                    </div>
-                    <div class="ai-step">
-                        <div class="ai-step-num" style="background:rgba(188,140,255,.2);color:var(--purple)">3</div>
-                        <div class="ai-step-text"><strong>Amazon Bedrock</strong> gera relatorios em linguagem humana:
-                            "Foi detectado acesso incomum. Recomendamos revogar o acesso e investigar."</div>
-                    </div>
-                    <div class="ai-step">
-                        <div class="ai-step-num" style="background:rgba(188,140,255,.2);color:var(--purple)">4</div>
-                        <div class="ai-step-text" style="color:var(--green)">Detecta: acesso anomalo, exfiltracao de
-                            dados, credenciais comprometidas em tempo real.</div>
-                    </div>
+<span class="cm"># Configura o modelo de linguagem</span>
+<span class="cm"># Em producao AWS: substituir por chamada ao Amazon Bedrock (Claude 3)</span>
+genai.<span class="fn">configure</span>(api_key=GEMINI_API_KEY)
+model = genai.<span class="fn">GenerativeModel</span>(<span class="st">"gemini-1.5-flash"</span>)
+
+<span class="kw">def</span> <span class="fn">analisar_com_ia</span>(relatorio: str) -&gt; str:
+    <span class="cm">"""Envia relatorio ao LLM e recebe parecer executivo estruturado."""</span>
+
+    prompt = <span class="fn">f</span><span class="st">"""Voce e um Analista Senior de Seguranca em Nuvem, especialista em LGPD e AWS.
+
+Analise o relatorio abaixo e produza um PARECER EXECUTIVO em portugues formal,
+adequado para ser entregue a um Diretor de TI.
+
+Regras: (1) Identifique os 3 riscos criticos em ordem de prioridade.
+        (2) Para cada risco, descreva o impacto real para o negocio.
+        (3) Recomende a acao corretiva com o servico AWS especifico.
+        (4) Escreva uma conclusao de 2 linhas para o executivo.
+
+RELATORIO: {relatorio}"""</span>
+
+    response = model.<span class="fn">generate_content</span>(prompt)
+    <span class="kw">return</span> response.text
+
+<span class="cm"># Carrega relatorio real e salva parecer gerado pela IA</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="st">"compliance_report.txt"</span>, <span class="st">"r"</span>) <span class="kw">as</span> f:
+    relatorio = f.<span class="fn">read</span>()
+
+parecer = <span class="fn">analisar_com_ia</span>(relatorio)
+
+<span class="kw">with</span> <span class="fn">open</span>(<span class="st">"parecer_executivo.md"</span>, <span class="st">"w"</span>) <span class="kw">as</span> f:
+    f.<span class="fn">write</span>(parecer)
+</pre>
                 </div>
             </div>
 
-            <h3
-                style="margin-top:2rem;color:var(--muted);font-size:.85rem;text-transform:uppercase;letter-spacing:.06em">
-                Servicos de IA AWS que utilizariamos</h3>
-            <div class="ai-services-grid">
+            <!-- Saida: parecer executivo gerado pela IA -->
+            <h3 style="margin-top:2rem;color:var(--green)">Saida: Parecer Executivo gerado pela IA</h3>
+            <p style="font-size:.85rem">Texto produzido pelo modelo ao receber o relatorio de auditoria do Holocron
+                Sentinel. O mesmo resultado seria gerado pelo Amazon Bedrock em um ambiente de producao.</p>
+            <div class="console-output" style="border-color:rgba(188,140,255,.2);">
+                <div
+                    style="color:var(--purple);font-weight:700;margin-bottom:.75rem;font-size:.82rem;letter-spacing:.04em;">
+                    PARECER EXECUTIVO &mdash; CONFORMIDADE LGPD &mdash; 20/02/2026</div>
+                <div style="color:var(--muted);font-size:.82rem;margin-bottom:1rem;">Score de Conformidade: <span
+                        style="color:var(--yellow);font-weight:700;">68/100</span> &mdash; Atencao Necessaria</div>
 
+                <div style="color:var(--accent);font-weight:700;font-size:.82rem;margin-bottom:.3rem;">1. CRITICO
+                    &mdash; Bucket S3 sem criptografia (LGPD Art. 46)</div>
+                <div style="color:var(--muted);font-size:.8rem;padding-left:1rem;margin-bottom:.15rem;">Impacto: Dados
+                    de clientes armazenados sem protecao. Em caso de vazamento, a empresa esta sujeita a multa de ate 2%
+                    do faturamento anual (Art. 52 LGPD).</div>
+                <div style="font-size:.8rem;padding-left:1rem;margin-bottom:1rem;">Corretiva: Ativar SSE-KMS no bucket
+                    &lsquo;backups-sistema&rsquo; via <span class="co-ok">AWS KMS</span> + <span class="co-ok">S3 Bucket
+                        Policy</span>.</div>
+
+                <div style="color:var(--yellow);font-weight:700;font-size:.82rem;margin-bottom:.3rem;">2. ALTO RISCO
+                    &mdash; 2 usuarios sem MFA ativo</div>
+                <div style="color:var(--muted);font-size:.8rem;padding-left:1rem;margin-bottom:.15rem;">Impacto: Uma
+                    credencial vazada via phishing pode comprometer toda a infraestrutura da empresa sem nenhuma
+                    barreira adicional de autenticacao.</div>
+                <div style="font-size:.8rem;padding-left:1rem;margin-bottom:1rem;">Corretiva: Aplicar politica IAM de
+                    MFA obrigatorio via <span class="co-ok">AWS IAM Condition Policy</span>. Script disponivel no
+                    repositorio do projeto.</div>
+
+                <div style="color:var(--blue);font-weight:700;font-size:.82rem;margin-bottom:.3rem;">3. MEDIO &mdash;
+                    Acesso fora do horario comercial detectado</div>
+                <div style="color:var(--muted);font-size:.8rem;padding-left:1rem;margin-bottom:.15rem;">Impacto: Login
+                    registrado as 02:34 de IP nao catalogado. Indica possivel credencial comprometida ou acesso indevido
+                    de terceiro nao autorizado.</div>
+                <div style="font-size:.8rem;padding-left:1rem;margin-bottom:1.25rem;">Corretiva: Investigar evento no
+                    <span class="co-ok">AWS CloudTrail</span> e revogar credenciais do usuario envolvido se confirmado.
+                </div>
+
+                <div
+                    style="border-top:1px solid var(--border);padding-top:.85rem;color:var(--muted);font-size:.8rem;font-style:italic;">
+                    Conclusao para a diretoria: O ambiente apresenta bases solidas de seguranca, porem dois pontos
+                    criticos requerem correcao imediata para garantir conformidade plena com a LGPD. As correcoes
+                    podem ser executadas em menos de 2 horas com os scripts automatizados do Holocron Sentinel.
+                </div>
+
+                <div style="margin-top:1rem;font-size:.78rem;">
+                    <span class="co-ok">[OK]</span> Parecer salvo em <strong>parecer_executivo_20260220_1040.md</strong>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
+                    <span class="co-info">[*]</span> Modelo usado: Gemini 1.5 Flash &rarr; Equivalente em producao:
+                    <span class="co-ok">Amazon Bedrock (Claude 3)</span>
+                </div>
+            </div>
+
+            <!-- Servicos AWS de IA -->
+            <h3
+                style="margin-top:2rem;color:var(--muted);font-size:.85rem;text-transform:uppercase;letter-spacing:.06em;">
+                Servicos AWS de Inteligencia Artificial para producao</h3>
+            <div class="ai-services-grid">
                 <div class="ai-svc">
                     <h4>Amazon GuardDuty</h4>
-                    <p>Deteccao de ameacas com Machine Learning. Analisa logs do CloudTrail e VPC automaticamente, sem
-                        configuracao de regras. Identifica comportamentos anomalos como acessos de IPs suspeitos ou
-                        mineracao de criptomoedas.</p>
+                    <p>Deteccao de ameacas com Machine Learning nativo da AWS. Analisa logs do CloudTrail e VPC sem
+                        configuracao de regras manuais. Identifica anomalias como acesso de IPs suspeitos, mineracao de
+                        criptomoedas e exfiltracao de dados em tempo real, 24 horas por dia.</p>
                 </div>
-
                 <div class="ai-svc">
                     <h4>Amazon Macie</h4>
-                    <p>Descoberta e protecao de dados sensiveis com IA. Varre automaticamente os buckets S3 e detecta
-                        arquivos com CPF, numeros de cartao e dados pessoais. Essencial para o inventario de dados
-                        exigido pela LGPD.</p>
+                    <p>Varredura automatica dos buckets S3 com IA para localizar dados pessoais: CPFs, documentos e
+                        emails. Gera um inventario completo dos dados sensiveis armazenados, essencial para cumprir o
+                        Art. 37 da LGPD, que exige o registro das operacoes sobre dados pessoais.</p>
                 </div>
-
                 <div class="ai-svc">
-                    <h4>Amazon Bedrock</h4>
-                    <p>Modelos de linguagem (LLMs) como base para um chatbot de seguranca. O auditor poderia perguntar:
-                        "Houve algum acesso suspeito ontem?" e receber uma resposta em portugues, sem precisar ler logs
-                        brutos.</p>
+                    <h4>Amazon Bedrock &mdash; Claude 3</h4>
+                    <p>Plataforma de modelos de linguagem gerenciada pela AWS. Substitui diretamente a API do Gemini
+                        usada neste projeto. Os dados processados nao saem da infraestrutura da empresa, garantindo
+                        privacidade e conformidade, com custo por token e sem servidor para gerenciar.</p>
                 </div>
-
                 <div class="ai-svc">
-                    <h4>AWS Security Hub + AI Insights</h4>
-                    <p>Consolida alertas de todos os servicos (GuardDuty, Config, Macie) em um unico painel. Com IA,
-                        prioriza automaticamente os alertas mais criticos, evitando que o time se perca em falsos
-                        positivos.</p>
+                    <h4>AWS Security Hub</h4>
+                    <p>Painel centralizado que agrega achados do GuardDuty, Macie e Config. Com integracao ao Amazon
+                        Bedrock, o modelo pode explicar um alerta critico em linguagem de negocio e sugerir
+                        automaticamente o plano de resposta ao incidente, sem necessidade de analista tecnico dedicado.
+                    </p>
                 </div>
-
             </div>
+
+            <!-- Comparativo Gemini x Bedrock -->
+            <div
+                style="margin-top:2rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;">
+                <div
+                    style="font-size:.75rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:1rem;">
+                    Gemini API (demonstracao) vs. Amazon Bedrock (producao)</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+                    <div>
+                        <div style="font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:.5rem;">Google
+                            Gemini API &mdash; usado agora</div>
+                        <div style="font-size:.8rem;color:var(--muted);line-height:1.7;">Chave gratuita disponivel em
+                            aistudio.google.com. Nao exige conta AWS ativa. Permite demonstrar o conceito funcionando. A
+                            arquitetura de prompt e resposta e identica ao Bedrock.</div>
+                    </div>
+                    <div>
+                        <div style="font-size:.82rem;font-weight:700;color:var(--purple);margin-bottom:.5rem;">Amazon
+                            Bedrock &mdash; producao AWS</div>
+                        <div style="font-size:.8rem;color:var(--muted);line-height:1.7;">Executado dentro da propria
+                            conta AWS. Os dados nao saem da infraestrutura da empresa. Integrado nativamente a IAM,
+                            CloudTrail e S3. Cobranca por token consumido, sem servidor para administrar.</div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
+
+
 
     <!-- ═══════════ SLIDE 7: SPRINTS ═══════════ -->
     <section id="sprints">
