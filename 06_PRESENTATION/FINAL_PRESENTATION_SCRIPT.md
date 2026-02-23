@@ -5,70 +5,68 @@
 
 ---
 
-## ⏱️ 0-2 MIN: Introdução (Slide 1: Início)
+## ⏱️ 0-1.5 MIN: Introdução (Slide 1: Início)
 *   **Posicionamento:** Tela no Slide 1 (Capa).
 *   **Foco:** Quem você é e qual a grande ideia.
 *   **Discurso:**
     *   "Bom dia. Sou Guilherme Barreto Gomes e hoje apresento o **Holocron Sentinel**. Meu objetivo é demonstrar como transformamos um dos maiores medos jurídicos das empresas brasileiras hoje — a LGPD — em uma vantagem competitiva através de automação e Inteligência Artificial nativa da AWS."
-    *   "Este projeto não é apenas uma infraestrutura; é um sistema de governança inteligente que protege o maior ativo de uma empresa moderna: o dado pessoal."
+    *   "Este projeto protege o maior ativo de uma empresa moderna: o dado pessoal."
 
 ---
 
-## ⏱️ 2-5 MIN: A Crise Invisível (Slide 2: Problema)
+## ⏱️ 1.5-3.5 MIN: A Crise Invisível (Slide 2: Problema)
 *   **Posicionamento:** Role para o Slide 2.
-*   **Foco:** Por que as empresas precisam do Sentinel? (Valor de Negócio).
+*   **Foco:** O custo da falha (Valor de Negócio).
 *   **Discurso:**
-    *   "Vejam estes números. 80% das falhas de segurança acontecem por configuração errada na nuvem. As empresas hoje sofrem de **cegueira técnica**: elas têm o dado, mas não sabem quem os acessa (Artigo 37) nem se estão criptografados (Artigo 46)."
-    *   "Auditorias da ANPD podem ocorrer a qualquer momento e multas de **R$ 50 milhões** não são ficção. O diferencial do Holocron? Ele traz uma pronta-resposta com um custo **80% menor** que soluções tradicionais, porque é escalável e automatizado."
+    *   "80% das falhas de segurança acontecem por configuração errada. Pequenas empresas sofrem de **cegueira técnica**: elas têm o dado, mas não sabem quem os acessa. Multas de **R$ 50 milhões** não são ficção. O diferencial do Holocron? Pronta-resposta automática com custo **80% menor** que o modelo tradicional."
 
 ---
 
-## ⏱️ 5-8 MIN: Fundações & Requisitos (Slide 3: Requisitos)
+## ⏱️ 3.5-5.5 MIN: Fundações & Requisitos (Slide 3: Requisitos)
 *   **Posicionamento:** Role para o Slide 3.
-*   **Foco:** Engenharia por trás da ideia.
+*   **Foco:** Engenharia e Rigor.
 *   **Discurso:**
-    *   "Para resolver isso, definimos requisitos rígidos. Nosso sistema **funcionalmente** identifica CPFs via Amazon Macie e garante logs imutáveis. Nada é deletado no Sentinel."
-    *   "Mas a excelência está nos **Requisitos Não-Funcionais**: garantimos soberania nacional processando tudo em São Paulo (`sa-east-1`) e forçamos o uso de MFA para qualquer ação administrativa. É uma abordagem de segurança por design."
+    *   "Para resolver isso, definimos requisitos rígidos: identificação de PII via Macie e logs imutáveis. Mas nossa excelência está na soberania nacional (sa-east-1) e no MFA forçado. É segurança por design."
 
 ---
 
-## ⏱️ 8-10 MIN: Agilidade & Gestão (Slide 4: Planejamento)
+## ⏱️ 5.5-7.5 MIN: A Responsabilidade do Empresário (Slide 4: Risco)
 *   **Posicionamento:** Role para o Slide 4.
-*   **Foco:** Como o projeto foi organizado (Scrum).
+*   **Foco:** O "gap" de responsabilidade.
 *   **Discurso:**
-    *   "Organizamos este projeto usando metodologias ágeis. Em nossas Sprints, priorizamos primeiro a base: Identidade e Auditoria."
-    *   "Como podem ver em nosso Board, o 'Hardening' de infraestrutura já está concluído. Cada tarefa técnica foi mapeada para um requisito de conformidade da lei."
+    *   "Aqui está o ponto vital para qualquer empresário: o **Modelo de Responsabilidade Compartilhada**. Muitos acreditam que ao colocar dados na AWS, a Amazon é responsável por tudo. **Isso é um erro perigoso.**"
+    *   "A AWS garante a segurança **DA** nuvem (o hardware). Mas a segurança **NA** nuvem — configurar a criptografia, gerir as chaves e proteger o dado — é responsabilidade **SUA**, o empresário."
+    *   "Se um dado vazar por um bucket aberto, a responsabilidade jurídica perante a ANPD é da sua empresa. O Holocron Sentinel nasce justamente para blindar a sua parte dessa responsabilidade."
 
 ---
 
-## ⏱️ 9-11 MIN: O Motor do Sentinel (Slide 5: Automação)
+## ⏱️ 7.5-9.5 MIN: Agilidade & Gestão (Slide 5: Planejamento)
 *   **Posicionamento:** Role para o Slide 5.
+*   **Foco:** Organização Ágil.
+*   **Discurso:**
+    *   "Organizamos este projeto em Sprints. Priorizamos o 'Hardening' de identidade e auditoria. Como podem ver no Board, cada tarefa técnica está amarrada a um requisito de lei."
+
+---
+
+## ⏱️ 9.5-11.5 MIN: O Motor do Sentinel (Slide 6: Automação)
+*   **Posicionamento:** Role para o Slide 6.
 *   **Foco:** O coração técnico (Python/Boto3).
 *   **Discurso:**
-    *   "Um grande diferencial do Holocron Sentinel é que ele não é apenas uma ideia; ele é movido por automação real usando o **SDK Boto3** do Python."
-    *   "Diferente de auditorias manuais, nossos scripts fiscalizam em milissegundos a criptografia dos logs, garantindo o atendimento ao **Artigo 46 da LGPD**. Temos automação para Identidade, Fiscalização de Custos e Auditoria de Dados."
+    *   "O diferencial é que o Sentinel é movido por automação real via **SDK Boto3**. Nossos scripts, como este que veem na tela, fiscalizam a criptografia em milissegundos. É a tecnologia eliminando o erro humano."
 
 ---
 
-## ⏱️ 11-13 MIN: O Cérebro da Auditoria (Slide 6: Solução IA)
-*   **Posicionamento:** Role para o Slide 6.
-*   **Foco:** O grande diferencial de IA Centralizada.
+## ⏱️ 11.5-13.5 MIN: O Cérebro da Auditoria (Slide 7: Solução IA)
+*   **Posicionamento:** Role para o Slide 7.
+*   **Foco:** Inteligência Centralizada.
 *   **Discurso:**
-    *   "Com a base automatizada, adicionamos o cérebro. O **Amazon Macie** são os nossos 'olhos', encontrando dados expostos. O **GuardDuty** são nossos 'ouvidos', escutando ameaças. O **Amazon Titan** interpreta tudo isso."
-    *   "Centralizamos a decisão. O Titan gera pareceres automáticos, reduzindo o tempo de análise de horas para milissegundos."
+    *   "Adicionamos o cérebro: **Amazon Bedrock com Titan**. Ele interpreta logs do Macie e GuardDuty e gera um parecer em português claro, permitindo decisões rápidas e centralizadas para a diretoria."
 
 ---
 
-## ⏱️ 13-15 MIN: Conclusão & Resumo (Slide 7: Resumo)
+## ⏱️ 13.5-15 MIN: Conclusão & Resumo (Slide 8: Resumo)
 *   **Posicionamento:** Role para o slide final.
-*   **Foco:** Resumo e agradecimentos.
+*   **Foco:** Encerramento.
 *   **Discurso:**
-    *   "O Sentinel prova que a segurança automatizada é 80% mais barata e infinitamente mais segura. Seguimos o AWS Well-Architected Framework para garantir uma empresa pronta para auditorias."
-    *   "Obrigado pelo tempo de vocês e estou aberto a perguntas técnico-jurídicas."
-
----
-### 💡 Dicas Finais para Guilherme:
-1.  **Use o mouse:** Aponte para o código Python no slide 5.
-2.  **Cronômetro:** Mantenha um relógio ao lado para não estourar os 15 minutos.
-3.  **Ambiente:** Se possível, apresente em uma aba exclusiva do navegador em tela cheia (F11).
-
+    *   "O Sentinel prova que segurança automatizada é 80% mais barata e infinitamente mais segura. Seguimos o AWS Well-Architected Framework para garantir que sua empresa esteja sempre pronta para auditorias."
+    *   "Obrigado e estou aberto a perguntas."
