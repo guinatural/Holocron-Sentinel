@@ -277,8 +277,9 @@
         <a href="#problem">Slide 2: Problema</a>
         <a href="#requirements">Slide 3: Requisitos</a>
         <a href="#board">Slide 4: Planejamento</a>
-        <a href="#solution">Slide 5: Solução IA</a>
-        <a href="#summary">Slide 6: Resumo</a>
+        <a href="#automation">Slide 5: Automação</a>
+        <a href="#solution">Slide 6: Solução IA</a>
+        <a href="#summary">Slide 7: Resumo</a>
     </nav>
 
     <!-- ── SLIDE 1: INTRODUÇÃO ── -->
@@ -404,7 +405,58 @@
         </div>
     </section>
 
-    <!-- ── SLIDE 5: SOLUÇÃO CENTRALIZADA COM IA ── -->
+    <!-- ── SLIDE 5: AUTOMAÇÃO TÉCNICA (PYTHON/BOTO3) ── -->
+    <section id="automation">
+        <div class="container">
+            <div class="badge"
+                style="color: var(--blue); border-color: var(--blue); background: rgba(59, 130, 246, 0.1);">Technical
+                Engine</div>
+            <h2>Segurança Via Boto3.<br><span style="color: var(--muted); font-size: 1.5rem; font-weight: 400;">O
+                    coração do Holocron Sentinel</span></h2>
+
+            <div class="grid-2" style="margin-top: 2rem;">
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <div class="dot t-red"></div>
+                        <div class="dot t-yellow"></div>
+                        <div class="dot t-green"></div>
+                        <span
+                            style="font-size: 0.7rem; color: var(--muted); margin-left: auto;">validate_audit_logs.py</span>
+                    </div>
+                    <div class="terminal-body" style="font-size: 0.8rem;">
+                        <pre><span class="keyword">import</span> boto3
+<span class="keyword">from</span> datetime <span class="keyword">import</span> datetime
+
+<span class="comment"># LGPD Art. 46: Auditoria Automática</span>
+<span class="keyword">def</span> <span class="func">validate_encryption</span>(bucket, key):
+    s3 = boto3.<span class="func">client</span>('s3', region_name='sa-east-1')
+    <span class="keyword">try</span>:
+        response = s3.<span class="func">head_object</span>(Bucket=bucket, Key=key)
+        enc = response.<span class="func">get</span>('ServerSideEncryption')
+        <span class="keyword">return</span> (enc <span class="keyword">in</span> ['AES256', 'aws:kms'])
+    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:
+        <span class="keyword">return</span> <span class="keyword">False</span></pre>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="color: var(--blue); margin-bottom: 1rem;">O Diferencial Técnico</h3>
+                    <p style="font-size: 0.95rem;">Diferente de processos manuais, nossa solução utiliza o **SDK Boto3**
+                        para interagir com a infraestrutura da AWS em tempo real.</p>
+                    <ul
+                        style="list-style: none; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem;">
+                        <li style="font-size: 0.85rem; color: var(--muted);">✅ <strong>setup_iam_structure.py:</strong>
+                            Automação de identidades.</li>
+                        <li style="font-size: 0.85rem; color: var(--muted);">✅ <strong>validate_audit_logs.py:</strong>
+                            Fiscalização de integridade.</li>
+                        <li style="font-size: 0.85rem; color: var(--muted);">✅ <strong>billing_alerts_setup.py:</strong>
+                            Prevenção de custos.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── SLIDE 6: SOLUÇÃO CENTRALIZADA COM IA ── -->
     <section id="solution">
         <div class="container">
             <div class="badge"

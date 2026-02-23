@@ -40,14 +40,14 @@ O Holocron Sentinel automatiza a segurança desde o design. Diferente de process
 *   **Economia:** Priorizar serviços serverless para otimização de custos (Pay-as-you-go).
 
 **MVP (Produto Mínimo Viável):**
-Uma infraestrutura segura na AWS composta por:
-1.  **Fundação IAM:** Usuários com menor privilégio e MFA forçado.
-2.  **Trilha de Auditoria:** CloudTrail ativo gerando logs no S3.
-3.  **Segurança de Dados:** Buckets S3 com *Block Public Access* e Criptografia.
-4.  **Automação de Auditoria:** Script Python de validação de logs.
+Uma infraestrutura segura na AWS controlada por um **Kit de Automação Python/Boto3**:
+1.  **setup_iam_structure.py**: Provisionamento automatizado de Roles e MFA Enforcement.
+2.  **validate_audit_logs.py**: Fiscalização contínua da criptografia (Art. 46) e imutabilidade dos logs.
+3.  **billing_alerts_setup.py**: Proteção financeira contra picos de uso por ataques ou erros.
+4.  **Trilha de Auditoria**: CloudTrail ativo gerando evidências digitais no S3.
 
 **Evolução (Módulo IA):**
-Implementação do Cérebro Central via **Amazon Bedrock (Titan)** integrando **Amazon Macie** (descoberta de dados) e **Amazon GuardDuty** (ameaças), centralizando a governança no **AWS Security Hub**.
+Integração do **ai_compliance_analyst.py** usando **Amazon Bedrock (Titan)** para centralizar a governança baseada nos sinais do **Amazon Macie** e **Amazon GuardDuty**.
 
 ---
 

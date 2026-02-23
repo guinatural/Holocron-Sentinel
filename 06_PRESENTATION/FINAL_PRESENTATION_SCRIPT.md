@@ -41,25 +41,34 @@
 
 ---
 
-## ⏱️ 10-13 MIN: O Cérebro da Auditoria (Slide 5: Solução IA)
+## ⏱️ 9-11 MIN: O Motor do Sentinel (Slide 5: Automação)
 *   **Posicionamento:** Role para o Slide 5.
-*   **Foco:** O grande diferencial de IA Centralizada.
+*   **Foco:** O coração técnico (Python/Boto3).
 *   **Discurso:**
-    *   "Chegamos ao coração do projeto. Enquanto outros monitoram manualmente, o Holocron usa IA como um cérebro centralizado."
-    *   "O **Amazon Macie** são os nossos 'olhos', encontrando dados expostos. O **GuardDuty** são nossos 'ouvidos', escutando ameaças de rede. O **Amazon Titan** (via Bedrock) é o nosso 'julgamento', analisando tudo isso em tempo real."
-    *   "O Titan gera pareceres automáticos, reduzindo o tempo de análise de horas para milissegundos."
+    *   "Um grande diferencial do Holocron Sentinel é que ele não é apenas uma ideia; ele é movido por automação real usando o **SDK Boto3** do Python."
+    *   "Diferente de auditorias manuais, nossos scripts fiscalizam em milissegundos a criptografia dos logs, garantindo o atendimento ao **Artigo 46 da LGPD**. Temos automação para Identidade, Fiscalização de Custos e Auditoria de Dados."
 
 ---
 
-## ⏱️ 13-15 MIN: Conclusão & Próximos Passos (Slide 6: Resumo)
-*   **Posicionamento:** Role para o slide final.
-*   **Foco:** Resumo e perguntas.
+## ⏱️ 11-13 MIN: O Cérebro da Auditoria (Slide 6: Solução IA)
+*   **Posicionamento:** Role para o Slide 6.
+*   **Foco:** O grande diferencial de IA Centralizada.
 *   **Discurso:**
-    *   "O Holocron Sentinel prova que a segurança não precisa ser cara nem lenta. Ele é seguro por design, pronto para auditorias e segue os pilares de excelência do AWS Well-Architected Framework."
-    *   "A privacidade não é opcional na era da nuvem. Obrigado pelo tempo de vocês e estou aberto a perguntas técnicos ou de negócios."
+    *   "Com a base automatizada, adicionamos o cérebro. O **Amazon Macie** são os nossos 'olhos', encontrando dados expostos. O **GuardDuty** são nossos 'ouvidos', escutando ameaças. O **Amazon Titan** interpreta tudo isso."
+    *   "Centralizamos a decisão. O Titan gera pareceres automáticos, reduzindo o tempo de análise de horas para milissegundos."
+
+---
+
+## ⏱️ 13-15 MIN: Conclusão & Resumo (Slide 7: Resumo)
+*   **Posicionamento:** Role para o slide final.
+*   **Foco:** Resumo e agradecimentos.
+*   **Discurso:**
+    *   "O Sentinel prova que a segurança automatizada é 80% mais barata e infinitamente mais segura. Seguimos o AWS Well-Architected Framework para garantir uma empresa pronta para auditorias."
+    *   "Obrigado pelo tempo de vocês e estou aberto a perguntas técnico-jurídicas."
 
 ---
 ### 💡 Dicas Finais para Guilherme:
-1.  **Use o mouse:** Aponte para as tabelas e o fluxo de IA enquanto fala.
+1.  **Use o mouse:** Aponte para o código Python no slide 5.
 2.  **Cronômetro:** Mantenha um relógio ao lado para não estourar os 15 minutos.
 3.  **Ambiente:** Se possível, apresente em uma aba exclusiva do navegador em tela cheia (F11).
+
