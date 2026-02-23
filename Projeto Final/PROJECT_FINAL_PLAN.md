@@ -94,8 +94,8 @@ O progresso é monitorado via GitHub Projects / Trello, utilizando as colunas:
 | **4 min** | **Gestão e Agilidade** | Demonstração do Backlog, Sprints e as soft skills de coordenação. | BACKLOG_SPRINTS.md |
 | **3 min** | **IA & Próximos Passos** | Demonstração do Script de Auditoria e Roadmap para Extensão em IA. | 04_CODE |
 
-**Próximos Passos (Módulo EXTENSÃO EM IA):**
-Na próxima etapa, integraremos o **Holocron AI Compliance Analyst**. Utilizaremos o **Amazon Bedrock** (com modelos LLM como Claude ou Titan) para processar os logs coletados e gerar pareceres executivos em linguagem natural. A IA identificará padrões de acesso anômalos (User Behavior Analytics) e sugerirá remediações automáticas via AWS Lambda, transformando dados brutos em decisões estratégicas de segurança.
+**Próximos Passos (Módulo EXTENSÃO EM IA):
+Na próxima etapa, integraremos o **Holocron AI Compliance Analyst**. Utilizaremos o **Amazon Bedrock** com o modelo proprietário **Amazon Titan** para processar os logs coletados e gerar pareceres executivos. A solução contará com o **Amazon Macie** para a descoberta automatizada de dados sensíveis (PII) e o **Amazon GuardDuty** para detecção de ameaças baseada em Machine Learning, garantindo uma stack 100% nativa AWS.
 
 ### 5. Arquitetura Técnica Detalhada (Deep Dive AWS)
 

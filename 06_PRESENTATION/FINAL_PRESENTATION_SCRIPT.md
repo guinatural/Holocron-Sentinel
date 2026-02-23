@@ -59,13 +59,14 @@
 
 ---
 
-## BLOCO 6: Inteligência Artificial
+## BLOCO 6: Inteligência Artificial Nativa
 **Visual:** Slide 6 - Analista IA (Visualização de Dados)
 
-*   **Ação:** Role para o sexto slide. Mostre o "Cérebro" e o Parecer da IA.
+*   **Ação:** Role para o sexto slide. Mostre o parecer gerado pela IA.
 *   **O que dizer:**
-    *   "O próximo passo do Sentinel é o cérebro. No módulo de IA, integraremos o **Amazon Bedrock**."
-    *   "A IA analisará milhões de linhas de logs do CloudTrail e escreverá, como vocês podem ver na tela, um **Parecer Executivo** pronto para o Diretor de TI, identificando comportamentos anômalos que o olho humano jamais perceberia."
+    *   "Para o futuro próximo, o Holocron Sentinel ganhará um cérebro 100% nativo AWS."
+    *   "Diferente de usar modelos externos, integraremos o **Amazon Titan** via Amazon Bedrock. Isso garante que nossos dados nunca saiam da infraestrutura da AWS, mantendo a soberania absoluta exigida pela LGPD."
+    *   "Combinaremos o Titan com o **Amazon Macie**, que usa IA para encontrar automaticamente CPFs e documentos sensíveis em nossos buckets, e o **GuardDuty** para vigiar acessos suspeitos 24 horas por dia."
 
 ---
 
