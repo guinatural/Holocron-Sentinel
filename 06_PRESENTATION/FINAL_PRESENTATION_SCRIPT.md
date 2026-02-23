@@ -1,44 +1,83 @@
-# Roteiro da Apresentação Final (15 Minutos)
+# Guia de Performance: Apresentação Holocron Sentinel (15 Minutos)
 
-**Público:** Banca Avaliadora AWS re/Start
-**Objetivo:** Demonstrar competência técnica e soft skills de gestão.
+**Ferramenta Principal:** `index.html` (Apresentação Web Interativa)
+**Objetivo:** Contar uma história técnica e impactante sobre segurança na AWS e conformidade LGPD.
 
 ---
 
-## 1. Abertura e Identidade (2 min)
-*   **Slide 1:** Capa (Holocron Sentinel - Sistema de Conformidade LGPD).
-*   **Discurso:**
-    *   "Bom dia. Meu nome é [Nome] e hoje apresento o Holocron Sentinel."
-    *   "Mais do que um projeto de infraestrutura, é uma resposta à crise de privacidade de dados no Brasil."
-    *   "Meu papel: Arquiteto de Cloud e Engenheiro de Segurança."
+## BLOCO 1: Abertura
+**Visual:** Slide 1 - Capa (Holocron Sentinel)
 
-## 2. Identificação do Problema (3 min)
-*   **Slide 2:** O Cenário LGPD.
-*   **Contexto:** Empresas multadas em milhões por falta de governança.
-*   **Problema:** "Como garantir que uma empresa pequena tenha segurança de nível bancário sem estourar o orçamento?"
-*   **Justificativa:** A nuvem AWS democratiza a segurança (Pay-as-you-go).
+*   **Ação:** Mantenha a tela na capa. Deixe o efeito de brilho do fundo agir.
+*   **O que dizer:**
+    *   "Bom dia. Sou Guilherme Barreto Gomes. Hoje, não vou apenas lhes mostrar um projeto técnico; vou lhes mostrar como transformamos o **medo jurídico da LGPD** em **confiança técnica** usando a nuvem da AWS."
+    *   "Este é o Holocron Sentinel – nossa 'Sentinela' para a proteção de dados sensíveis."
 
-## 3. Engenharia de Requisitos (3 min)
-*   **Slide 3:** Requisitos Funcionais e Não-Funcionais (Mostrar arquivo `REQUIREMENTS_DOC.md`).
-*   **Destaque:**
-    *   RF-003: Auditoria de Acesso (Art. 37 LGPD).
-    *   RNF-001: Criptografia Obrigatória (Art. 46 LGPD).
-*   **MVP:** "Focamos na Fase 1: Fundação de Governança."
+---
 
-## 4. Planejamento Ágil (2 min)
-*   **Slide 4:** O Backlog e Sprints (Mostrar arquivo `BACKLOG_SPRINTS.md`).
-*   **Visual:** Mostrar print do Trello/Jira.
-*   **Narrativa:** "Trabalhamos em Sprints de 1 semana. A Sprint 1 focou em IAM e Segurança. A Sprint 2 em Auditoria."
+## BLOCO 2: Identificação do Cenário
+**Visual:** Slide 2 - A Crise Invisível (Seção de Gráfico)
 
-## 5. Solução Técnica e Arquitetura (3 min)
-*   **Slide 5:** Diagrama de Arquitetura (Mostrar `02_ARCHITECTURE`).
-*   **Explicação:**
-    *   "Aqui vemos a VPC isolada..."
-    *   "O bucket S3 com criptografia KMS..."
-    *   "O CloudTrail vigiando tudo..."
+*   **Ação:** Role para o segundo slide. Aponte para as barras de gráfico à direita.
+*   **O que dizer:**
+    *   "Vejam estes dados. 85% das empresas brasileiras falham na auditabilidade (Art. 37). Isso significa que elas tratam dados pessoais, mas não conseguem provar ao governo QUEM acessou esses dados."
+    *   "O risco não é abstrato: são multas de 50 milhões de reais. O Holocron Sentinel nasceu para iluminar essas áreas cinzentas, transformando a opacidade em transparência absoluta."
 
-## 6. Evidência e Conclusão (2 min)
-*   **Slide 6:** "Show me the code" (Mostrar script Python `validate_audit_logs.py`).
-*   **Encerramento:**
-    *   "O Holocron Sentinel não é apenas um lab, é um sistema pronto para escalar."
-    *   "Obrigado. Aberto para perguntas."
+---
+
+## BLOCO 3: Mapeamento de Conformidade
+**Visual:** Slide 3 - Os Pilares da Lei (Grade de Artigos)
+
+*   **Ação:** Role para o terceiro slide. Passe o mouse sobre os cards (eles têm efeito de destaque).
+*   **O que dizer:**
+    *   "A conformidade não é um checklist; é arquitetura. Traduzimos a lei em tecnologia em 6 frentes fundamentais."
+    *   "Destaque para o **Artigo 46 (Segurança)**: Garantimos criptografia AES-256 em 100% do Data Lake."
+    *   "E o **Artigo 3º (Soberania)**: Nossos dados nunca saem de solo brasileiro; estão fixados na região de São Paulo (`sa-east-1`)."
+
+---
+
+## BLOCO 4: Arquitetura de Segurança
+**Visual:** Slide 4 - Arquitetura Glass Box (Mapa AWS)
+
+*   **Ação:** Role para o quarto slide. Mostre os badges de serviços AWS.
+*   **O que dizer:**
+    *   "Chamamos nossa solução de **Arquitetura Glass Box** (Caixa de Vidro). Ao contrário de uma caixa preta, aqui tudo é visível para quem tem direito, e blindado para quem não tem."
+    *   "Na base (Identity), o IAM com MFA obrigatório. No meio (Monitoring), o CloudTrail como nossa testemunha ocular. No topo (Defense), o KMS selando cada arquivo."
+
+---
+
+## BLOCO 5: Engenharia e Automação
+**Visual:** Slide 5 - Segurança como Código (Seção Terminal)
+
+*   **Ação:** Role para o quinto slide. Mostre o snippet de código Python.
+*   **O que dizer:**
+    *   "Para nós, segurança não é uma configuração manual; é código. Desenvolvi scripts em Python usando `boto3` que automatizam a fiscalização."
+    *   "Este script que vocês veem não apenas verifica se o bucket está criptografado (Art. 46); ele pode disparar uma auto-remediação em milissegundos se encontrar uma vulnerabilidade."
+
+---
+
+## BLOCO 6: Inteligência Artificial
+**Visual:** Slide 6 - Analista IA (Visualização de Dados)
+
+*   **Ação:** Role para o sexto slide. Mostre o "Cérebro" e o Parecer da IA.
+*   **O que dizer:**
+    *   "O próximo passo do Sentinel é o cérebro. No módulo de IA, integraremos o **Amazon Bedrock**."
+    *   "A IA analisará milhões de linhas de logs do CloudTrail e escreverá, como vocês podem ver na tela, um **Parecer Executivo** pronto para o Diretor de TI, identificando comportamentos anômalos que o olho humano jamais perceberia."
+
+---
+
+## BLOCO 7: Conclusão e Resultados
+**Visual:** Slide 7 - Impacto (Grade de Métricas)
+
+*   **Ação:** Role para o final. Agradeça e mantenha o contato visual.
+*   **O que dizer:**
+    *   "Nossos resultados são claros: 100% de compliance, zero dados expostos e um tempo de resposta inferior a 5 minutos."
+    *   "A privacidade não é mais opcional. O Holocron Sentinel prova que com AWS e IA, o compliance se torna uma vantagem estratégica. Obrigado e estou aberto a perguntas."
+
+---
+
+### 💡 Dicas de Sucesso para Guilherme:
+1.  **Ritmo do Scroll:** Não role rápido demais. Espere os olhos da banca focarem nos títulos.
+2.  **Mouse como Laser:** Use o ponteiro do mouse para circular termos importantes como "AES-256" ou "sa-east-1".
+3.  **Paixão Técnica:** Nas partes de Código e IA, mostre autoridade. Você é o Arquiteto.
+4.  **Hardware:** Se puder, apresente o `index.html` em modo tela cheia (F11).

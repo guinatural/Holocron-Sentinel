@@ -16,7 +16,8 @@ Requisitos:
 Chave gratuita em: https://aistudio.google.com/app/apikey
 """
 
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 import os
 from datetime import datetime
 
@@ -101,14 +102,16 @@ FORMATO DE SAIDA:
 [texto]
 """
 
-    genai.configure(api_key=GEMINI_API_KEY)
-    model = genai.GenerativeModel("gemini-1.5-flash")
+    client = genai.Client(api_key=GEMINI_API_KEY)
 
     print("[*] Enviando relatorio para analise de IA...")
     print("[*] Modelo: Google Gemini 1.5 Flash (equivalente AWS: Amazon Bedrock Claude)")
     print("-" * 60)
 
-    response = model.generate_content(prompt)
+    response = client.models.generate_content(
+        model="gemini-2.0-flash",
+        contents=prompt
+    )
     return response.text
 
 

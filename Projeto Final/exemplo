@@ -1,0 +1,57 @@
+Módulo RESTART
+1. Identificação do Problema
+Ideia do Projeto: Sistema de Monitoramento de Saúde Mental para Estudantes
+Descrição do Problema:
+A saúde mental dos estudantes é uma preocupação crescente, especialmente em
+ambientes acadêmicos. Muitos estudantes enfrentam estresse, ansiedade e
+depressão, mas não têm acesso a recursos adequados para monitorar e gerenciar sua
+saúde mental.
+Stakeholders:
+• Estudantes
+• Instituições de ensino
+• Psicólogos
+• Pais
+Justificativa:
+A implementação de um sistema que permita aos estudantes monitorar seu bemestar mental pode ajudar a identificar problemas precocemente e facilitar o acesso a
+recursos de apoio.
+2. Levantamento de Requisitos
+Requisitos Funcionais:
+• O sistema deve permitir que os usuários registrem seu humor diariamente.
+• O sistema deve fornecer feedback e sugestões com base nas entradas do
+usuário.
+• O sistema deve permitir que os usuários agendem consultas com profissionais
+de saúde mental.
+Requisitos Não Funcionais:
+• O sistema deve ser acessível via dispositivos móveis e desktop.
+• O sistema deve garantir a privacidade e segurança dos dados dos usuários.
+MVP (Produto Mínimo Viável):
+• Registro diário de humor e feedback básico.
+3. Planejamento Ágil
+Backlog de Tarefas:
+1. Pesquisa sobre saúde mental e necessidades dos usuários.
+2. Desenvolvimento do protótipo da interface do usuário.
+3. Implementação do registro de humor.
+4. Criação do sistema de feedback.
+Sprints:
+• Sprint 1: Pesquisa e protótipo.
+• Sprint 2: Implementação do registro de humor.
+• Sprint 3: Desenvolvimento do sistema de feedback.
+Quadro (Board):
+• Utilizar uma ferramenta como Trello ou Jira para visualizar o progresso. (Colar
+print do quadro nessa parte)
+4. Apresentação
+Estrutura da Apresentação:
+1. Introdução: Apresentação do problema e sua relevância.
+2. Identificação do Problema: Descrição do problema e stakeholders.
+3. Levantamento de Requisitos: Apresentação dos requisitos funcionais e não
+funcionais.
+4. Planejamento Ágil: Demonstração do backlog e sprints.
+5. Próximos Passos: O que será feito nas próximas semanas.
+Recursos Visuais:
+• Slides com gráficos sobre saúde mental.
+• Diagrama do fluxo de usuários no sistema.
+Obs: Esses recursos visuais podem ser utilizados como apoio no momento da
+apresentação dessa primeira etapa, em conjunto com o documento a ser produzido
+nos moldes desse exemplo.
+Atenção: O problema escolhido e os demais pontos deste trabalho não podem ser
+idênticos aos apresentados neste exemplo.

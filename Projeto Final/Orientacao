@@ -1,0 +1,49 @@
+Introdução:
+O projeto final da ESCOLA DA NUVEM para o curso RESTART + IA tem como objetivo
+proporcionar aos alunos uma experiência prática e enriquecedora, onde poderão aplicar
+os conhecimentos adquiridos ao longo do curso.
+O projeto será dividido nos dois módulos. Uma primeira parte será entregue no módulo
+RESTART a segunda parte será entregue no módulo EXTENSÃO EM IA permitindo que
+os alunos desenvolvam habilidades técnicas e metodológicas essenciais para suas
+futuras carreiras em nuvem. Esse documento orienta acerca da entrega necessária para
+o módulo do AWS re/Start, assim como um exemplo prático de como seria essa entrega
+na segunda parte do documento.
+Estruturação Inicial - Módulo AWS re/Start
+Objetivo:
+Na parte do RESTART, os alunos irão desenvolver habilidades como metodologias ágeis,
+identificação de requisitos e desenvolvimento de ideias que serão resolvidas com
+tecnologia de IA (Na segunda etapa do curso). Vocês trabalharão em grupos de 6 a 8
+alunos para encontrar um problema real e desenvolver uma solução viável.
+Construção da entrega
+Estruturação Inicial do Projeto:
+❖ Identificação do Problema:
+➢ Os alunos devem identificar um problema que possa ser resolvido com
+tecnologia e IA. O problema escolhido deve ser relevante e causar
+impacto significativo.
+➢ Entrega: Documento que descreva o problema, incluindo contexto,
+stakeholders envolvidos e justificativa para a escolha.
+❖ Definição de Requisitos:
+➢ É necessário definir os requisitos funcionais (o que o sistema deve fazer)
+e não funcionais (como o sistema deve se comportar) da solução
+proposta.
+➢ Entrega: Documento contendo uma lista detalhada dos requisitos,
+categorizados em funcionais e não funcionais, além da definição de
+evolução e MVP com uma breve descrição de cada item.
+❖ Planejamento do Projeto:
+➢ Criação de um backlog de tarefas e planejamento das sprints (períodos
+de trabalho focado) para o desenvolvimento do projeto.
+➢ Entrega: Documento que inclua o backlog de tarefas e um print ou link
+do quadro online. O quadro deve mostrar a priorização das atividades,
+definição das sprints e uma visualização do progresso do projeto com os
+responsáveis por cada tarefa.
+❖ Apresentação Final:
+➢ Apresentação individual para o instrutor, resumindo as atividades
+realizadas, a solução concebida e os próximos passos planejados.
+➢ Entrega: Apresentação visual dos itens solicitados (não é necessário
+PowerPoint), com compartilhamento de tela para exibir objetivo,
+problema, board e documentos de requisitos. A duração deve ser de 15
+minutos, em uma sala separada.
+Atenção: A entrega do documento é feita na última aula técnica do AWS re/Start,
+sendo uma apresentação individual (um integrante do grupo) de 15 minutos,
+demonstrando o progresso do projeto, os documentos e quadros criados, a solução
+proposta e os próximos passos planejados, assim como descrito na etapa acima.

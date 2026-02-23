@@ -1,14 +1,14 @@
-# Projeto Final - Módulo AWS re/Start
+# Projeto Final: Holocron Sentinel — Segurança e Conformidade LGPD na AWS
+## Módulo 1: AWS re/Start + Inteligência Artificial
 
 **Grupo:** Holocron Sentinel  
-**Curso:** AWS re/Start - Escola da Nuvem  
-**Ano:** 2025
-
+**Curso:** AWS re/Start + IA — Escola da Nuvem  
+**Ano:** 2025  
 **Integrantes:**
-- **Guilherme Barreto Gomes** (Apresentador e Coordenador)
-- **Aluno 1**
-- **Aluno 2**
-- **Aluno 3**
+- **Guilherme Barreto Gomes** (Arquiteto de Cloud e Engenheiro de Segurança)
+- [Nome do Aluno 1]
+- [Nome do Aluno 2]
+- [Nome do Aluno 3]
 
 ---
 
@@ -16,257 +16,91 @@
 
 ### 1. Identificação do Problema
 
-**Ideia do Projeto:** Holocron Sentinel - Sistema Simples de Monitoramento de Segurança na AWS
+**Ideia do Projeto:** Holocron Sentinel - Sistema de Governança de Dados e Compliance Automatizado.
 
 **Descrição do Problema:**
-
-Pequenas empresas que estão começando a usar a AWS enfrentam dificuldades para saber se suas configurações estão seguras. Muitas vezes não sabem responder perguntas básicas como: "Meus buckets S3 estão públicos sem querer?", "Quem tem acesso de administrador na minha conta?", "Consigo ver quem fez o quê no meu ambiente?".
-
-Essas empresas não têm equipe especializada em segurança na nuvem e ficam com medo de estar fazendo algo errado que possa causar vazamento de dados ou problemas com a LGPD. Além disso, muitas não entendem bem que a AWS cuida de algumas coisas de segurança, mas outras são responsabilidade de quem usa (modelo de responsabilidade compartilhada).
+Empresas brasileiras enfrentam um cenário crítico de vulnerabilidade jurídica e técnica com a vigência da LGPD (Lei 13.709/2018). O problema central não é apenas o vazamento de dados, mas a **violação da auditabilidade (Art. 37)** e a **falha na proteção de dados por design (Art. 46)**. Muitas organizações não possuem visibilidade sobre quem acessa dados sensíveis (PII) em tempo real, resultando em multas que podem chegar a R$ 50 milhões. A falta de especialistas em segurança na nuvem impede que pequenas e médias empresas implementem controles baseados em Zero-Trust, deixando dados de clientes expostos em buckets S3 sem criptografia e contas IAM sem MFA.
 
 **Stakeholders:**
-
-- **Pequenas empresas** que usam AWS e não têm time de segurança
-- **Donos de negócio** que precisam ter certeza que os dados estão seguros
-- **Pessoas de TI** que gerenciam a AWS mas têm pouca experiência
-- **Auditores** que precisam verificar se está tudo certo
+*   **DPO (Data Protection Officer):** Necessita de relatórios de conformidade para a ANPD.
+*   **Diretoria de TI / CTO:** Precisa garantir a continuidade do negócio e evitar danos à reputação.
+*   **Clientes (Titulares dos Dados):** Exigem transparência e segurança sobre seus dados pessoais.
+*   **Auditores Externos:** Requerem registros imutáveis de operações em nuvem.
 
 **Justificativa:**
-
-Criar uma ferramenta simples que verifica configurações básicas de segurança pode ajudar essas pequenas empresas a dormirem tranquilas. O sistema vai apenas ler as configurações (sem mexer em nada) e avisar sobre problemas que encontrar, tipo "Você tem um bucket público" ou "Tem usuário sem senha forte". Na segunda fase do curso, vamos usar IA para tornar as recomendações ainda mais úteis e personalizadas.
-
-**Responsável pela Seção:** Guilherme Barreto Gomes
+O Holocron Sentinel utiliza a infraestrutura escalável da AWS para democratizar a segurança corporativa. Através de uma arquitetura "Glass Box", permitimos que cada transação de dado seja rastreável e protegida. A escolha pela nuvem AWS justifica-se pela capacidade de automação via CloudTrail e AWS Config, entregando conformidade contínua a um custo operacional drasticamente reduzido. No próximo módulo (Extensão em IA), evoluiremos para uma análise preditiva de ameaças.
 
 ---
 
 ### 2. Levantamento de Requisitos
 
-**Requisitos Funcionais (O que o sistema vai fazer):**
+**Requisitos Funcionais (RF):**
+*   **[RF-001] Ingestão Criptografada:** O sistema deve exigir criptografia (KMS) em 100% dos uploads de dados sensíveis.
+*   **[RF-002] Auditoria Imutável:** Registro centralizado de logs via CloudTrail com verificação de integridade (Digest).
+*   **[RF-003] Validação de Identidade (MFA):** Bloqueio ou alerta de usuários administrativos operando sem Autenticação em Dois Fatores.
+*   **[RF-004] Relatórios de Conformidade:** Geração automática de relatórios técnicos sobre o status de segurança do ambiente.
 
-- Listar usuários e grupos do IAM e mostrar quem tem muito acesso
-- Verificar se tem usuários sem MFA (autenticação em dois fatores)
-- Listar buckets S3 e avisar se algum está público
-- Mostrar instâncias EC2 e seus grupos de segurança
-- Buscar nos logs do CloudTrail quem fez alterações importantes
-- Gerar um relatório simples em PDF ou texto com os problemas encontrados
+**Requisitos Não Funcionais (RNF):**
+*   **[RNF-001] Segurança:** Criptografia em repouso padrão AES-256 (SSE-S3/SSE-KMS).
+*   **[RNF-002] Durabilidade:** Armazenamento de logs com durabilidade de 99.999999999% (S3 Standard).
+*   **[RNF-003] Soberania de Dados:** Toda a infraestrutura deve estar localizada na região `sa-east-1` (São Paulo).
+*   **[RNF-004] Auditoria Contínua:** Logs devem ser retidos por no mínimo 5 anos conforme requisitos legais.
 
-**Requisitos Não Funcionais (Como o sistema deve funcionar):**
-
-- Só pode ler informações, nunca alterar nada (para não quebrar nada)
-- Deve ser barato de rodar (usando o nível gratuito da AWS quando possível)
-- Precisa ter instruções claras de como usar
-- Deve funcionar em menos de 1 minuto para não deixar o usuário esperando
-- Os dados coletados devem ficar guardados com segurança
-
-**MVP (Versão Inicial Simples):**
-
-Na primeira fase vamos fazer:
-- Um script que coleta informações básicas do IAM, EC2, S3 e CloudTrail
-- Uma análise simples que identifica problemas comuns
-- Um relatório de texto mostrando o que foi encontrado e sugestões de melhoria
-
-**Evolução Futura (Segunda Fase com IA):**
-
-Depois vamos adicionar:
-- IA para analisar os logs e encontrar comportamentos estranhos
-- Recomendações personalizadas baseadas no tipo de empresa
-- Um chatbot para responder dúvidas sobre segurança
-- Relatórios automáticos em linguagem simples
-
-**Responsável pela Seção:** Aluno 1
+**MVP (Produto Mínimo Viável):**
+Uma arquitetura de segurança funcional na AWS composta por:
+1.  **Fundação IAM:** Grupos e políticas com MFA obrigatório.
+2.  **Repositório Seguro:** Bucket S3 com bloqueio de acesso público e versionamento.
+3.  **Audit Trail:** CloudTrail ativo gerando logs de leitura/escrita em dados sensíveis.
+4.  **Scripts de Validação:** Ferramenta Python (boto3) para auditoria automatizada de conformidade.
 
 ---
 
 ### 3. Planejamento Ágil
 
-**Backlog de Tarefas (Lista de tudo que precisa ser feito):**
+**Backlog de Tarefas:**
+1.  **[Core]** Desenho da Arquitetura Zero-Trust e fluxograma de dados.
+2.  **[IAM]** Configuração de Grupos (Admin/Dev/Audit) e MFA Enforcement (Art. 46).
+3.  **[S3]** Provisionamento de Bucket Data Lake com criptografia KMS.
+4.  **[Logs]** Implementação de CloudTrail Multi-Region e log de integridade.
+5.  **[Code]** Desenvolvimento de script Python para validação automática de logs (`validate_audit_logs.py`).
+6.  **[Review]** Simulação de incidentes de acesso e validação de trilha de auditoria.
 
-1. Estudar sobre segurança básica na AWS
-2. Desenhar como o projeto vai funcionar (diagrama simples)
-3. Criar conta AWS e configurar permissões básicas
-4. Fazer script para pegar dados do IAM
-5. Fazer script para pegar dados do EC2
-6. Fazer script para pegar dados do S3
-7. Fazer script para pegar dados do CloudTrail
-8. Criar análise simples dos dados coletados
-9. Salvar os resultados em arquivo
-10. Fazer as recomendações de segurança
-11. Criar o relatório final
-12. Escrever documentação explicando o projeto
-13. Preparar a apresentação
+**Sprints:**
+*   **Sprint 1:** Planejamento e Arquitetura. Entrega: Documento de Requisitos e Diagrama AWS.
+*   **Sprint 2:** Implementação Identity & Access Management (IAM). Entrega: Ambiente AWS configurado.
+*   **Sprint 3:** Governança de Dados e Auditoria. Entrega: CloudTrail Logs e S3 Secure Buckets.
+*   **Sprint 4:** Automação e Apresentação. Entrega: Script Python de Auditoria e Pitch Final.
 
----
+**Quadro (Board):**
+O progresso é monitorado via GitHub Projects / Trello, utilizando as colunas:
+*   **To Do:** Atividades mapeadas no Backlog.
+*   **In Progress:** Implementação técnica em andamento no console AWS/VS Code.
+*   **Verification:** Teste de scripts e validação de logs.
+*   **Done:** Tarefas com evidência (screenshot/log) anexada.
 
-**Sprints (Divisão do trabalho em 4 etapas de 2 semanas cada):**
-
-### **Sprint 1 (Semanas 1-2): Começando o Projeto**
-
-**O que vamos fazer:** Estudar e preparar o ambiente
-
-**Tarefas:**
-- Tarefa 1: Estudar sobre segurança na AWS e fazer resumo
-- Tarefa 2: Desenhar como o projeto vai funcionar
-- Tarefa 3: Criar conta AWS e configurar acessos
-
-**Quem faz o quê:**
-- **Aluno 2:** Tarefa 1 - Estudar e fazer resumo sobre segurança
-- **Guilherme:** Tarefa 2 e 3 - Desenhar projeto e configurar AWS
-
-**O que entregamos:** Resumo de estudo, desenho do projeto, conta AWS pronta
+*(Link/Print do Quadro simulado: Disponível na pasta 01_SPRINTS)*
 
 ---
 
-### **Sprint 2 (Semanas 3-4): Coletando Informações**
+### 4. Apresentação Final (Roteiro de 15 Minutos)
 
-**O que vamos fazer:** Criar scripts que pegam dados da AWS
+**Estrutura da Apresentação:**
 
-**Tarefas:**
-- Tarefa 4: Script que lista usuários e permissões do IAM
-- Tarefa 5: Script que mostra instâncias e segurança do EC2
-- Tarefa 6: Script que verifica buckets do S3
+| Tempo | Seção | Objetivo | Recurso Visual |
+|-------|-------|----------|----------------|
+| **2 min** | **Introdução** | Apresentação pessoal e "The Hook" (A crise da LGPD). | Slide de Capa |
+| **3 min** | **O Problema** | Descrição do risco financeiro e jurídico para empresas sem governança AWS. | REQUIREMENTS_DOC.md |
+| **3 min** | **A Solução** | Explicação da Arquitetura Holocron Sentinel baseada em Zero-Trust. | 02_ARCHITECTURE |
+| **4 min** | **Gestão e Agilidade** | Demonstração do Backlog, Sprints e as soft skills de coordenação. | BACKLOG_SPRINTS.md |
+| **3 min** | **IA & Próximos Passos** | Demonstração do Script de Auditoria e Roadmap para Extensão em IA. | 04_CODE |
 
-**Quem faz o quê:**
-- **Aluno 3:** Tarefa 4 - Script do IAM
-- **Aluno 1:** Tarefa 5 - Script do EC2
-- **Guilherme:** Tarefa 6 - Script do S3 + ajudar os outros
+**Próximos Passos (Módulo EXTENSÃO EM IA):**
+Na próxima etapa, integraremos o **Holocron AI Compliance Analyst**. Utilizaremos o **Amazon Bedrock** (com modelos LLM como Claude ou Titan) para processar os logs coletados e gerar pareceres executivos em linguagem natural. A IA identificará padrões de acesso anômalos (User Behavior Analytics) e sugerirá remediações automáticas via AWS Lambda, transformando dados brutos em decisões estratégicas de segurança.
 
-**O que entregamos:** 3 scripts funcionando
-
----
-
-### **Sprint 3 (Semanas 5-6): Analisando os Dados**
-
-**O que vamos fazer:** Analisar os dados e criar recomendações
-
-**Tarefas:**
-- Tarefa 7: Script que busca logs importantes no CloudTrail
-- Tarefa 8: Código que analisa e encontra problemas
-- Tarefa 9: Código que salva os resultados
-- Tarefa 10: Código que cria recomendações
-
-**Quem faz o quê:**
-- **Aluno 2:** Tarefa 7 - Script do CloudTrail
-- **Aluno 3:** Tarefa 8 - Análise de problemas
-- **Aluno 1:** Tarefa 9 - Salvar resultados
-- **Guilherme:** Tarefa 10 - Criar recomendações + juntar tudo
-
-**O que entregamos:** Sistema completo funcionando
+**Recursos Visuais de Apoio:**
+*   Diagramas de Arquitetura em `/02_ARCHITECTURE`.
+*   Evidências de Logs e Screenshots em `/05_EVIDENCE`.
+*   Script de Auditoria em `/04_CODE/validate_audit_logs.py`.
 
 ---
-
-### **Sprint 4 (Semanas 7-8): Finalizando**
-
-**O que vamos fazer:** Criar relatório e documentação
-
-**Tarefas:**
-- Tarefa 11: Criar relatório final bonito
-- Tarefa 12: Escrever documentação (como usar)
-- Tarefa 13: Preparar apresentação
-
-**Quem faz o quê:**
-- **Aluno 3:** Tarefa 11 - Fazer relatório
-- **Aluno 2:** Tarefa 12 - Escrever documentação
-- **Guilherme:** Tarefa 13 - Preparar apresentação de 15 minutos
-
-**O que entregamos:** Projeto completo, documentado e apresentação pronta
-
----
-
-**Quadro de Acompanhamento (Trello/Notion):**
-
-Vamos usar um quadro com 4 colunas:
-- **Para Fazer:** Tarefas que ainda não começamos
-- **Fazendo:** Tarefas em andamento
-- **Revisando:** Tarefas prontas esperando aprovação
-- **Pronto:** Tarefas finalizadas
-
-Cada tarefa tem:
-- Nome simples
-- Quem é responsável
-- Em qual sprint está
-- Prazo
-
-*(Colocar print do quadro aqui)*
-
-**Responsável:** Guilherme Barreto Gomes
-
----
-
-### 4. Apresentação
-
-**Quem apresenta:** Guilherme Barreto Gomes (15 minutos)
-
-**Como vai ser a apresentação:**
-
-**1. Começando (2 minutos)**
-   - Me apresento e apresento o grupo
-   - Explico brevemente o que é o Holocron Sentinel
-   - Conto por que escolhemos esse projeto
-
-**2. Qual é o problema? (3 minutos)**
-   - Explico que pequenas empresas têm medo de usar AWS errado
-   - Mostro exemplos de problemas comuns (bucket público, senhas fracas)
-   - Falo sobre a LGPD e por que isso importa
-   - Mostro que existe muita empresa nessa situação
-
-**3. O que o sistema vai fazer? (3 minutos)**
-   - Explico que vai apenas verificar configurações
-   - Mostro a lista do que vai checar (IAM, S3, EC2, CloudTrail)
-   - Falo sobre a versão simples (MVP) e a versão futura com IA
-   - Mostro que é seguro (só lê, não mexe em nada)
-
-**4. Como organizamos o trabalho? (4 minutos)**
-   - Mostro a lista de tarefas completa
-   - Explico as 4 sprints (2 semanas cada)
-   - Mostro o quadro com as tarefas e quem faz cada uma
-   - Demonstro como está o progresso atual
-
-**5. Próximos passos (2 minutos)**
-   - Falo sobre como vamos implementar tecnicamente
-   - Explico como vai funcionar a parte de IA no próximo módulo
-   - Mostro o cronograma até terminar
-
-**6. Finalizando (1 minuto)**
-   - Reforço os benefícios do projeto
-   - Abro para perguntas do instrutor
-
-**O que vou mostrar na tela:**
-- Desenho simples da arquitetura AWS
-- Print do quadro de tarefas
-- Exemplo de como seria o relatório
-- Documentos de requisitos
-
-**Responsável:** Guilherme Barreto Gomes
-
----
-
-## Quem Faz O Quê (Resumo Simples)
-
-| Pessoa | O que vai fazer | Quando |
-|--------|-----------------|--------|
-| **Guilherme (EU)** | - Escrever o problema<br>- Configurar AWS<br>- Script do S3<br>- Juntar tudo<br>- **APRESENTAÇÃO** | Todas as sprints |
-| **Aluno 1** | - Escrever requisitos<br>- Script do EC2<br>- Salvar resultados | Sprints 2 e 3 |
-| **Aluno 2** | - Estudar segurança<br>- Script do CloudTrail<br>- Fazer documentação | Sprints 1, 3 e 4 |
-| **Aluno 3** | - Script do IAM<br>- Analisar problemas<br>- Fazer relatório | Sprints 2, 3 e 4 |
-
----
-
-## Tecnologias que Vamos Usar (Bem Simples)
-
-- **Python:** Para fazer os scripts (mais fácil de aprender)
-- **AWS CLI:** Ferramenta da AWS para pegar informações
-- **Boto3:** Biblioteca Python para AWS (já vem pronta)
-- **Serviços AWS:** IAM, EC2, S3, CloudTrail (os básicos que aprendemos)
-- **Arquivos de texto/JSON:** Para salvar os resultados
-
----
-
-## Considerações Finais
-
-Este projeto é uma forma de aplicar o que aprendemos no AWS re/Start de maneira prática e útil. Não estamos tentando criar algo super complexo, mas sim uma ferramenta simples que realmente ajude pequenas empresas a melhorarem sua segurança na AWS.
-
-Dividimos o trabalho entre 4 pessoas para que cada um contribua com uma parte, mas o Guilherme vai coordenar tudo e fazer a apresentação completa. Se alguém não conseguir fazer sua parte, está planejado para que o Guilherme possa assumir as tarefas.
-
-O importante é demonstrar que entendemos os conceitos de AWS, sabemos trabalhar com metodologia ágil e conseguimos pensar em uma solução real para um problema verdadeiro.
-
-**Dica importante:** Vamos manter tudo simples e funcional. É melhor ter algo pequeno que funciona do que algo grande que não sai do papel!
+*Atenção: Este documento é propriedade intelectual do Grupo Holocron Sentinel - AWS re/Start 2025.*
