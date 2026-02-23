@@ -1,138 +1,87 @@
-# Projeto Final: Holocron Sentinel — Segurança e Conformidade LGPD na AWS
+# Projeto Final: Holocron Sentinel — Segurança e Conformidade na Nuvem
 ## Módulo 1: AWS re/Start + Inteligência Artificial
 
 **Grupo:** Holocron Sentinel  
-**Curso:** AWS re/Start + IA — Escola da Nuvem  
 **Ano:** 2025  
-**Integrantes:**
-- **Guilherme Barreto Gomes** (Arquiteto de Cloud e Engenheiro de Segurança)
-- [Nome do Aluno 1]
-- [Nome do Aluno 2]
-- [Nome do Aluno 3]
+**Integrante (Apresentação Individual):** Guilherme Barreto Gomes  
 
 ---
 
-## Módulo RESTART
+## 1. Identificação do Problema
 
-### 1. Identificação do Problema
-
-**Ideia do Projeto:** Holocron Sentinel - Sistema de Governança de Dados e Compliance Automatizado.
+**Ideia do Projeto:** Holocron Sentinel — Sistema Automatizado de Governança de Dados Sensíveis e Auditoria para Conformidade LGPD.
 
 **Descrição do Problema:**
-Empresas brasileiras enfrentam um cenário crítico de vulnerabilidade jurídica e técnica com a vigência da LGPD (Lei 13.709/2018). O problema central não é apenas o vazamento de dados, mas a **violação da auditabilidade (Art. 37)** e a **falha na proteção de dados por design (Art. 46)**. Muitas organizações não possuem visibilidade sobre quem acessa dados sensíveis (PII) em tempo real, resultando em multas que podem chegar a R$ 50 milhões. A falta de especialistas em segurança na nuvem impede que pequenas e médias empresas implementem controles baseados em Zero-Trust, deixando dados de clientes expostos em buckets S3 sem criptografia e contas IAM sem MFA.
+O cenário corporativo brasileiro enfrenta um desafio crítico com a Lei Geral de Proteção de Dados (LGPD). Pequenas e médias empresas operam com "cegueira técnica": possuem dados de clientes (PII) na nuvem, mas não sabem quem os acessa nem se estão protegidos por criptografia. Auditorias da ANPD podem ocorrer a qualquer momento, e a falta de registros (logs) imutáveis pode resultar em multas de até R$ 50 milhões. Atualmente, as soluções de segurança são caras, manuais e lentas, dependendo de especialistas humanos para conferir logs exaustivamente.
 
 **Stakeholders:**
-*   **DPO (Data Protection Officer):** Necessita de relatórios de conformidade para a ANPD.
-*   **Diretoria de TI / CTO:** Precisa garantir a continuidade do negócio e evitar danos à reputação.
-*   **Clientes (Titulares dos Dados):** Exigem transparência e segurança sobre seus dados pessoais.
-*   **Auditores Externos:** Requerem registros imutáveis de operações em nuvem.
+*   **Donos de Empresas (CEOs):** Buscam redução de risco jurídico e continuidade do negócio.
+*   **Diretores de TI (CTOs):** Precisam de visibilidade total da infraestrutura sem aumentar o quadro de funcionários.
+*   **Encarregado de Dados (DPOs):** Necessitam de evidências rápidas e automáticas para comprovar compliance à ANPD.
+*   **Titulares dos Dados (Clientes):** Exigem que sua privacidade seja preservada por design.
 
 **Justificativa:**
-O Holocron Sentinel utiliza a infraestrutura escalável da AWS para democratizar a segurança corporativa. Através de uma arquitetura "Glass Box", permitimos que cada transação de dado seja rastreável e protegida. A escolha pela nuvem AWS justifica-se pela capacidade de automação via CloudTrail e AWS Config, entregando conformidade contínua a um custo operacional drasticamente reduzido. No próximo módulo (Extensão em IA), evoluiremos para uma análise preditiva de ameaças.
+O Holocron Sentinel automatiza a segurança desde o design. Diferente de processos manuais lentos, nossa solução detecta violações em milissegundos. Ao utilizar a infraestrutura nativa da AWS, garantimos que a empresa esteja pronta para auditorias instantâneas, com um **custo 80% menor** que soluções tradicionais *on-premise*, utilizando IA para centralizar a tomada de decisão.
 
 ---
 
-### 2. Levantamento de Requisitos
+## 2. Levantamento de Requisitos
 
-**Requisitos Funcionais (RF):**
-*   **[RF-001] Ingestão Criptografada:** O sistema deve exigir criptografia (KMS) em 100% dos uploads de dados sensíveis.
-*   **[RF-002] Auditoria Imutável:** Registro centralizado de logs via CloudTrail com verificação de integridade (Digest).
-*   **[RF-003] Validação de Identidade (MFA):** Bloqueio ou alerta de usuários administrativos operando sem Autenticação em Dois Fatores.
-*   **[RF-004] Relatórios de Conformidade:** Geração automática de relatórios técnicos sobre o status de segurança do ambiente.
+**Requisitos Funcionais (O que o sistema faz):**
+*   **[RF-001] Detecção de PII:** Identificar CPFs e documentos sensíveis em buckets S3.
+*   **[RF-002] Monitoramento de Acesso:** Registrar todas as chamadas de API feitas no ambiente.
+*   **[RF-003] Criptografia de Dados:** Garantir que 100% dos dados em repouso utilizem AES-256.
+*   **[RF-004] Geração de Parecer:** Criar relatórios executivos automáticos sobre o status de conformidade.
 
-**Requisitos Não Funcionais (RNF):**
-*   **[RNF-001] Segurança:** Criptografia em repouso padrão AES-256 (SSE-S3/SSE-KMS).
-*   **[RNF-002] Durabilidade:** Armazenamento de logs com durabilidade de 99.999999999% (S3 Standard).
-*   **[RNF-003] Soberania de Dados:** Toda a infraestrutura deve estar localizada na região `sa-east-1` (São Paulo).
-*   **[RNF-004] Auditoria Contínua:** Logs devem ser retidos por no mínimo 5 anos conforme requisitos legais.
+**Requisitos Não Funcionais (Como o sistema se comporta):**
+*   **Segurança (Pilar #1):** Utilizar criptografia em trânsito (TLS) e em repouso (KMS).
+*   **Disponibilidade:** A solução deve operar de forma ininterrupta em sa-east-1.
+*   **Auditabilidade:** Logs devem ser imutáveis e retidos por no mínimo 5 anos.
+*   **Economia:** Priorizar serviços serverless para otimização de custos (Pay-as-you-go).
 
 **MVP (Produto Mínimo Viável):**
-Uma arquitetura de segurança funcional na AWS composta por:
-1.  **Fundação IAM:** Grupos e políticas com MFA obrigatório.
-2.  **Repositório Seguro:** Bucket S3 com bloqueio de acesso público e versionamento.
-3.  **Audit Trail:** CloudTrail ativo gerando logs de leitura/escrita em dados sensíveis.
-4.  **Scripts de Validação:** Ferramenta Python (boto3) para auditoria automatizada de conformidade.
+Uma infraestrutura segura na AWS composta por:
+1.  **Fundação IAM:** Usuários com menor privilégio e MFA forçado.
+2.  **Trilha de Auditoria:** CloudTrail ativo gerando logs no S3.
+3.  **Segurança de Dados:** Buckets S3 com *Block Public Access* e Criptografia.
+4.  **Automação de Auditoria:** Script Python de validação de logs.
+
+**Evolução (Módulo IA):**
+Implementação do Cérebro Central via **Amazon Bedrock (Titan)** integrando **Amazon Macie** (descoberta de dados) e **Amazon GuardDuty** (ameaças), centralizando a governança no **AWS Security Hub**.
 
 ---
 
-### 3. Planejamento Ágil
+## 3. Planejamento Ágil
 
 **Backlog de Tarefas:**
-1.  **[Core]** Desenho da Arquitetura Zero-Trust e fluxograma de dados.
-2.  **[IAM]** Configuração de Grupos (Admin/Dev/Audit) e MFA Enforcement (Art. 46).
-3.  **[S3]** Provisionamento de Bucket Data Lake com criptografia KMS.
-4.  **[Logs]** Implementação de CloudTrail Multi-Region e log de integridade.
-5.  **[Code]** Desenvolvimento de script Python para validação automática de logs (`validate_audit_logs.py`).
-6.  **[Review]** Simulação de incidentes de acesso e validação de trilha de auditoria.
+1.  Pesquisa técnica sobre artigos da LGPD (Art. 37, 46, 48).
+2.  Configuração da infraestrutura de Identidade (IAM & MFA).
+3.  Implementação do Data Lake Seguro (S3 & KMS).
+4.  Ativação da Trilha de Auditoria Universal (CloudTrail).
+5.  Desenvolvimento do script de fiscalização automatizada.
+6.  Integração do protótipo de IA para análise de logs.
+7.  Criação do Painel de Apresentação Final.
 
-**Sprints:**
-*   **Sprint 1:** Planejamento e Arquitetura. Entrega: Documento de Requisitos e Diagrama AWS.
-*   **Sprint 2:** Implementação Identity & Access Management (IAM). Entrega: Ambiente AWS configurado.
-*   **Sprint 3:** Governança de Dados e Auditoria. Entrega: CloudTrail Logs e S3 Secure Buckets.
-*   **Sprint 4:** Automação e Apresentação. Entrega: Script Python de Auditoria e Pitch Final.
+**Sprints (Ciclos de 1 Semana):**
+*   **Sprint 1:** Planejamento, Requisitos e Desenho da Arquitetura.
+*   **Sprint 2:** Implementação do Hardening IAM e S3 Secure.
+*   **Sprint 3:** Ativação dos logs de conformidade e Script de Auditoria.
+*   **Sprint 4:** Finalização do Storytelling e Preparação da Apresentação Individual.
 
 **Quadro (Board):**
-O progresso é monitorado via GitHub Projects / Trello, utilizando as colunas:
-*   **To Do:** Atividades mapeadas no Backlog.
-*   **In Progress:** Implementação técnica em andamento no console AWS/VS Code.
-*   **Verification:** Teste de scripts e validação de logs.
-*   **Done:** Tarefas com evidência (screenshot/log) anexada.
-
-*(Link/Print do Quadro simulado: Disponível na pasta 01_SPRINTS)*
+Utilizamos o GitHub Projects para gerir as tarefas, garantindo que cada requisito LGPD fosse mapeado para uma tarefa técnica específica.
+*(Ver print do board na pasta 01_SPRINTS)*
 
 ---
 
-### 4. Apresentação Final (Roteiro de 15 Minutos)
+## 4. Arquitetura de Excelência AWS (Deep Dive)
 
-**Estrutura da Apresentação:**
+Nossa solução centraliza a segurança na nuvem utilizando os pilares do **AWS Well-Architected**:
 
-| Tempo | Seção | Objetivo | Recurso Visual |
-|-------|-------|----------|----------------|
-| **2 min** | **Introdução** | Apresentação pessoal e "The Hook" (A crise da LGPD). | Slide de Capa |
-| **3 min** | **O Problema** | Descrição do risco financeiro e jurídico para empresas sem governança AWS. | REQUIREMENTS_DOC.md |
-| **3 min** | **A Solução** | Explicação da Arquitetura Holocron Sentinel baseada em Zero-Trust. | 02_ARCHITECTURE |
-| **4 min** | **Gestão e Agilidade** | Demonstração do Backlog, Sprints e as soft skills de coordenação. | BACKLOG_SPRINTS.md |
-| **3 min** | **IA & Próximos Passos** | Demonstração do Script de Auditoria e Roadmap para Extensão em IA. | 04_CODE |
-
-**Próximos Passos (Módulo EXTENSÃO EM IA):
-Na próxima etapa, integraremos o **Holocron AI Compliance Analyst**. Utilizaremos o **Amazon Bedrock** com o modelo proprietário **Amazon Titan** para processar os logs coletados e gerar pareceres executivos. A solução contará com o **Amazon Macie** para a descoberta automatizada de dados sensíveis (PII) e o **Amazon GuardDuty** para detecção de ameaças baseada em Machine Learning, garantindo uma stack 100% nativa AWS.
-
-### 5. Arquitetura Técnica Detalhada (Deep Dive AWS)
-
-Para este projeto final de Cloud Practitioner, selecionamos os serviços que formam o "Hardening" de segurança da AWS, garantindo que cada requisito da LGPD tenha uma contrapartida técnica robusta:
-
-*   **AWS Identity and Access Management (IAM):**
-    *   *Papel:* Implementação de RBAC (Role-Based Access Control) e Segregação de Funções (SoD).
-    *   *Configuração:* Políticas JSON customizadas com negação implícita (Implicit Deny), MFA obrigatório para acesso ao console e uso de Roles para automação, eliminando chaves de acesso permanentes.
-*   **Amazon Simple Storage Service (S3):**
-    *   *Papel:* Repositório central de dados (Data Lake) e armazenamento de logs imutáveis.
-    *   *Configuração:* Bloqueio de Acesso Público ativado globalmente, Versionamento para recuperação de desastres e S3 Object Lock para garantir que trilhas de auditoria não sejam deletadas.
-*   **AWS Key Management Service (KMS):**
-    *   *Papel:* Gestão centralizada do ciclo de vida das chaves de criptografia.
-    *   *Configuração:* Uso de Customer Managed Keys (CMK) com rotação automática anual e políticas de chave estritas que limitam quem pode descriptografar os dados.
-*   **AWS CloudTrail:**
-    *   *Papel:* Registro pericial de todas as API Calls no ambiente.
-    *   *Configuração:* Trail Multi-Region ativado, captura de Data Events (S3) e Management Events, com validação de integridade de arquivo de log ativada.
-*   **AWS Config:**
-    *   *Papel:* Auditoria de conformidade em tempo real.
-    *   *Configuração:* Regras de conformidade para detectar buckets sem criptografia ou usuários remotos sem MFA, disparando remediações automáticas.
-*   **Amazon CloudWatch:**
-    *   *Papel:* Monitoramento e Observabilidade.
-    *   *Configuração:* Alerta de faturamento (Billing Alarms) e métricas de tentativas de login falhas no IAM.
+*   **IA Centralizada:** O **Amazon Titan** processa dados do **Macie** e **GuardDuty**, centralizando alertas em um único local.
+*   **Zero-Trust:** Nenhum acesso é permitido sem MFA e validação via IAM Policy restritiva.
+*   **Imutabilidade:** O uso de **S3 Object Lock** impede a deleção de registros de auditoria por invasores.
+*   **Eficiência de Custo:** Ao rodar apenas sob demanda, o Holocron custa apenas frações de um servidor de segurança tradicional.
 
 ---
-
-**Métricas de Desempenho Técnico:**
-- **Segurança de Identidade:** 100% dos usuários administrativos com MFA físico/virtual.
-- **Criptografia:** 0% de dados sensíveis armazenados em plain-text.
-- **Auditabilidade:** Retenção configurada para 1.825 dias (5 anos) em camada S3 Glacier via Lifecycle.
-
----
-
-**Recursos Visuais de Apoio:**
-*   Diagramas de Arquitetura em `/02_ARCHITECTURE`.
-*   Evidências de Logs e Screenshots em `/05_EVIDENCE`.
-*   Script de Auditoria em `/04_CODE/validate_audit_logs.py`.
-
----
-*Atenção: Este documento é propriedade intelectual do Grupo Holocron Sentinel - AWS re/Start 2025.*
+*Assinado: Guilherme Barreto Gomes — Arquiteto de Soluções em Cloud*

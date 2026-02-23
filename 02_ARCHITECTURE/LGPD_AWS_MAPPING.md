@@ -1,57 +1,34 @@
-# LGPD x AWS: Mapeamento de Conformidade (Holocron Sentinel)
+# Matriz de Conformidade: LGPD x AWS (Holocron Sentinel)
 
-## Objetivo do Documento
-Este documento serve como a **Matriz de Rastreabilidade** entre os requisitos jurídicos da **Lei Geral de Proteção de Dados (13.709/2018)** e as implementações técnicas deste projeto na AWS.
-
----
-
-## Matriz Técnica de Conformidade
-
-### 1. Soberania e Localização (Art. 3º)
-*   **Requisito:** Tratamento realizado no território nacional ou sobre dados coletados no Brasil.
-*   **Implementação AWS:** Pinagem de 100% dos recursos de armazenamento na região **São Paulo (`sa-east-1`)**.
-*   **Justificativa:** Garante jurisdição brasileira e atende requisitos contratuais de residência de dados.
-
-### 2. Segurança e Sigilo (Art. 46)
-*   **Requisito:** Medidas técnicas e administrativas aptas a proteger os dados pessoais de acessos não autorizados.
-*   **Implementação AWS:**
-    *   Criptografia em repouso com **AES-256** (SSE-S3 e SSE-KMS).
-    *   Script `validate_audit_logs.py` para conferência contínua de status de criptografia.
-    *   Trânsito protegido via **TLS 1.2+**.
-
-### 3. Registro de Operações (Art. 37)
-*   **Requisito:** O controlador e o operador devem manter registros das operações de tratamento.
-*   **Implementação AWS:**
-    *   **AWS CloudTrail:** Logs de Data Events e Management Events habilitados.
-    *   **S3 Object Lock/Versioning:** Proteção contra alteração ou exclusão de trilhas de auditoria.
-
-### 4. Direitos do Titular (Art. 18)
-*   **Requisito:** Garantia de acesso, correção, anonimização ou exclusão de dados.
-*   **Implementação AWS:**
-    *   Arquitetura preparada para integração com **AWS Lambda** para execução de "Direito ao Esquecimento" (Work in Progress).
-    *   Segregação de dados via **Tags** para facilitar a busca por UID de usuários.
-
-### 5. Comunicação de Incidentes (Art. 48)
-*   **Requisito:** Comunicação ao órgão encarregado e ao titular em caso de incidente de segurança.
-*   **Implementação AWS:**
-    *   **AWS Config + SNS:** Alertas automáticos para configurações fora de conformidade (ex: bucket público).
-    *   **CloudWatch Alarms:** Alertas de billing e acessos anômalos.
-
-### 6. Princípios da Segurança e Prevenção (Art. 6º, VII e VIII)
-*   **Requisito:** Gerenciamento de riscos e medidas para evitar danos.
-*   **Implementação AWS:**
-    *   **IAM Least Privilege:** Uso de Policies restritivas JSON.
-    *   **MFA enforcement:** Bloqueio de API calls para usuários sem token de segurança.
+O Holocron Sentinel traduz a complexidade jurídica da Lei Geral de Proteção de Dados (13.709/2018) em controles técnicos automatizados na nuvem AWS.
 
 ---
 
-## Verificação Técnica
-Para visualizar estes controles em ação durante a auditoria:
-1.  Acesse o painel interativo: `index.html`
-2.  Execute o script de auditoria: `04_CODE/validate_audit_logs.py`
-3.  Confira as evidências: `05_EVIDENCE/`
+## 1. Soberania de Dados (Artigo 3º)
+*   **Requisito:** Aplicabilidade da lei para dados coletados ou tratados no território nacional.
+*   **Controle Holocron:** Configuração de residência de dados (Data Residency) fixada na região **São Paulo (`sa-east-1`)**. Isso garante que a custódia física dos dados permaneça sob jurisdição brasileira primária.
+
+## 2. Segurança e Proteção (Artigo 46)
+*   **Requisito:** Medidas técnicas e administrativas aptas a proteger os dados de acessos não autorizados ou destruição.
+*   **Controles Holocron:**
+    *   **Criptografia Crítica:** Uso do AWS KMS com algoritmo AES-256 para dados em repouso.
+    *   **Identidade Zero-Trust:** Implementação de MFA obrigatório e Políticas de Menor Privilégio (IAM) para garantir que apenas o necessário seja acessado.
+    *   **Descoberta Automatizada:** Uso do Amazon Macie para encontrar dados sensíveis "esquecidos" em buckets comuns.
+
+## 3. Registro e Auditoria (Artigo 37)
+*   **Requisito:** O controlador deve manter registros das operações de tratamento de dados pessoais.
+*   **Controle Holocron:** Ativação universal do **AWS CloudTrail** com armazenamento imutável no S3 (Object Lock). Isso cria uma trilha de evidências periciais que não pode ser apagada por invasores, vital para comprovar compliance em auditorias da ANPD.
+
+## 4. Gestão de Incidentes (Artigo 48)
+*   **Requisito:** Comunicação célere de incidentes de segurança ao titular e à autoridade nacional.
+*   **Controles Holocron:**
+    *   **Detecção via Machine Learning:** Uso do Amazon GuardDuty para identificar ataques em tempo real.
+    *   **Inteligência Centralizada (IA):** Amazon Titan processa os alertas complexos e gera pareceres em linguagem natural para facilitar a comunicação imediata de incidentes, conforme exigido pela lei.
 
 ---
 
-## Compromisso Ético
-A tecnologia no Holocron Sentinel é um meio para um fim: a preservação da privacidade como um direito fundamental. Nossa arquitetura foi desenhada sob os princípios de **Privacy by Design** e **Privacy by Default**.
+## Conclusão de Auditoria
+Diferente de soluções manuais, o Holocron Sentinel integra estas quatro frentes em um único ecossistema automatizado. A empresa deixa de ser "vulnerável por omissão" e passa a ser "segura por design".
+
+---
+*Documento Técnico: Matriz de Rastreabilidade LGPD v1.0*
