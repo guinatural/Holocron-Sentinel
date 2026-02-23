@@ -4,7 +4,7 @@ Este documento é o ponto de partida para avaliadores, mentores e stakeholders. 
 
 ---
 
-## 🚀 Visão Geral
+## Visão Geral
 O **Holocron Sentinel** é uma solução de **Governança de Dados Sensíveis** projetada para resolver a "Cegueira Técnica" de empresas que operam na AWS. Nós traduzimos os requisitos da **LGPD** em scripts de automação e inteligência artificial nativa.
 
 ### O Problema que Resolvemos:
@@ -12,7 +12,7 @@ Muitos empresários acreditam que a AWS é responsável por toda a segurança. O
 
 ---
 
-## 🛠️ Pilares da Solução
+## Pilares da Solução
 
 ### 1. Automação com Python & Boto3
 Diferente de auditorias manuais, o Sentinel utiliza o SDK oficial da AWS para:
@@ -29,7 +29,7 @@ Utilizamos o **Amazon Bedrock** para centralizar a segurança. O modelo **Amazon
 
 ---
 
-## 📂 Guia de Navegação Rápida
+## Guia de Navegação Rápida
 
 | Objetivo | Localização |
 | :--- | :--- |
@@ -41,7 +41,7 @@ Utilizamos o **Amazon Bedrock** para centralizar a segurança. O modelo **Amazon
 
 ---
 
-## 🖥️ Como demonstrar o projeto agora?
+## Como demonstrar o projeto agora?
 1.  Abra o **Dashboard Interativo** (`06_PRESENTATION/index.html`) no navegador.
 2.  Use o **Roteiro de 15 Minutos** para guiar sua fala.
 3.  Mostre as **Evidências Técnicas** na pasta `05_EVIDENCE`.

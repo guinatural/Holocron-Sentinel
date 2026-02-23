@@ -5,7 +5,7 @@
 
 ---
 
-## ⏱️ 0-1.5 MIN: Introdução (Slide 1: Início)
+## 0-1.5 MIN: Introdução (Slide 1: Início)
 *   **Posicionamento:** Tela no Slide 1 (Capa).
 *   **Foco:** Quem você é e qual a grande ideia.
 *   **Discurso:**
@@ -14,7 +14,7 @@
 
 ---
 
-## ⏱️ 1.5-3.5 MIN: A Crise Invisível (Slide 2: Problema)
+## 1.5-3.5 MIN: A Crise Invisível (Slide 2: Problema)
 *   **Posicionamento:** Role para o Slide 2.
 *   **Foco:** O custo da falha (Valor de Negócio).
 *   **Discurso:**
@@ -22,7 +22,7 @@
 
 ---
 
-## ⏱️ 3.5-5.5 MIN: Fundações & Requisitos (Slide 3: Requisitos)
+## 3.5-5.5 MIN: Fundações & Requisitos (Slide 3: Requisitos)
 *   **Posicionamento:** Role para o Slide 3.
 *   **Foco:** Engenharia e Rigor.
 *   **Discurso:**
@@ -30,7 +30,7 @@
 
 ---
 
-## ⏱️ 5.5-7.5 MIN: A Responsabilidade do Empresário (Slide 4: Risco)
+## 5.5-7.5 MIN: A Responsabilidade do Empresário (Slide 4: Risco)
 *   **Posicionamento:** Role para o Slide 4.
 *   **Foco:** O "gap" de responsabilidade.
 *   **Discurso:**
@@ -40,7 +40,7 @@
 
 ---
 
-## ⏱️ 7.5-9.5 MIN: Agilidade & Gestão (Slide 5: Planejamento)
+## 7.5-9.5 MIN: Agilidade & Gestão (Slide 5: Planejamento)
 *   **Posicionamento:** Role para o Slide 5.
 *   **Foco:** Organização Ágil.
 *   **Discurso:**
@@ -48,7 +48,7 @@
 
 ---
 
-## ⏱️ 9.5-11.5 MIN: O Motor do Sentinel (Slide 6: Automação)
+## 9.5-11.5 MIN: O Motor do Sentinel (Slide 6: Automação)
 *   **Posicionamento:** Role para o Slide 6.
 *   **Foco:** O coração técnico (Python/Boto3).
 *   **Discurso:**
@@ -56,7 +56,7 @@
 
 ---
 
-## ⏱️ 11.5-13.5 MIN: O Cérebro da Auditoria (Slide 7: Solução IA)
+## 11.5-13.5 MIN: O Cérebro da Auditoria (Slide 7: Solução IA)
 *   **Posicionamento:** Role para o Slide 7.
 *   **Foco:** Inteligência Centralizada.
 *   **Discurso:**
@@ -64,9 +64,14 @@
 
 ---
 
-## ⏱️ 13.5-15 MIN: Conclusão & Resumo (Slide 8: Resumo)
+## 13.5-15 MIN: Conclusão & Resumo (Slide 8: Resumo)
 *   **Posicionamento:** Role para o slide final.
 *   **Foco:** Encerramento.
 *   **Discurso:**
     *   "O Sentinel prova que segurança automatizada é 80% mais barata e infinitamente mais segura. Seguimos o AWS Well-Architected Framework, incluindo otimização de custos com Lifecycle Rules do S3, garantindo que sua empresa esteja sempre pronta para auditorias com o menor investimento possível."
     *   "Obrigado e estou aberto a perguntas."
+---
+### Dicas Finais para Guilherme:
+1.  **Use o mouse:** Aponte para o código Python no slide 6.
+2.  **Cronômetro:** Mantenha um relógio ao lado para não estourar os 15 minutos.
+3.  **Ambiente:** Se possível, apresente em uma aba exclusiva do navegador em tela cheia (F11).

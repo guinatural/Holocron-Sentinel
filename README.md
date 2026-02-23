@@ -30,11 +30,11 @@ Nossa stack utiliza o **AWS Well-Architected Framework** como bússola técnica:
 ## Estrutura do Ecossistema
 Este repositório está organizado para demonstrar prontidão técnica e gerencial:
 
-*   📂 **[`04_CODE/`](./04_CODE/)**: O motor do projeto em **Python/Boto3** (Identity, Auditoria e Alertas).
-*   📂 **[`02_ARCHITECTURE/`](./02_ARCHITECTURE/)**: Mapeamento detalhado LGPD x AWS e Diagramas.
-*   📂 **[`06_PRESENTATION/`](./06_PRESENTATION/)**: Dashboard interativo premium (`index.html`) e Roteiro Pitch de 15min.
-*   📂 **[`Projeto Final/`](./Projeto%20Final/)**: Plano de projeto individual alinhado com as metas da Escola da Nuvem.
-*   📂 **[`05_EVIDENCE/`](./05_EVIDENCE/)**: Provas técnicas de execução e relatórios de auditoria.
+*   **[`04_CODE/`](./04_CODE/)**: O motor do projeto em **Python/Boto3** (Identity, Auditoria e Alertas).
+*   **[`02_ARCHITECTURE/`](./02_ARCHITECTURE/)**: Mapeamento detalhado LGPD x AWS e Diagramas.
+*   **[`06_PRESENTATION/`](./06_PRESENTATION/)**: Dashboard interativo premium (`index.html`) e Roteiro Pitch de 15min.
+*   **[`Projeto Final/`](./Projeto%20Final/)**: Plano de projeto individual alinhado com as metas da Escola da Nuvem.
+*   **[`05_EVIDENCE/`](./05_EVIDENCE/)**: Provas técnicas de execução e relatórios de auditoria.
 
 ---
 

@@ -4,7 +4,7 @@ Este diretório contém as provas técnicas de que a arquitetura e os scripts do
 
 ---
 
-## 📸 Screenshots Sugeridas para o Portfólio
+## Screenshots Sugeridas para o Portfólio
 
 1.  **IAM Security:** Print do console AWS mostrando usuários com MFA ativado e políticas de menor privilégio anexadas.
 2.  **S3 Hardening:** Print das configurações do bucket de auditoria com "Block Public Access" e "Bucket Encryption (KMS)" ativos.
@@ -14,7 +14,7 @@ Este diretório contém as provas técnicas de que a arquitetura e os scripts do
 
 ---
 
-## 📊 Relatórios Gerados
+## Relatórios Gerados
 Os scripts de automação em Python geram os seguintes artefatos para auditoria:
 
 - `compliance_report.txt`: Gerado por `validate_audit_logs.py`.
@@ -23,5 +23,5 @@ Os scripts de automação em Python geram os seguintes artefatos para auditoria:
 
 ---
 
-## 🧪 Validação Técnica
+## Validação Técnica
 Todas as evidências aqui contidas foram validadas utilizando o **AWS CLI** e o **SDK Boto3**, seguindo os pilares de **Excelência Operacional** e **Segurança** do AWS Well-Architected Framework.
