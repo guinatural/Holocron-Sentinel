@@ -49,7 +49,17 @@
 
 ---
 
-## BLOCO 5: Engenharia e Automação
+## BLOCO 5: O Framework da Perfeição
+**Visual:** Slide 5 - Well-Architected & Responsabilidade Compartilhada
+
+*   **Ação:** Role para o novo quinto slide.
+*   **O que dizer:**
+    *   "Um projeto de Cloud Practitioner não estaria completo sem citar o **AWS Well-Architected Framework**. Baseamos o Holocron Sentinel em três pilares fundamentais: Segurança, Excelência Operacional e Confiabilidade."
+    *   "E o mais importante: entendemos o **Modelo de Responsabilidade Compartilhada**. A AWS nos entrega uma nuvem segura, mas cabe a nós, como profissionais de Cloud, garantir a segurança **dentro** da nuvem. É exatamente aqui que o Holocron Sentinel atua, configurando e auditando o que é de nossa responsabilidade."
+
+---
+
+## BLOCO 6: Engenharia e Automação
 **Visual:** Slide 5 - Segurança como Código (Seção Terminal)
 
 *   **Ação:** Role para o quinto slide. Mostre o snippet de código Python.
