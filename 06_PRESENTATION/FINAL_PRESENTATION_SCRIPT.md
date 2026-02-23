@@ -68,5 +68,5 @@
 *   **Posicionamento:** Role para o slide final.
 *   **Foco:** Encerramento.
 *   **Discurso:**
-    *   "O Sentinel prova que segurança automatizada é 80% mais barata e infinitamente mais segura. Seguimos o AWS Well-Architected Framework para garantir que sua empresa esteja sempre pronta para auditorias."
+    *   "O Sentinel prova que segurança automatizada é 80% mais barata e infinitamente mais segura. Seguimos o AWS Well-Architected Framework, incluindo otimização de custos com Lifecycle Rules do S3, garantindo que sua empresa esteja sempre pronta para auditorias com o menor investimento possível."
     *   "Obrigado e estou aberto a perguntas."

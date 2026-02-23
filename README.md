@@ -1,54 +1,53 @@
-# Holocron Sentinel: Sistema de Conformidade LGPD na AWS
+# Holocron Sentinel: Governança Inteligente e Conformidade LGPD na AWS
 
-![AWS Status](https://img.shields.io/badge/AWS-re%2FStart-orange)
-![License](https://img.shields.io/badge/License-MIT-green)
-![Status](https://img.shields.io/badge/Status-Capstone%20Project-blue)
-![Compliance](https://img.shields.io/badge/LGPD-Compliant-success)
+![AWS Status](https://img.shields.io/badge/AWS-re%2FStart%20%2B%20IA-orange)
+![Compliance](https://img.shields.io/badge/LGPD-Artigos%203%2C%206%2C%2018%2C%2037%2C%2046%2C%2048-success)
+![Cost](https://img.shields.io/badge/Cost-80%25%20Reduction-blueviolet)
 
-> **Projeto Final (Capstone) - AWS re/Start**
-> Solução de arquitetura em nuvem para governança de dados, auditoria e segurança, alinhada à Lei Geral de Proteção de Dados (13.709/2018).
-
----
-
-## Identificação do Problema
-Empresas brasileiras enfrentam desafios críticos de **soberania de dados** e **rastreabilidade** (Art. 37 LGPD). Soluções on-premise são caras e difíceis de auditar. Este projeto implementa uma **"Glass Box Architecture"** (Caixa de Vidro), onde cada acesso a dados sensíveis é registrado, criptografado e monitorado.
-
-## Arquitetura da Solução
-O sistema é composto por 3 módulos principais:
-1.  **Governança:** IAM RBAC com MFA obrigatório e Segregação de Funções.
-2.  **Monitoramento:** CloudTrail e Config garantindo "Auditability by Design".
-3.  **Defesa:** Criptografia KMS e Detecção de Ameaças (Logs de Acesso).
-
-### Estrutura do Repositório
-Este portfólio está organizado como um projeto de engenharia real:
-
-*   **[`00-Master/`](./00-Master/)**: Visão Geral, Requisitos e Alinhamento com o Curso.
-*   **[`01_SPRINTS/`](./01_SPRINTS/)**: Gestão Ágil (Backlog e Planejamento).
-*   **[`02_ARCHITECTURE/`](./02_ARCHITECTURE/)**: Diagramas Técnicos e Mapeamento LGPD.
-*   **[`04_CODE/`](./04_CODE/)**: Scripts de Automação (Python/Boto3) e Políticas JSON.
-*   **[`05_EVIDENCE/`](./05_EVIDENCE/)**: Logs de Auditoria e Provas de Execução (Screenshots).
-*   **[`06_PRESENTATION/`](./06_PRESENTATION/)**: Pitch Executivo para Stakeholders.
+> **Projeto Final (Capstone) - AWS re/Start + Inteligência Artificial**
+> Uma solução "Ready for ANPD" que automatiza a segurança na nuvem, reduz custos operacionais e utiliza IA nativa para centralizar a tomada de decisão.
 
 ---
 
-## Guia de Execução (Simulação)
-
-### Pré-requisitos
-*   Python 3.8+
-*   AWS CLI Configurado (`sa-east-1`)
-
-### Auditoria de Logs
-Para validar se os arquivos no S3 estão criptografados conforme o Art. 46:
-```bash
-python 04_CODE/validate_audit_logs.py
-```
+## O Diferencial Estratégico
+O **Holocron Sentinel** não é apenas uma infraestrutura; é um ecossistema de segurança por design. 
+- **Centralização:** IA **Amazon Titan** interpreta sinais do **Macie** e **GuardDuty**.
+- **Eficiência:** Redução de **80% nos custos** em comparação a soluções on-premise.
+- **Responsabilidade:** Fecha o gap do **Modelo de Responsabilidade Compartilhada**, protegendo o empresário de multas da LGPD.
 
 ---
 
-## Autor e Contexto do Projeto
-Desenvolvido como parte do programa **AWS re/Start**.
-*   **Foco:** Cloud Infrastructure & Security Compliance.
-*   **Tech Stack:** EC2, S3, IAM, CloudWatch, Python.
+## Arquitetura "Glass Box" (Nativa AWS)
+Nossa stack utiliza o **AWS Well-Architected Framework** como bússola técnica:
+
+1.  **Fundação IAM:** Identidade Zero-Trust com MFA Enforcement e Least Privilege.
+2.  **Auditabilidade (Art. 37):** Logs imutáveis via **CloudTrail** e **S3 Object Lock**.
+3.  **Proteção de Dados (Art. 46):** Criptografia de ponta a ponta com **AWS KMS (AES-256)**.
+4.  **Cérebro de IA (Art. 48):** **Amazon Bedrock (Titan)** gerando pareceres executivos automáticos.
 
 ---
-*"Only through visibility can we achieve security."*
+
+## Estrutura do Ecossistema
+Este repositório está organizado para demonstrar prontidão técnica e gerencial:
+
+*   📂 **[`04_CODE/`](./04_CODE/)**: O motor do projeto em **Python/Boto3** (Identity, Auditoria e Alertas).
+*   📂 **[`02_ARCHITECTURE/`](./02_ARCHITECTURE/)**: Mapeamento detalhado LGPD x AWS e Diagramas.
+*   📂 **[`06_PRESENTATION/`](./06_PRESENTATION/)**: Dashboard interativo premium (`index.html`) e Roteiro Pitch de 15min.
+*   📂 **[`Projeto Final/`](./Projeto%20Final/)**: Plano de projeto individual alinhado com as metas da Escola da Nuvem.
+*   📂 **[`05_EVIDENCE/`](./05_EVIDENCE/)**: Provas técnicas de execução e relatórios de auditoria.
+
+---
+
+## Como Navegar no Projeto?
+1.  **Visão Executiva:** Abra o arquivo [`COMECE_AQUI.md`](./COMECE_AQUI.md).
+2.  **Apresentação Interativa:** Execute o [`06_PRESENTATION/index.html`](./06_PRESENTATION/index.html) no seu navegador (F11 para tela cheia).
+3.  **Código Vivo:** Explore os scripts em [`04_CODE/scripts/`](./04_CODE/scripts/) para ver a automação Boto3 em ação.
+
+---
+
+## Autor
+**Guilherme Barreto Gomes**
+*Arquiteto de Soluções Cloud & Especialista em Compliance de Dados*
+
+---
+*"Segurança não é um produto, é um processo automatizado."*

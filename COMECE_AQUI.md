@@ -1,219 +1,51 @@
-# Resumo Executivo - Atualização GitHub
-## Holocron Sentinel - Versão Final
+# Holocron Sentinel: Comece Por Aqui
+
+Este documento é o ponto de partida para avaliadores, mentores e stakeholders. Aqui você encontrará a visão executiva do projeto e como validar a excelência da entrega.
 
 ---
 
-## OBJETIVO
+## 🚀 Visão Geral
+O **Holocron Sentinel** é uma solução de **Governança de Dados Sensíveis** projetada para resolver a "Cegueira Técnica" de empresas que operam na AWS. Nós traduzimos os requisitos da **LGPD** em scripts de automação e inteligência artificial nativa.
 
-Preparar atualização profissional do GitHub para apresentação final do AWS re/Start.
-
-**Repositório:** https://github.com/guinatural/Holocron-Sentinel
-
----
-
-## ARQUIVOS CRIADOS
-
-### 1. atualizar-versao-final.ps1 (PRINCIPAL)
-Script automatizado para atualização completa.
-
-**Uso:**
-```powershell
-cd "c:\Users\barre\AWS-reStart-Compliance-Portfolio\AWS-re-Start\P - Holocron-Sentinel"
-.\atualizar-versao-final.ps1
-```
-Escolher Opção 1.
-
-### 2. GUIA_ATUALIZACAO_GITHUB.md
-Comandos manuais passo a passo.
-
-**Quando usar:** Se preferir processo manual ou resolver problemas.
-
-### 3. TEMPLATES_DIVULGACAO.md
-Templates para redes sociais e comunicação.
-
-**Quando usar:** Após atualizar GitHub, para divulgação.
-
-### 4. CHECKLIST_FINALIZACAO.md
-Checklist completo em 8 fases.
-
-**Quando usar:** Para acompanhar todo o processo.
+### O Problema que Resolvemos:
+Muitos empresários acreditam que a AWS é responsável por toda a segurança. O **Modelo de Responsabilidade Compartilhada** prova que a proteção do dado **NA** nuvem é responsabilidade do cliente. A falta dessa proteção gera riscos de multas de até **R$ 50 milhões (ANPD)**.
 
 ---
 
-## COMO COMEÇAR
+## 🛠️ Pilares da Solução
 
-### OPÇÃO 1: Automática (Recomendada)
+### 1. Automação com Python & Boto3
+Diferente de auditorias manuais, o Sentinel utiliza o SDK oficial da AWS para:
+- Provisionar Identidades seguras.
+- Fiscalizar a integridade de 100% dos logs.
+- Gerar alertas de faturamento para evitar surpresas financeiras.
 
-1. Abrir PowerShell (`Windows + X` → PowerShell)
-2. Executar:
-```powershell
-cd "c:\Users\barre\AWS-reStart-Compliance-Portfolio\AWS-re-Start\P - Holocron-Sentinel"
-.\atualizar-versao-final.ps1
-```
-3. Escolher **Opção 1**
-4. Confirmar push (Digite "S")
-5. Autenticar com Personal Access Token
+### 2. Inteligência Artificial Nativa (Amazon Titan)
+Utilizamos o **Amazon Bedrock** para centralizar a segurança. O modelo **Amazon Titan** "lê" os sinais complexos do **Amazon Macie** e **GuardDuty**, entregando um parecer executivo em linguagem natural.
 
-### OPÇÃO 2: Manual
-
-Seguir `GUIA_ATUALIZACAO_GITHUB.md`
-
-Comandos principais:
-```powershell
-cd "c:\Users\barre\AWS-reStart-Compliance-Portfolio\AWS-re-Start\P - Holocron-Sentinel"
-git status
-git add .
-git commit -m "feat: Release Holocron Sentinel v1.0..."
-git push origin main
-```
+### 3. Eficiência Operacional
+- **Custo:** 80% menor que soluções tradicionais (On-Premise).
+- **Tempo:** Detecção de violação em milissegundos, não em dias.
 
 ---
 
-## PRÉ-REQUISITOS
+## 📂 Guia de Navegação Rápida
 
-### 1. Git Instalado
-```powershell
-git --version
-```
-
-**Se não instalado:**
-- Download: https://git-scm.com/downloads
-- Instalar e reiniciar PowerShell
-
-### 2. Personal Access Token do GitHub
-
-**Não use senha do GitHub!**
-
-**Como criar:**
-1. GitHub → Settings → Developer settings
-2. Personal access tokens → Tokens (classic)
-3. Generate new token
-4. Marcar: **repo**
-5. Generate e COPIAR
+| Objetivo | Localização |
+| :--- | :--- |
+| **Apresentação Final** | [`06_PRESENTATION/index.html`](./06_PRESENTATION/index.html) |
+| **Roteiro da Banca** | [`06_PRESENTATION/FINAL_PRESENTATION_SCRIPT.md`](./06_PRESENTATION/FINAL_PRESENTATION_SCRIPT.md) |
+| **Plano do Projeto** | [`Projeto Final/PROJECT_FINAL_PLAN.md`](./Projeto%20Final/PROJECT_FINAL_PLAN.md) |
+| **Código Fonte (Boto3)** | [`04_CODE/scripts/`](./04_CODE/scripts/) |
+| **Mapeamento LGPD** | [`02_ARCHITECTURE/LGPD_AWS_MAPPING.md`](./02_ARCHITECTURE/LGPD_AWS_MAPPING.md) |
 
 ---
 
-## ESTRUTURA DO COMMIT
-
-O commit principal inclui:
-
-- Título profissional
-- Descrição detalhada
-- Stack técnica
-- Métricas do projeto
-- Status de produção
-- Informações do desenvolvedor
+## 🖥️ Como demonstrar o projeto agora?
+1.  Abra o **Dashboard Interativo** (`06_PRESENTATION/index.html`) no navegador.
+2.  Use o **Roteiro de 15 Minutos** para guiar sua fala.
+3.  Mostre as **Evidências Técnicas** na pasta `05_EVIDENCE`.
 
 ---
-
-## APÓS ATUALIZAR
-
-### Imediato
-
-1. **Verificar repositório**
-   - https://github.com/guinatural/Holocron-Sentinel
-   - Conferir arquivos enviados
-   - Validar README
-
-2. **Configurar "About"**
-   - Description: "Sistema de Conformidade LGPD na AWS — Projeto Final AWS re/Start"
-   - Topics: aws, lgpd, cloud-security, python, boto3, aws-restart
-
-3. **Criar Release v1.0.0**
-   - Releases → Create new release
-   - Tag: v1.0.0
-   - Usar template do guia
-
-### Próximos Passos
-
-4. Pin no perfil GitHub
-5. Compartilhar no LinkedIn (usar templates)
-6. Atualizar currículo
-7. Preparar apresentação
-
----
-
-## DICAS PARA APRESENTAÇÃO
-
-### Mostrar
-1. GitHub (profissionalismo)
-2. README (visão geral)
-3. Estrutura (organização)
-4. Commits (metodologia)
-5. Código Python (competência)
-
-### Destacar
-- Compliance real LGPD
-- Glass Box Architecture
-- Automação Python
-- Documentação profissional
-- Portfolio completo
-
----
-
-## RESOLUÇÃO DE PROBLEMAS
-
-### Git não encontrado
-→ Instalar Git e reiniciar PowerShell
-
-### Authentication failed
-→ Usar Personal Access Token
-
-### Remote already exists
-→ `git remote set-url origin https://github.com/guinatural/Holocron-Sentinel.git`
-
-### Conflict/Divergent branches
-→ `git pull origin main --rebase` antes de push
-
-Mais soluções em `GUIA_ATUALIZACAO_GITHUB.md`
-
----
-
-## CHECKLIST RÁPIDO
-
-```
-[ ] Git instalado
-[ ] Personal Access Token criado
-[ ] Script executado
-[ ] Push realizado
-[ ] Verificado no GitHub
-[ ] "About" configurado
-[ ] Release v1.0.0 criada
-[ ] Repositório "pinned"
-[ ] Compartilhado LinkedIn
-[ ] Apresentação preparada
-```
-
----
-
-## PRÓXIMOS PASSOS
-
-### Hoje
-1. Executar `atualizar-versao-final.ps1`
-2. Verificar no GitHub
-3. Configurar "About" e Release
-
-### Próximos Dias
-4. Compartilhar no LinkedIn
-5. Atualizar currículo
-6. Praticar apresentação
-
----
-
-## RECURSOS DISPONÍVEIS
-
-| Arquivo | Uso |
-|---------|-----|
-| `atualizar-versao-final.ps1` | Atualizar GitHub |
-| `GUIA_ATUALIZACAO_GITHUB.md` | Comandos manuais |
-| `TEMPLATES_DIVULGACAO.md` | Divulgação |
-| `CHECKLIST_FINALIZACAO.md` | Acompanhamento |
-
----
-
-**Repositório:** https://github.com/guinatural/Holocron-Sentinel
-
-Data: 16/01/2026
-Projeto: Holocron Sentinel v1.0
-Programa: AWS re/Start - Turma 2026
-Desenvolvedor: Guilherme Natural
+**Guilherme Barreto Gomes**
+*Prepare-se para transformar dados em confiança técnica.*
