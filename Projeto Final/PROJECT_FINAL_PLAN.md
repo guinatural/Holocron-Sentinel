@@ -97,6 +97,38 @@ O progresso é monitorado via GitHub Projects / Trello, utilizando as colunas:
 **Próximos Passos (Módulo EXTENSÃO EM IA):**
 Na próxima etapa, integraremos o **Holocron AI Compliance Analyst**. Utilizaremos o **Amazon Bedrock** (com modelos LLM como Claude ou Titan) para processar os logs coletados e gerar pareceres executivos em linguagem natural. A IA identificará padrões de acesso anômalos (User Behavior Analytics) e sugerirá remediações automáticas via AWS Lambda, transformando dados brutos em decisões estratégicas de segurança.
 
+### 5. Arquitetura Técnica Detalhada (Deep Dive AWS)
+
+Para este projeto final de Cloud Practitioner, selecionamos os serviços que formam o "Hardening" de segurança da AWS, garantindo que cada requisito da LGPD tenha uma contrapartida técnica robusta:
+
+*   **AWS Identity and Access Management (IAM):**
+    *   *Papel:* Implementação de RBAC (Role-Based Access Control) e Segregação de Funções (SoD).
+    *   *Configuração:* Políticas JSON customizadas com negação implícita (Implicit Deny), MFA obrigatório para acesso ao console e uso de Roles para automação, eliminando chaves de acesso permanentes.
+*   **Amazon Simple Storage Service (S3):**
+    *   *Papel:* Repositório central de dados (Data Lake) e armazenamento de logs imutáveis.
+    *   *Configuração:* Bloqueio de Acesso Público ativado globalmente, Versionamento para recuperação de desastres e S3 Object Lock para garantir que trilhas de auditoria não sejam deletadas.
+*   **AWS Key Management Service (KMS):**
+    *   *Papel:* Gestão centralizada do ciclo de vida das chaves de criptografia.
+    *   *Configuração:* Uso de Customer Managed Keys (CMK) com rotação automática anual e políticas de chave estritas que limitam quem pode descriptografar os dados.
+*   **AWS CloudTrail:**
+    *   *Papel:* Registro pericial de todas as API Calls no ambiente.
+    *   *Configuração:* Trail Multi-Region ativado, captura de Data Events (S3) e Management Events, com validação de integridade de arquivo de log ativada.
+*   **AWS Config:**
+    *   *Papel:* Auditoria de conformidade em tempo real.
+    *   *Configuração:* Regras de conformidade para detectar buckets sem criptografia ou usuários remotos sem MFA, disparando remediações automáticas.
+*   **Amazon CloudWatch:**
+    *   *Papel:* Monitoramento e Observabilidade.
+    *   *Configuração:* Alerta de faturamento (Billing Alarms) e métricas de tentativas de login falhas no IAM.
+
+---
+
+**Métricas de Desempenho Técnico:**
+- **Segurança de Identidade:** 100% dos usuários administrativos com MFA físico/virtual.
+- **Criptografia:** 0% de dados sensíveis armazenados em plain-text.
+- **Auditabilidade:** Retenção configurada para 1.825 dias (5 anos) em camada S3 Glacier via Lifecycle.
+
+---
+
 **Recursos Visuais de Apoio:**
 *   Diagramas de Arquitetura em `/02_ARCHITECTURE`.
 *   Evidências de Logs e Screenshots em `/05_EVIDENCE`.

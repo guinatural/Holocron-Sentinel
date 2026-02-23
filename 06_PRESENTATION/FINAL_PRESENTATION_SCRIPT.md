@@ -36,13 +36,16 @@
 
 ---
 
-## BLOCO 4: Arquitetura de Segurança
+## BLOCO 4: Arquitetura de Segurança e Deep Dive Técnico
 **Visual:** Slide 4 - Arquitetura Glass Box (Mapa AWS)
 
-*   **Ação:** Role para o quarto slide. Mostre os badges de serviços AWS.
+*   **Ação:** Role para o quarto slide. Mostre os badges de serviços AWS e a nova tabela lateral de detalhes.
 *   **O que dizer:**
-    *   "Chamamos nossa solução de **Arquitetura Glass Box** (Caixa de Vidro). Ao contrário de uma caixa preta, aqui tudo é visível para quem tem direito, e blindado para quem não tem."
-    *   "Na base (Identity), o IAM com MFA obrigatório. No meio (Monitoring), o CloudTrail como nossa testemunha ocular. No topo (Defense), o KMS selando cada arquivo."
+    *   "Como este é um projeto de Cloud Practitioner, quero dar um mergulho profundo na nossa stack tecnológica. Não apenas usamos os serviços, nós os configuramos para segurança máxima."
+    *   "No **IAM**, não apenas criamos usuários; implementamos o princípio do menor privilégio e forçamos o MFA via API (MFA Enforcement)."
+    *   "Nosso **S3** é blindado com 'Block Public Access' e usamos 'Object Lock' nos logs para garantir que a trilha de auditoria seja legalmente imutável."
+    *   "Toda a criptografia é gerida pelo **KMS** usando Chaves Gerenciadas pelo Cliente (CMK) com AES-256."
+    *   "E o **AWS Config** monitora tudo em tempo real, garantindo que se alguém desativar uma criptografia, sejamos alertados instantaneamente via SNS."
 
 ---
 
