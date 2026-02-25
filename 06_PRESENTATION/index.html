@@ -14,29 +14,22 @@
 
     <style>
         :root {
-            /* Cor de fundo profunda e profissional */
             --bg: #030712;
             --surface: rgba(17, 24, 39, 0.6);
             --surface-hover: rgba(17, 24, 39, 0.85);
             --border: rgba(255, 255, 255, 0.08);
-
-            /* Paleta AWS & IA */
             --accent: #FF9900;
-            /* AWS Orange */
             --accent-glow: rgba(255, 153, 0, 0.3);
             --blue: #3b82f6;
             --green: #10b981;
             --red: #ef4444;
             --purple: #a855f7;
-
-            /* Tipografia */
             --text: #f9fafb;
             --muted: #9ca3af;
             --radius: 24px;
             --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-        /* Reset e Base */
         * {
             margin: 0;
             padding: 0;
@@ -56,7 +49,6 @@
             line-height: 1.6;
         }
 
-        /* Background Dinâmico - Mesh Gradient effect */
         .ambient-bg {
             position: fixed;
             top: 0;
@@ -70,13 +62,12 @@
                 radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.03) 0%, transparent 50%);
         }
 
-        /* ── NAVEGAÇÃO & PROGRESSO ── */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 1.5rem 5%;
+            padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -87,11 +78,8 @@
 
         .logo {
             font-weight: 800;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             letter-spacing: -0.5px;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
 
         .logo span {
@@ -101,22 +89,24 @@
         nav {
             background: var(--surface);
             border: 1px solid var(--border);
-            padding: 6px 12px;
+            padding: 4px 8px;
             border-radius: 100px;
             display: flex;
-            gap: 4px;
+            gap: 2px;
+            overflow-x: auto;
+            max-width: 80vw;
         }
 
         nav a {
             color: var(--muted);
             text-decoration: none;
-            font-size: 0.7rem;
-            font-weight: 600;
-            padding: 8px 16px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 6px 12px;
             border-radius: 100px;
             transition: var(--transition);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            white-space: nowrap;
         }
 
         nav a:hover,
@@ -126,59 +116,10 @@
         }
 
         nav a.active {
-            box-shadow: 0 0 15px var(--accent-glow);
             border: 1px solid rgba(255, 153, 0, 0.3);
+            background: rgba(255, 153, 0, 0.05);
         }
 
-        .parts-indicator {
-            position: fixed;
-            right: 2rem;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            z-index: 100;
-        }
-
-        .part-dot {
-            width: 4px;
-            height: 40px;
-            background: var(--border);
-            border-radius: 100px;
-            position: relative;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .part-dot::after {
-            content: attr(data-label);
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            white-space: nowrap;
-            font-size: 0.65rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            color: var(--muted);
-            opacity: 0;
-            transition: var(--transition);
-            pointer-events: none;
-        }
-
-        .part-dot:hover::after,
-        .part-dot.active::after {
-            opacity: 1;
-            right: 20px;
-        }
-
-        .part-dot.active {
-            background: var(--accent);
-            box-shadow: 0 0 15px var(--accent-glow);
-        }
-
-        /* ── ESTRUTURA DE SLIDES ── */
         section {
             height: 100vh;
             width: 100%;
@@ -188,15 +129,14 @@
             justify-content: center;
             padding: 0 10%;
             position: relative;
-            overflow: hidden;
         }
 
         .content-wrapper {
-            max-width: 1200px;
+            max-width: 1100px;
             width: 100%;
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
         section.visible .content-wrapper {
@@ -204,60 +144,50 @@
             transform: translateY(0);
         }
 
-        /* ── COMPONENTES VISUAIS ── */
         .glass-card {
             background: var(--surface);
             backdrop-filter: blur(24px);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 2.5rem;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            transition: var(--transition);
-        }
-
-        .glass-card:hover {
-            border-color: rgba(255, 255, 255, 0.2);
-            background: var(--surface-hover);
-            transform: translateY(-5px);
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
         .badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 6px 14px;
+            padding: 5px 12px;
             background: rgba(255, 153, 0, 0.1);
             border: 1px solid rgba(255, 153, 0, 0.2);
             color: var(--accent);
             border-radius: 100px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 700;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
+            font-size: clamp(2.5rem, 6vw, 5rem);
             font-weight: 900;
-            line-height: 0.95;
-            letter-spacing: -3px;
-            margin-bottom: 1.5rem;
+            line-height: 1;
+            letter-spacing: -2px;
+            margin-bottom: 1rem;
         }
 
         h2 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-size: clamp(1.8rem, 4vw, 3rem);
             font-weight: 800;
             line-height: 1.1;
-            letter-spacing: -1.5px;
-            margin-bottom: 2rem;
+            letter-spacing: -1px;
+            margin-bottom: 1.5rem;
         }
 
-        .gradient-text {
-            background: linear-gradient(135deg, #fff 0%, var(--muted) 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
         }
 
         .accent-text {
@@ -267,66 +197,102 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* ── GRID E LAYOUT ── */
-        .grid-12 {
+        .grid-2 {
             display: grid;
-            grid-template-columns: repeat(12, 1fr);
+            grid-template-columns: 1fr 1fr;
             gap: 2rem;
         }
 
-        .col-6 {
-            grid-column: span 6;
-        }
-
-        .col-4 {
-            grid-column: span 4;
-        }
-
-        .col-8 {
-            grid-column: span 8;
-        }
-
-        .col-12 {
-            grid-column: span 12;
-        }
-
-        @media (max-width: 900px) {
-
-            .col-6,
-            .col-4,
-            .col-8 {
-                grid-column: span 12;
-            }
-
-            section {
-                padding: 4rem 5%;
+        @media (max-width: 850px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
             }
         }
 
-        /* ── ELEMENTOS ESPECÍFICOS ── */
-        .stat-card {
-            padding: 2rem;
+        .stat-box {
+            padding: 1.5rem;
             text-align: center;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
         }
 
-        .stat-number {
-            font-size: 3.5rem;
+        .stat-val {
+            font-size: 2.5rem;
             font-weight: 900;
             color: var(--accent);
             display: block;
-            line-height: 1;
         }
 
         .stat-label {
-            font-size: 0.75rem;
+            font-size: 0.65rem;
             font-weight: 700;
             color: var(--muted);
             text-transform: uppercase;
-            margin-top: 0.5rem;
-            letter-spacing: 1px;
         }
 
-        /* Terminal Mockup */
+        .req-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        .req-table td {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--muted);
+        }
+
+        .req-id {
+            font-family: 'JetBrains Mono';
+            font-weight: 800;
+            color: var(--blue);
+            width: 60px;
+        }
+
+        .board-container {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding-bottom: 1rem;
+        }
+
+        .board-col {
+            background: rgba(0, 0, 0, 0.2);
+            min-width: 250px;
+            border-radius: 16px;
+            padding: 1rem;
+            border: 1px solid var(--border);
+        }
+
+        .board-col h4 {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            color: var(--muted);
+            opacity: 0.6;
+        }
+
+        .card {
+            background: var(--surface);
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            margin-bottom: 0.8rem;
+            font-size: 0.75rem;
+        }
+
+        .tag {
+            font-size: 9px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--blue);
+            font-weight: 700;
+            margin-bottom: 4px;
+            display: inline-block;
+        }
+
         .terminal {
             background: #0d1117;
             border-radius: 12px;
@@ -337,15 +303,15 @@
 
         .terminal-header {
             background: #161b22;
-            padding: 10px 15px;
+            padding: 8px 12px;
             display: flex;
-            gap: 6px;
+            gap: 5px;
             align-items: center;
         }
 
         .dot {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
         }
 
@@ -362,9 +328,10 @@
         }
 
         .terminal-body {
-            padding: 1.5rem;
-            font-size: 0.85rem;
+            padding: 1.2rem;
+            font-size: 0.75rem;
             color: #d1d5db;
+            overflow-x: auto;
         }
 
         .keyword {
@@ -383,80 +350,68 @@
             color: #8b949e;
         }
 
-        /* IA Flow Diagram */
         .flow-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 1rem;
-            padding: 1rem 0;
+            gap: 0.5rem;
         }
 
         .flow-node {
             flex: 1;
-            padding: 1.5rem;
+            padding: 1rem;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border);
-            border-radius: 16px;
+            border-radius: 12px;
             text-align: center;
-            position: relative;
         }
 
         .flow-node.active {
             border-color: var(--accent);
             background: rgba(255, 153, 0, 0.05);
-            box-shadow: 0 0 20px var(--accent-glow);
         }
 
-        .flow-arrow {
-            color: var(--muted);
-            font-weight: 900;
-            font-size: 1.5rem;
-        }
-
-        /* Footer links */
-        .footer-links {
-            position: absolute;
-            bottom: 2rem;
-            left: 10%;
-            display: flex;
-            gap: 2rem;
-        }
-
-        .footer-links a {
-            color: var(--muted);
-            font-size: 0.75rem;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--accent);
-        }
-
-        /* Micro-interactions */
         .pulse {
             animation: pulse-ring 2s infinite;
         }
 
         @keyframes pulse-ring {
             0% {
-                transform: scale(0.95);
-                opacity: 0.8;
+                transform: scale(0.98);
+                opacity: 0.9;
             }
 
             50% {
-                transform: scale(1.05);
+                transform: scale(1.02);
                 opacity: 1;
             }
 
             100% {
-                transform: scale(0.95);
-                opacity: 0.8;
+                transform: scale(0.98);
+                opacity: 0.9;
             }
+        }
+
+        .footer-links {
+            position: absolute;
+            bottom: 2rem;
+            left: 10%;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--muted);
+            font-size: 0.7rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
         }
     </style>
 </head>
@@ -467,360 +422,315 @@
     <header>
         <div class="logo"><span>HOLOCRON</span> SENTINEL</div>
         <nav id="main-nav">
-            <a href="#intro" class="active">P1: Visão</a>
-            <a href="#compliance">P2: Governança</a>
-            <a href="#engine">P3: Engenharia</a>
-            <a href="#ia">P4: Futuro</a>
+            <a href="#hero" class="active">Slide 1</a>
+            <a href="#problem">Slide 2</a>
+            <a href="#requirements">Slide 3</a>
+            <a href="#responsibility">Slide 4</a>
+            <a href="#board">Slide 5</a>
+            <a href="#automation">Slide 6</a>
+            <a href="#solution">Slide 7</a>
+            <a href="#summary">Slide 8</a>
         </nav>
     </header>
 
-    <!-- Indicador Lateral de Partes/Apresentadores -->
-    <div class="parts-indicator">
-        <div class="part-dot active" data-label="Parte 1: O Contexto" onclick="scrollToId('intro')"></div>
-        <div class="part-dot" data-label="Parte 2: Risco & Regras" onclick="scrollToId('compliance')"></div>
-        <div class="part-dot" data-label="Parte 3: O Motor" onclick="scrollToId('engine')"></div>
-        <div class="part-dot" data-label="Parte 4: IA & Valor" onclick="scrollToId('ia')"></div>
-    </div>
-
-    <!-- ── PARTE 1: VISÃO & VALOR ── -->
-    <section id="intro">
+    <!-- ── SLIDE 1: INTRODUÇÃO ── -->
+    <section id="hero">
         <div class="content-wrapper" style="text-align: center;">
-            <div class="badge">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                </svg>
-                AWS re/Start Final Project — Grupo 05
-            </div>
+            <div class="badge">AWS re/Start Final Project — Grupo 05</div>
             <h1>HOLOCRON: <br><span class="accent-text">O Sentinela de Compliance LGPD</span></h1>
-            <p style="font-size: 1.25rem; color: var(--muted); max-width: 700px; margin: 0 auto 2.5rem;">
-                Proteção inteligente para dados sensíveis via automação nativa e Inteligência Artificial.
-            </p>
+            <p style="font-size: 1.1rem; color: var(--muted); max-width: 700px; margin: 0 auto 2rem;">Proteção
+                inteligente para dados sensíveis via automação nativa e Inteligência Artificial.</p>
 
             <div
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; max-width: 900px; margin: 0 auto;">
-                <div class="glass-card" style="padding: 0.8rem 1rem; border-radius: 12px; text-align: left;">
-                    <p style="font-size: 0.6rem; color: var(--muted); text-transform: uppercase;">Especialista Cloud</p>
-                    <p style="font-weight: 700; font-size: 0.85rem;">Everton R. Barbosa</p>
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem; max-width: 1000px; margin: 0 auto;">
+                <div class="glass-card" style="padding: 0.8rem; border-radius: 12px; text-align: left;">
+                    <p style="font-size: 0.55rem; color: var(--muted); text-transform: uppercase;">Especialista Cloud
+                    </p>
+                    <p style="font-weight: 700; font-size: 0.8rem;">Everton R. Barbosa</p>
                 </div>
-                <div class="glass-card" style="padding: 0.8rem 1rem; border-radius: 12px; text-align: left;">
-                    <p style="font-size: 0.6rem; color: var(--muted); text-transform: uppercase;">Especialista Cloud</p>
-                    <p style="font-weight: 700; font-size: 0.85rem;">Guilherme B. Gomes</p>
+                <div class="glass-card"
+                    style="padding: 0.8rem; border-radius: 12px; text-align: left; border-color: var(--accent);">
+                    <p style="font-size: 0.55rem; color: var(--accent); text-transform: uppercase;">Especialista Cloud
+                    </p>
+                    <p style="font-weight: 700; font-size: 0.8rem;">Guilherme B. Gomes</p>
                 </div>
-                <div class="glass-card" style="padding: 0.8rem 1rem; border-radius: 12px; text-align: left;">
-                    <p style="font-size: 0.6rem; color: var(--muted); text-transform: uppercase;">Especialista Cloud</p>
-                    <p style="font-weight: 700; font-size: 0.85rem;">José Robson Coe</p>
+                <div class="glass-card" style="padding: 0.8rem; border-radius: 12px; text-align: left;">
+                    <p style="font-size: 0.55rem; color: var(--muted); text-transform: uppercase;">Especialista Cloud
+                    </p>
+                    <p style="font-weight: 700; font-size: 0.8rem;">José Robson Coe</p>
                 </div>
-                <div class="glass-card" style="padding: 0.8rem 1rem; border-radius: 12px; text-align: left;">
-                    <p style="font-size: 0.6rem; color: var(--muted); text-transform: uppercase;">Especialista Cloud</p>
-                    <p style="font-weight: 700; font-size: 0.85rem;">Luiz Humberto O. Silva</p>
+                <div class="glass-card" style="padding: 0.8rem; border-radius: 12px; text-align: left;">
+                    <p style="font-size: 0.55rem; color: var(--muted); text-transform: uppercase;">Especialista Cloud
+                    </p>
+                    <p style="font-weight: 700; font-size: 0.8rem;">Luiz Humberto O. Silva</p>
                 </div>
-                <div class="glass-card" style="padding: 0.8rem 1rem; border-radius: 12px; text-align: left;">
-                    <p style="font-size: 0.6rem; color: var(--muted); text-transform: uppercase;">Especialista Cloud</p>
-                    <p style="font-weight: 700; font-size: 0.85rem;">Moisés Victor Marques</p>
+                <div class="glass-card" style="padding: 0.8rem; border-radius: 12px; text-align: left;">
+                    <p style="font-size: 0.55rem; color: var(--muted); text-transform: uppercase;">Especialista Cloud
+                    </p>
+                    <p style="font-weight: 700; font-size: 0.8rem;">Moisés Victor Marques</p>
                 </div>
-                <div class="glass-card" style="padding: 0.8rem 1rem; border-radius: 12px; text-align: left;">
-                    <p style="font-size: 0.6rem; color: var(--muted); text-transform: uppercase;">Especialista Cloud</p>
-                    <p style="font-weight: 700; font-size: 0.85rem;">Rubens do Prado Silva</p>
+                <div class="glass-card" style="padding: 0.8rem; border-radius: 12px; text-align: left;">
+                    <p style="font-size: 0.55rem; color: var(--muted); text-transform: uppercase;">Especialista Cloud
+                    </p>
+                    <p style="font-weight: 700; font-size: 0.8rem;">Rubens do Prado Silva</p>
                 </div>
-                <div class="glass-card" style="padding: 0.8rem 1rem; border-radius: 12px; text-align: left;">
-                    <p style="font-size: 0.6rem; color: var(--muted); text-transform: uppercase;">Especialista Cloud</p>
-                    <p style="font-weight: 700; font-size: 0.85rem;">Vanderson De Castro</p>
+                <div class="glass-card" style="padding: 0.8rem; border-radius: 12px; text-align: left;">
+                    <p style="font-size: 0.55rem; color: var(--muted); text-transform: uppercase;">Especialista Cloud
+                    </p>
+                    <p style="font-weight: 700; font-size: 0.8rem;">Vanderson De Castro</p>
                 </div>
-            </div>
-
-            <div class="footer-links">
-                <a href="https://github.com/guinatural/Holocron-Sentinel" target="_blank">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                    </svg>
-                    Repositório do Projeto
-                </a>
-                <a href="#compliance">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
-                    </svg>
-                    Ver Problema
-                </a>
             </div>
         </div>
     </section>
 
-    <!-- Slide 2: O Problema -->
+    <!-- ── SLIDE 2: O PROBLEMA ── -->
     <section id="problem">
         <div class="content-wrapper">
-            <div class="grid-12">
-                <div class="col-8">
+            <div class="grid-2">
+                <div>
                     <div class="badge"
-                        style="color: var(--red); background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2);">
-                        A Crise Invisível</div>
-                    <h2>Cegueira Técnica &<br><span class="accent-text">Risco Financeiro.</span></h2>
-                    <p style="font-size: 1.1rem; color: var(--muted); margin-bottom: 2rem;">
-                        Pequenas empresas possuem dados sensíveis (PII) na nuvem, mas falham no **Artigo 37 (Registro)**
-                        e **Artigo 46 (Segurança)** da LGPD. Uma falha pode custar mais que o negócio.
-                    </p>
+                        style="color: var(--red); border-color: var(--red); background: rgba(239, 68, 68, 0.1);">O
+                        Problema</div>
+                    <h2>Cegueira Técnica &<br><span class="accent-text">Risco Jurídico.</span></h2>
+                    <p style="color: var(--muted); margin-bottom: 1.5rem;">Empresas possuem dados sensíveis (PII) na
+                        nuvem, mas falham no **Artigo 37** e **Artigo 46** da LGPD.</p>
                     <div class="glass-card" style="border-left: 4px solid var(--red); padding: 1.5rem;">
-                        <p style="font-weight: 700;">Multas de até R$ 50 Milhões </p>
-                        <p style="font-size: 0.9rem; color: var(--muted);">pela ANPD por falta de trilhas de auditoria
-                            imutáveis.</p>
+                        <p style="font-weight: 700;">Multas de até R$ 50 Milhões</p>
+                        <p style="font-size: 0.85rem; color: var(--muted);">pela ANPD por falta de auditabilidade
+                            imutável.</p>
                     </div>
                 </div>
-                <div class="col-4" style="display: flex; flex-direction: column; gap: 1.5rem;">
-                    <div class="glass-card stat-card">
-                        <span class="stat-number">80%</span>
-                        <span class="stat-label">Custo Menor vs On-Prem</span>
-                    </div>
-                    <div class="glass-card stat-card" style="border-color: var(--blue);">
-                        <span class="stat-number" style="color: var(--blue);">100%</span>
-                        <span class="stat-label">Auditabilidade</span>
-                    </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="stat-box"><span class="stat-val">80%</span><span class="stat-label">Custo Menor vs
+                            On-Prem</span></div>
+                    <div class="stat-box"><span class="stat-val">100%</span><span
+                            class="stat-label">Auditabilidade</span></div>
+                    <div class="stat-box" style="grid-column: span 2; border-color: var(--red);"><span class="stat-val"
+                            style="color: var(--red);">&lt; 1s</span><span class="stat-label">Detecção de
+                            Violação</span></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ── PARTE 2: GOVERNANÇA & RISCO ── -->
-    <section id="compliance">
+    <!-- ── SLIDE 3: REQUISITOS ── -->
+    <section id="requirements">
         <div class="content-wrapper">
-            <div class="badge">Governança & Rigor</div>
+            <div class="badge"
+                style="color: var(--blue); border-color: var(--blue); background: rgba(59, 130, 246, 0.1);">Engenharia
+            </div>
             <h2>Fundações do <span class="accent-text">Sentinel.</span></h2>
-
-            <div class="grid-12">
-                <div class="col-6">
-                    <div class="glass-card">
-                        <h3 style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px;">
-                            <span style="color: var(--blue);">●</span> Requisitos de Engenharia
-                        </h3>
-                        <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem;">
-                            <li style="display: flex; align-items: flex-start; gap: 12px;">
-                                <span
-                                    style="font-family: 'JetBrains Mono'; font-weight: 800; color: var(--blue);">RF01</span>
-                                <span style="font-size: 0.9rem; color: var(--muted);">Identificação automática de PII
-                                    via Amazon Macie.</span>
-                            </li>
-                            <li style="display: flex; align-items: flex-start; gap: 12px;">
-                                <span
-                                    style="font-family: 'JetBrains Mono'; font-weight: 800; color: var(--blue);">RF02</span>
-                                <span style="font-size: 0.9rem; color: var(--muted);">Logs imutáveis protegidos por KMS
-                                    no CloudTrail.</span>
-                            </li>
-                            <li style="display: flex; align-items: flex-start; gap: 12px;">
-                                <span
-                                    style="font-family: 'JetBrains Mono'; font-weight: 800; color: var(--blue);">RNF1</span>
-                                <span style="font-size: 0.9rem; color: var(--muted);">Soberania Nacional: Operação 100%
-                                    em sa-east-1.</span>
-                            </li>
-                        </ul>
-                    </div>
+            <div class="grid-2">
+                <div class="glass-card">
+                    <h3>Requisitos Funcionais</h3>
+                    <table class="req-table">
+                        <tr>
+                            <td class="req-id">RF-001</td>
+                            <td>Identificar PII via Amazon Macie</td>
+                        </tr>
+                        <tr>
+                            <td class="req-id">RF-002</td>
+                            <td>Logs imutáveis via CloudTrail</td>
+                        </tr>
+                        <tr>
+                            <td class="req-id">RF-003</td>
+                            <td>Criptografia KMS em 100% dos Buckets</td>
+                        </tr>
+                    </table>
                 </div>
-                <div class="col-6">
-                    <div class="glass-card" style="border-color: var(--accent);">
-                        <div class="badge" style="margin-bottom: 1rem;">Risco Jurídico</div>
-                        <h3>O Modelo Compartilhado</h3>
-                        <p style="font-size: 0.85rem; color: var(--muted); margin: 1rem 0;">
-                            A AWS cuida da segurança <strong>DA</strong> nuvem. Mas a segurança <strong>NA</strong>
-                            nuvem é sua.
-                        </p>
-                        <div style="background: rgba(0,0,0,0.2); border-radius: 12px; padding: 1rem;">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                <span style="font-size: 0.7rem; font-weight: 800; color: var(--green);">RESP.
-                                    AWS:</span>
-                                <span style="font-size: 0.7rem; color: var(--muted);">Hardware / Infra</span>
-                            </div>
-                            <div
-                                style="height: 4px; background: var(--green); border-radius: 10px; width: 100%; margin-bottom: 1rem;">
-                            </div>
+                <div class="glass-card">
+                    <h3>Requisitos Não Funcionais</h3>
+                    <table class="req-table">
+                        <tr>
+                            <td class="req-id">RNF-001</td>
+                            <td>Soberania na região sa-east-1 (SP)</td>
+                        </tr>
+                        <tr>
+                            <td class="req-id">RNF-002</td>
+                            <td>Retenção de logs por 5 anos</td>
+                        </tr>
+                        <tr>
+                            <td class="req-id">RNF-003</td>
+                            <td>MFA Enforcement em todos Admins</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                <span style="font-size: 0.7rem; font-weight: 800; color: var(--accent);">RESP.
-                                    EMPRESA:</span>
-                                <span style="font-size: 0.7rem; color: var(--muted);">Dados / Configurações</span>
-                            </div>
-                            <div style="height: 4px; background: var(--accent); border-radius: 10px; width: 100%;"
-                                class="pulse"></div>
-                        </div>
-                        <p style="font-size: 0.75rem; margin-top: 1rem; color: var(--accent); font-weight: 700;">
-                            O Sentinel blindagem o "GAP" de responsabilidade do empresário.
-                        </p>
+    <!-- ── SLIDE 4: RESPONSABILIDADE COMPARTILHADA ── -->
+    <section id="responsibility">
+        <div class="content-wrapper">
+            <div class="badge">Segurança na Nuvem</div>
+            <h2>O Risco do <span class="accent-text">Empresário.</span></h2>
+            <div class="grid-2">
+                <div class="glass-card">
+                    <h3 style="color: var(--green);">AWS: Segurança DA Nuvem</h3>
+                    <p style="font-size: 0.85rem; color: var(--muted);">Infraestrutura física, hardware e rede global.
+                        Garantia de que o datacenter é seguro.</p>
+                </div>
+                <div class="glass-card" style="border-color: var(--accent);">
+                    <h3 style="color: var(--accent);">VOCÊ: Segurança NA Nuvem</h3>
+                    <p style="font-size: 0.85rem; color: var(--muted);">Dono do dado. Configuração de buckets, IAM e
+                        criptografia. A responsabilidade jurídica (LGPD) é sua.</p>
+                </div>
+            </div>
+            <div class="glass-card"
+                style="margin-top: 2rem; border-color: var(--blue); text-align: center; padding: 1.5rem;">
+                <p style="font-weight: 700;">O Holocron Sentinel blinda este "GAP" de responsabilidade.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── SLIDE 5: PLANEJAMENTO ── -->
+    <section id="board">
+        <div class="content-wrapper">
+            <div class="badge"
+                style="color: var(--purple); border-color: var(--purple); background: rgba(139, 92, 246, 0.1);">
+                Agilidade</div>
+            <h2>Sprints & <span class="accent-text">Progressão.</span></h2>
+            <div class="board-container">
+                <div class="board-col">
+                    <h4>To Do</h4>
+                    <div class="card"><span class="tag">IA</span>Integração Titan Bedrock</div>
+                    <div class="card"><span class="tag">Alerts</span>SNS Notification Setup</div>
+                </div>
+                <div class="board-col">
+                    <h4>In Progress</h4>
+                    <div class="card"><span class="tag">Dev</span>Refatoração Scripts Boto3</div>
+                </div>
+                <div class="board-col">
+                    <h4>Done</h4>
+                    <div class="card" style="border-color: var(--green);"><span class="tag">Done</span>Hardening
+                        Identidade (IAM/MFA)</div>
+                    <div class="card" style="border-color: var(--green);"><span class="tag">Done</span>Configuração
+                        CloudTrail Universal</div>
+                    <div class="card" style="border-color: var(--green);"><span class="tag">Done</span>Mapeamento de
+                        Artigos LGPD</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── SLIDE 6: AUTOMAÇÃO ── -->
+    <section id="automation">
+        <div class="content-wrapper">
+            <div class="grid-2">
+                <div>
+                    <div class="badge">The Core</div>
+                    <h2>Automação via <span class="accent-text">Boto3.</span></h2>
+                    <p style="color: var(--muted); margin-bottom: 2rem;">Eliminamos o erro humano com fiscalização de
+                        infraestrutura por código em tempo real.</p>
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem;">
+                        <li style="font-size: 0.85rem; padding-left: 1rem; border-left: 2px solid var(--blue);">
+                            <strong>validate_audit_logs:</strong> Fiscaliza integridade.</li>
+                        <li style="font-size: 0.85rem; padding-left: 1rem; border-left: 2px solid var(--blue);">
+                            <strong>setup_iam_structure:</strong> MFA Enforcement.</li>
+                    </ul>
+                </div>
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div><span
+                            style="font-size: 0.6rem; color: var(--muted); margin-left: auto;">validate_encryption.py</span>
+                    </div>
+                    <div class="terminal-body">
+                        <pre><span class="keyword">def</span> <span class="func">check_s3</span>(bucket):
+    response = s3.<span class="func">head_object</span>(Bucket=bucket)
+    enc = response.<span class="func">get</span>(<span class="str">'Encryption'</span>)
+    <span class="keyword">return</span> (enc == <span class="str">'AES256'</span>)</pre>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ── PARTE 3: O MOTOR TÉCNICO ── -->
-    <section id="engine">
+    <!-- ── SLIDE 7: SOLUÇÃO IA ── -->
+    <section id="solution">
         <div class="content-wrapper">
-            <div class="grid-12">
-                <div class="col-5">
-                    <div class="badge"
-                        style="color: var(--purple); background: rgba(168, 85, 247, 0.1); border-color: rgba(168, 85, 247, 0.2);">
-                        The Core</div>
-                    <h2>Automação via <br><span class="accent-text">SDK Boto3.</span></h2>
-                    <p style="color: var(--muted); margin-bottom: 2rem;">
-                        Eliminamos o erro humano. A infraestrutura é fiscalizada por código em tempo real.
-                    </p>
-                    <div style="display: flex; flex-direction: column; gap: 1rem;">
-                        <div class="glass-card" style="padding: 1rem; border-radius: 16px;">
-                            <p style="font-weight: 700; font-size: 0.8rem; margin-bottom: 4px;">validate_audit_logs.py
-                            </p>
-                            <p style="font-size: 0.75rem; color: var(--muted);">Verificação de integridade de buckets
-                                S3.</p>
-                        </div>
-                        <div class="glass-card" style="padding: 1rem; border-radius: 16px;">
-                            <p style="font-weight: 700; font-size: 0.8rem; margin-bottom: 4px;">setup_iam_structure.py
-                            </p>
-                            <p style="font-size: 0.75rem; color: var(--muted);">Aplicação forçada de MFA e Least
-                                Privilege.</p>
-                        </div>
-                    </div>
+            <div class="badge"
+                style="color: var(--purple); border-color: var(--purple); background: rgba(139, 92, 246, 0.1);">
+                Inteligência Central</div>
+            <h2>O Cérebro da <span class="accent-text">Auditoria.</span></h2>
+            <div class="flow-container" style="margin: 2rem 0;">
+                <div class="flow-node">
+                    <p style="font-weight: 800; color: var(--accent);">Macie</p>
+                    <p style="font-size: 0.6rem;">Descobre PII</p>
                 </div>
-                <div class="col-7">
-                    <div class="terminal">
-                        <div class="terminal-header">
-                            <div class="dot red"></div>
-                            <div class="dot yellow"></div>
-                            <div class="dot green"></div>
-                            <span
-                                style="font-size: 0.65rem; color: var(--muted); margin-left: auto;">sentinel_engine.py</span>
-                        </div>
-                        <div class="terminal-body">
-                            <pre><span class="keyword">import</span> boto3
-
-<span class="comment"># Garante Criptografia LGPD</span>
-<span class="keyword">def</span> <span class="func">enforce_compliance</span>(s3_client, bucket):
-    config = s3_client.<span class="func">get_bucket_encryption</span>(Bucket=bucket)
-    <span class="keyword">if</span> NOT config:
-        <span class="func">print</span>(<span class="str">"[ALERT] Bucket Vulnerável!"</span>)
-        <span class="func">apply_kms_protection</span>(bucket)
-        
-<span class="comment"># Registro Imutável Art. 37</span>
-cloudtrail = boto3.<span class="func">client</span>(<span class="str">'cloudtrail'</span>)
-cloudtrail.<span class="func">update_trail</span>(
-    Name=<span class="str">'SentinelLog'</span>, 
-    EnableLogFileValidation=<span class="keyword">True</span>
-)</pre>
-                        </div>
-                    </div>
-                    <div style="text-align: right; margin-top: 1rem;">
-                        <span style="font-size: 0.7rem; color: var(--muted);">Planejamento Ágil: <strong>4 Sprints
-                                Concluídas</strong></span>
-                    </div>
+                <div style="font-size: 1.5rem; color: var(--muted);">→</div>
+                <div class="flow-node active pulse">
+                    <p style="font-weight: 900; font-size: 1.1rem;">Titan (Bedrock)</p>
+                    <p style="font-size: 0.65rem;">Análise via IA</p>
                 </div>
+                <div style="font-size: 1.5rem; color: var(--muted);">→</div>
+                <div class="flow-node">
+                    <p style="font-weight: 800; color: var(--green);">SNS Alerta</p>
+                    <p style="font-size: 0.6rem;">Parecer em Português</p>
+                </div>
+            </div>
+            <div class="glass-card" style="border-color: var(--purple); background: rgba(168, 85, 247, 0.05);">
+                <p style="font-family: 'JetBrains Mono'; font-size: 0.8rem; color: var(--muted);">[IA_SENTINEL]:
+                    Detectada tentativa de acesso ao S3 via IP desconhecido. Amazon Macie confirma CPFs sem
+                    criptografia. <strong>Conclusão: Bloqueio executado.</strong></p>
             </div>
         </div>
     </section>
 
-    <!-- ── PARTE 4: IA & VALOR ── -->
-    <section id="ia">
-        <div class="content-wrapper">
-            <div class="grid-12">
-                <div class="col-12" style="text-align: center;">
-                    <div class="badge">Inteligência Centralizada</div>
-                    <h2>O Cérebro da <span class="accent-text">Auditoria.</span></h2>
+    <!-- ── SLIDE 8: RESUMO ── -->
+    <section id="summary">
+        <div class="content-wrapper" style="text-align: center;">
+            <div class="badge">Conclusão</div>
+            <h2>Segurança Por <span class="accent-text">Design.</span></h2>
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
+                <div class="glass-card" style="text-align: left;">
+                    <h3 style="color: var(--blue);">Well-Architected</h3>
+                    <p style="font-size: 0.8rem; color: var(--muted);">Excelência operacional com automação Serverless e
+                        Boto3.</p>
                 </div>
-
-                <div class="col-12">
-                    <div class="flow-container">
-                        <div class="flow-node">
-                            <p style="font-size: 0.6rem; color: var(--muted); font-weight: 800;">INPUT #1</p>
-                            <p style="font-weight: 800; color: var(--accent);">Amazon Macie</p>
-                            <p style="font-size: 0.65rem;">Detecção PII</p>
-                        </div>
-                        <div class="flow-arrow">→</div>
-                        <div class="flow-node active pulse">
-                            <div class="badge" style="margin-bottom: 0.5rem; font-size: 0.6rem; padding: 2px 8px;">LLM
-                                Titan</div>
-                            <p style="font-weight: 900; font-size: 1.2rem;">Amazon Bedrock</p>
-                            <p style="font-size: 0.7rem;">Julgamento de Risco</p>
-                        </div>
-                        <div class="flow-arrow">→</div>
-                        <div class="flow-node">
-                            <p style="font-size: 0.6rem; color: var(--muted); font-weight: 800;">OUTPUT</p>
-                            <p style="font-weight: 800; color: var(--green);">Parecer Executivo</p>
-                            <p style="font-size: 0.65rem;">Ação Automática</p>
-                        </div>
-                    </div>
+                <div class="glass-card" style="text-align: left;">
+                    <h3 style="color: var(--accent);">Custo Zero-Waste</h3>
+                    <p style="font-size: 0.8rem; color: var(--muted);">Lifecycle Rules do S3 para retenção de 5 anos com
+                        custo mínimo.</p>
                 </div>
-
-                <div class="col-8">
-                    <div class="glass-card" style="border-color: var(--purple); background: rgba(168, 85, 247, 0.05);">
-                        <p style="font-family: 'JetBrains Mono'; font-size: 0.8rem; line-height: 1.8;">
-                            <span style="color: var(--purple); font-weight: 800;">[IA_SENTINEL_REPORT]</span><br>
-                            Análise: Detectado acesso anômalo no bucket 'financeiro'. <br>
-                            Impacto: Alto (Dados PII expostos). <br>
-                            Ação: Ativando bloqueio de política IAM e gerando evidência para ANPD.<br>
-                            <span style="color: var(--muted); font-size: 0.7rem;">Status: Compliance Restaurado em
-                                1.2s</span>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="col-4">
-                    <div class="glass-card"
-                        style="text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">Excelência AWS</h3>
-                        <p style="font-size: 0.8rem; color: var(--muted);">
-                            Otimização de custos via Serverless e Lifecycle Rules (S3 Glacier).
-                        </p>
-                    </div>
+                <div class="glass-card" style="text-align: left;">
+                    <h3 style="color: var(--green);">Ready for ANPD</h3>
+                    <p style="font-size: 0.8rem; color: var(--muted);">Logs imutáveis protegidos por KMS, prontos para
+                        qualquer auditoria.</p>
                 </div>
             </div>
-
-            <div style="margin-top: 4rem; text-align: center;">
-                <p style="font-weight: 800; color: var(--accent); letter-spacing: 2px; font-size: 0.8rem;">HOLOCRON
-                    SENTINEL — PROTEÇÃO INTELIGENTE</p>
-                <p style="font-size: 0.7rem; color: var(--muted); margin-top: 0.5rem;">Obrigado pela atenção.</p>
-            </div>
+            <p
+                style="margin-top: 3rem; font-weight: 800; color: var(--accent); letter-spacing: 2px; font-size: 0.8rem;">
+                HOLOCRON SENTINEL — PROTEÇÃO INTELIGENTE</p>
+            <p style="font-size: 0.7rem; color: var(--muted); margin-top: 0.5rem;">Obrigado pela atenção.</p>
         </div>
     </section>
 
     <script>
-        // Smooth scroll manual
-        function scrollToId(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Intersection Observer para animações e navegação
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('nav a');
-        const dots = document.querySelectorAll('.part-dot');
 
-        const observerOptions = {
-            threshold: 0.5
-        };
-
+        const observerOptions = { threshold: 0.6 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-
                     const id = entry.target.getAttribute('id');
-
-                    // Update Nav
                     navLinks.forEach(link => {
                         link.classList.remove('active');
-                        if (link.getAttribute('href') === `#${id}`) {
-                            link.classList.add('active');
-                        }
+                        if (link.getAttribute('href') === `#${id}`) link.classList.add('active');
                     });
-
-                    // Update Dots (mapeando slides para as 4 partes)
-                    dots.forEach(dot => dot.classList.remove('active'));
-                    if (id === 'intro') dots[0].classList.add('active');
-                    if (id === 'problem' || id === 'compliance') dots[1].classList.add('active');
-                    if (id === 'engine') dots[2].classList.add('active');
-                    if (id === 'ia') dots[3].classList.add('active');
-
-                    // Sincronizar nav superior com as partes se necessário
-                    if (id === 'problem') {
-                        document.querySelector('nav a[href="#intro"]').classList.add('active');
-                    }
                 }
             });
         }, observerOptions);
 
         sections.forEach(section => observer.observe(section));
+
+        function scrollToId(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
     </script>
 </body>
 
