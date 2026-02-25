@@ -47,5 +47,6 @@ Utilizamos o **Amazon Bedrock** para centralizar a segurança. O modelo **Amazon
 3.  Mostre as **Evidências Técnicas** na pasta `05_EVIDENCE`.
 
 ---
-**Guilherme Barreto Gomes**
-*Prepare-se para transformar dados em confiança técnica.*
+**Grupo 05 — AWS re/Start**  
+*Everton R. Barbosa, Guilherme B. Gomes, José Robson Coe, Luiz Humberto, Moisés Victor, Rubens do Prado, Vanderson De Castro.*
+

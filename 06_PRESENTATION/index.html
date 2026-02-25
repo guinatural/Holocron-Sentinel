@@ -4,578 +4,845 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Holocron Sentinel — Dashboard de Apresentação Final</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap');
+    <title>Holocron Sentinel — Defesa Inteligente AWS & LGPD</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
 
+    <style>
         :root {
+            /* Cor de fundo profunda e profissional */
             --bg: #030712;
-            --surface: rgba(17, 24, 39, 0.7);
-            --border: rgba(255, 255, 255, 0.1);
-            --accent: #ffb142;
+            --surface: rgba(17, 24, 39, 0.6);
+            --surface-hover: rgba(17, 24, 39, 0.85);
+            --border: rgba(255, 255, 255, 0.08);
+
+            /* Paleta AWS & IA */
+            --accent: #FF9900;
+            /* AWS Orange */
+            --accent-glow: rgba(255, 153, 0, 0.3);
             --blue: #3b82f6;
             --green: #10b981;
             --red: #ef4444;
-            --purple: #8b5cf6;
+            --purple: #a855f7;
+
+            /* Tipografia */
             --text: #f9fafb;
             --muted: #9ca3af;
-            --radius: 20px;
+            --radius: 24px;
+            --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
+        /* Reset e Base */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            background: var(--bg);
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
+        html {
+            scroll-snap-type: y mandatory;
             scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
             line-height: 1.6;
         }
 
-        nav {
+        /* Background Dinâmico - Mesh Gradient effect */
+        .ambient-bg {
             position: fixed;
-            top: 1.5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1000;
-            background: rgba(17, 24, 39, 0.8);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border);
-            padding: 0.6rem 2rem;
-            border-radius: 40px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: radial-gradient(circle at 10% 10%, rgba(255, 153, 0, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(59, 130, 246, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.03) 0%, transparent 50%);
+        }
+
+        /* ── NAVEGAÇÃO & PROGRESSO ── */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
             display: flex;
-            gap: 1.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(3, 7, 18, 0.8), transparent);
+            backdrop-filter: blur(8px);
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 100px;
+            display: flex;
+            gap: 4px;
         }
 
         nav a {
             color: var(--muted);
             text-decoration: none;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 100px;
+            transition: var(--transition);
             text-transform: uppercase;
-            transition: 0.3s;
+            letter-spacing: 0.5px;
         }
 
         nav a:hover,
         nav a.active {
-            color: var(--accent);
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.1);
         }
 
-        section {
-            min-height: 100vh;
-            padding: 100px 5% 60px;
+        nav a.active {
+            box-shadow: 0 0 15px var(--accent-glow);
+            border: 1px solid rgba(255, 153, 0, 0.3);
+        }
+
+        .parts-indicator {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            gap: 1.5rem;
+            z-index: 100;
         }
 
-        .container {
-            max-width: 1100px;
-            width: 100%;
+        .part-dot {
+            width: 4px;
+            height: 40px;
+            background: var(--border);
+            border-radius: 100px;
+            position: relative;
+            cursor: pointer;
+            transition: var(--transition);
         }
 
-        .badge {
-            display: inline-block;
-            padding: 6px 16px;
-            background: rgba(255, 177, 66, 0.1);
-            border: 1px solid rgba(255, 177, 66, 0.3);
-            color: var(--accent);
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            border-radius: 20px;
-        }
-
-        h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 1rem;
-        }
-
-        h2 {
-            font-size: 2.5rem;
+        .part-dot::after {
+            content: attr(data-label);
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            white-space: nowrap;
+            font-size: 0.65rem;
             font-weight: 800;
-            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            color: var(--muted);
+            opacity: 0;
+            transition: var(--transition);
+            pointer-events: none;
         }
 
+        .part-dot:hover::after,
+        .part-dot.active::after {
+            opacity: 1;
+            right: 20px;
+        }
+
+        .part-dot.active {
+            background: var(--accent);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        /* ── ESTRUTURA DE SLIDES ── */
+        section {
+            height: 100vh;
+            width: 100%;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 10%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-wrapper {
+            max-width: 1200px;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        section.visible .content-wrapper {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── COMPONENTES VISUAIS ── */
         .glass-card {
             background: var(--surface);
-            backdrop-filter: blur(15px);
+            backdrop-filter: blur(24px);
             border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 2.5rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            margin-bottom: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transition: var(--transition);
         }
 
-        /* ── GRID LAYOUTS ── */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            background: var(--surface-hover);
+            transform: translateY(-5px);
         }
 
-        @media (max-width: 768px) {
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* ── PROBLEM STATS ── */
-        .stat-box {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 1.5rem;
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        .stat-val {
-            font-size: 2.5rem;
-            font-weight: 900;
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: rgba(255, 153, 0, 0.1);
+            border: 1px solid rgba(255, 153, 0, 0.2);
             color: var(--accent);
-            display: block;
-        }
-
-        .stat-label {
+            border-radius: 100px;
             font-size: 0.75rem;
-            color: var(--muted);
+            font-weight: 700;
+            margin-bottom: 2rem;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        /* ── REQUIREMENTS TABLE ── */
-        .req-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
+        h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 0.95;
+            letter-spacing: -3px;
+            margin-bottom: 1.5rem;
         }
 
-        .req-table th {
-            text-align: left;
-            padding: 12px;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            border-bottom: 1px solid var(--border);
+        h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            margin-bottom: 2rem;
         }
 
-        .req-table td {
-            padding: 12px;
-            font-size: 0.9rem;
-            border-bottom: 1px solid var(--border);
-            color: var(--muted);
+        .gradient-text {
+            background: linear-gradient(135deg, #fff 0%, var(--muted) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .req-id {
-            color: var(--blue);
-            font-weight: 700;
-            width: 80px;
+        .accent-text {
+            background: linear-gradient(135deg, var(--accent) 0%, #ffc163 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* ── BOARD SIMULATION ── */
-        .board-container {
-            display: flex;
-            gap: 1rem;
-            overflow-x: auto;
-            padding-bottom: 1rem;
+        /* ── GRID E LAYOUT ── */
+        .grid-12 {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 2rem;
         }
 
-        .board-col {
-            background: rgba(0, 0, 0, 0.2);
-            min-width: 280px;
-            border-radius: 12px;
-            padding: 1rem;
-            border: 1px solid var(--border);
+        .col-6 {
+            grid-column: span 6;
         }
 
-        .board-col h4 {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-            color: var(--muted);
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 0.5rem;
+        .col-4 {
+            grid-column: span 4;
         }
 
-        .card {
-            background: var(--surface);
-            padding: 1rem;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            margin-bottom: 0.8rem;
-            font-size: 0.8rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        .col-8 {
+            grid-column: span 8;
         }
 
-        .tag {
-            font-size: 10px;
-            padding: 2px 6px;
-            border-radius: 4px;
-            background: rgba(59, 130, 246, 0.2);
-            color: var(--blue);
-            font-weight: 700;
-            margin-bottom: 5px;
-            display: inline-block;
+        .col-12 {
+            grid-column: span 12;
         }
 
-        /* ── IA FLOW ── */
-        .ia-flow {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            margin-top: 2rem;
+        @media (max-width: 900px) {
+
+            .col-6,
+            .col-4,
+            .col-8 {
+                grid-column: span 12;
+            }
+
+            section {
+                padding: 4rem 5%;
+            }
         }
 
-        .ia-node {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            padding: 1rem;
-            border-radius: 12px;
+        /* ── ELEMENTOS ESPECÍFICOS ── */
+        .stat-card {
+            padding: 2rem;
             text-align: center;
-            flex: 1;
         }
 
-        .ia-arrow {
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--accent);
+            display: block;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            font-weight: 700;
             color: var(--muted);
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        /* Terminal Mockup */
+        .terminal {
+            background: #0d1117;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .terminal-header {
+            background: #161b22;
+            padding: 10px 15px;
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .dot.red {
+            background: #ff5f56;
+        }
+
+        .dot.yellow {
+            background: #ffbd2e;
+        }
+
+        .dot.green {
+            background: #27c93f;
+        }
+
+        .terminal-body {
+            padding: 1.5rem;
+            font-size: 0.85rem;
+            color: #d1d5db;
+        }
+
+        .keyword {
+            color: #ff7b72;
+        }
+
+        .func {
+            color: #d2a8ff;
+        }
+
+        .str {
+            color: #a5d6ff;
+        }
+
+        .comment {
+            color: #8b949e;
+        }
+
+        /* IA Flow Diagram */
+        .flow-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 0;
+        }
+
+        .flow-node {
+            flex: 1;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            text-align: center;
+            position: relative;
+        }
+
+        .flow-node.active {
+            border-color: var(--accent);
+            background: rgba(255, 153, 0, 0.05);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .flow-arrow {
+            color: var(--muted);
+            font-weight: 900;
             font-size: 1.5rem;
         }
 
-        /* ── ANIMATIONS ── */
-        .pulse {
-            animation: pulseAnim 2s infinite;
+        /* Footer links */
+        .footer-links {
+            position: absolute;
+            bottom: 2rem;
+            left: 10%;
+            display: flex;
+            gap: 2rem;
         }
 
-        @keyframes pulseAnim {
+        .footer-links a {
+            color: var(--muted);
+            font-size: 0.75rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Micro-interactions */
+        .pulse {
+            animation: pulse-ring 2s infinite;
+        }
+
+        @keyframes pulse-ring {
             0% {
-                opacity: 0.5;
+                transform: scale(0.95);
+                opacity: 0.8;
             }
 
             50% {
+                transform: scale(1.05);
                 opacity: 1;
             }
 
             100% {
-                opacity: 0.5;
+                transform: scale(0.95);
+                opacity: 0.8;
             }
         }
     </style>
 </head>
 
 <body>
+    <div class="ambient-bg"></div>
 
-    <nav>
-        <a href="#hero" class="active">Slide 1: Início</a>
-        <a href="#problem">Slide 2: Problema</a>
-        <a href="#requirements">Slide 3: Requisitos</a>
-        <a href="#responsibility">Slide 4: Risco</a>
-        <a href="#board">Slide 5: Planejamento</a>
-        <a href="#automation">Slide 6: Automação</a>
-        <a href="#solution">Slide 7: Solução IA</a>
-        <a href="#summary">Slide 8: Resumo</a>
-    </nav>
+    <header>
+        <div class="logo"><span>HOLOCRON</span> SENTINEL</div>
+        <nav id="main-nav">
+            <a href="#intro" class="active">P1: Visão</a>
+            <a href="#compliance">P2: Governança</a>
+            <a href="#engine">P3: Engenharia</a>
+            <a href="#ia">P4: Futuro</a>
+        </nav>
+    </header>
 
-    <!-- ── SLIDE 1: INTRODUÇÃO ── -->
-    <section id="hero">
-        <div class="container" style="text-align: center;">
-            <div class="badge">Projeto Final — AWS re/Start + IA</div>
-            <h1>HOLOCRON<br><span style="color: var(--accent);">SENTINEL</span></h1>
-            <p style="font-size: 1.1rem; color: var(--muted); margin-bottom: 2rem;">A Sentinela de Conformidade LGPD por
-                Design</p>
-            <div style="display: flex; gap: 1.5rem; justify-content: center;">
-                <div class="glass-card" style="padding: 1rem 2.5rem; margin: 0;">
-                    <p style="font-size: 0.7rem; color: var(--muted); text-transform: uppercase;">Apresentador
-                        Especialista</p>
-                    <p style="font-weight: 800; font-size: 1.1rem;">Guilherme Barreto Gomes</p>
-                </div>
+    <!-- Indicador Lateral de Partes/Apresentadores -->
+    <div class="parts-indicator">
+        <div class="part-dot active" data-label="Parte 1: O Contexto" onclick="scrollToId('intro')"></div>
+        <div class="part-dot" data-label="Parte 2: Risco & Regras" onclick="scrollToId('compliance')"></div>
+        <div class="part-dot" data-label="Parte 3: O Motor" onclick="scrollToId('engine')"></div>
+        <div class="part-dot" data-label="Parte 4: IA & Valor" onclick="scrollToId('ia')"></div>
+    </div>
+
+    <!-- ── PARTE 1: VISÃO & VALOR ── -->
+    <section id="intro">
+        <div class="content-wrapper" style="text-align: center;">
+            <div class="badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+                AWS re/Start Final Project — Grupo 05
             </div>
-        </div>
-    </section>
+            <h1>A Sentinela de <br><span class="accent-text">Compliance LGPD</span></h1>
+            <p style="font-size: 1.25rem; color: var(--muted); max-width: 700px; margin: 0 auto 2rem;">
+                Proteção inteligente para dados sensíveis via automação nativa e Inteligência Artificial.
+            </p>
 
-    <!-- ── SLIDE 2: IDENTIFICAÇÃO DO PROBLEMA ── -->
-    <section id="problem">
-        <div class="container">
-            <div class="grid-2">
-                <div>
-                    <div class="badge"
-                        style="color: var(--red); border-color: var(--red); background: rgba(239, 68, 68, 0.1);">O
-                        Problema</div>
-                    <h2>Cegueira Técnica &<br>Risco Jurídico.</h2>
-                    <p>Pequenas empresas possuem dados sensíveis (PII) na nuvem, mas falham no **Artigo 37 (Registro)**
-                        e **Artigo 46 (Segurança)** da LGPD.</p>
-                    <p>Auditorias da ANPD podem gerar multas de **R$ 50M** por falta de trilhas de auditoria imutáveis.
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; max-width: 900px; margin: 0 auto;">
+                <div class="glass-card" style="padding: 0.8rem 1rem; border-radius: 12px; text-align: left;">
+                    <p style="font-size: 0.6rem; color: var(--muted); text-transform: uppercase;">Especialista Cloud</p>
+                    <p style="font-weight: 700; font-size: 0.85rem;">Everton R. Barbosa</p>
+                </div>
+                <div class="glass-card"
+                    style="padding: 0.8rem 1rem; border-radius: 12px; text-align: left; border-color: var(--accent);">
+                    <p style="font-size: 0.6rem; color: var(--accent); text-transform: uppercase;">Especialista Cloud
                     </p>
+                    <p style="font-weight: 700; font-size: 0.85rem;">Guilherme B. Gomes</p>
                 </div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                    <div class="stat-box"><span class="stat-val">80%</span><span class="stat-label">Custo Menor vs
-                            On-Prem</span></div>
-                    <div class="stat-box"><span class="stat-val">100%</span><span
-                            class="stat-label">Auditabilidade</span></div>
-                    <div class="stat-box" style="grid-column: span 2;"><span class="stat-val"
-                            style="color: var(--red);">&lt; 1s</span><span class="stat-label">Tempo de Detecção de
-                            Violação</span></div>
+                <div class="glass-card" style="padding: 0.8rem 1rem; border-radius: 12px; text-align: left;">
+                    <p style="font-size: 0.6rem; color: var(--muted); text-transform: uppercase;">Especialista Cloud</p>
+                    <p style="font-weight: 700; font-size: 0.85rem;">José Robson Coe</p>
                 </div>
+                <div class="glass-card" style="padding: 0.8rem 1rem; border-radius: 12px; text-align: left;">
+                    <p style="font-size: 0.6rem; color: var(--muted); text-transform: uppercase;">Especialista Cloud</p>
+                    <p style="font-weight: 700; font-size: 0.85rem;">Luiz Humberto O. Silva</p>
+                </div>
+                <div class="glass-card" style="padding: 0.8rem 1rem; border-radius: 12px; text-align: left;">
+                    <p style="font-size: 0.6rem; color: var(--muted); text-transform: uppercase;">Especialista Cloud</p>
+                    <p style="font-weight: 700; font-size: 0.85rem;">Moisés Victor Marques</p>
+                </div>
+                <div class="glass-card" style="padding: 0.8rem 1rem; border-radius: 12px; text-align: left;">
+                    <p style="font-size: 0.6rem; color: var(--muted); text-transform: uppercase;">Especialista Cloud</p>
+                    <p style="font-weight: 700; font-size: 0.85rem;">Rubens do Prado Silva</p>
+                </div>
+                <div class="glass-card" style="padding: 0.8rem 1rem; border-radius: 12px; text-align: left;">
+                    <p style="font-size: 0.6rem; color: var(--muted); text-transform: uppercase;">Especialista Cloud</p>
+                    <p style="font-weight: 700; font-size: 0.85rem;">Vanderson De Castro</p>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <a href="https://github.com/guinatural/Holocron-Sentinel" target="_blank">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                    </svg>
+                    Repositório do Projeto
+                </a>
+                <a href="#compliance">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
+                    </svg>
+                    Ver Problema
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- ── SLIDE 3: LEVANTAMENTO DE REQUISITOS ── -->
-    <section id="requirements">
-        <div class="container">
-            <div class="badge"
-                style="color: var(--blue); border-color: var(--blue); background: rgba(59, 130, 246, 0.1);">Engenharia
-            </div>
-            <h2>Fundações do Sentinel.</h2>
-            <div class="grid-2">
-                <div class="glass-card" style="padding: 1.5rem;">
-                    <h3>Requisitos Funcionais</h3>
-                    <table class="req-table">
-                        <tr>
-                            <td class="req-id">RF-001</td>
-                            <td>Identificar PII via Amazon Macie</td>
-                        </tr>
-                        <tr>
-                            <td class="req-id">RF-002</td>
-                            <td>Logs imutáveis via CloudTrail</td>
-                        </tr>
-                        <tr>
-                            <td class="req-id">RF-003</td>
-                            <td>Criptografia KMS em 100% dos buckets</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="glass-card" style="padding: 1.5rem;">
-                    <h3>Requisitos Não Funcionais</h3>
-                    <table class="req-table">
-                        <tr>
-                            <td class="req-id">RNF-001</td>
-                            <td>Soberania na região sa-east-1</td>
-                        </tr>
-                        <tr>
-                            <td class="req-id">RNF-002</td>
-                            <td>Retenção de logs por 5 anos</td>
-                        </tr>
-                        <tr>
-                            <td class="req-id">RNF-003</td>
-                            <td>MFA Enforcement em todos os Admins</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ── SLIDE 4: RESPONSABILIDADE COMPARTILHADA ── -->
-    <section id="responsibility">
-        <div class="container">
-            <div class="badge"
-                style="color: var(--yellow); border-color: var(--yellow); background: rgba(210, 153, 34, 0.1);">O Risco
-                do Empresário</div>
-            <h2>Sua Parte na Nuvem.<br><span style="color: var(--muted); font-size: 1.5rem; font-weight: 400;">A linha
-                    tênue entre compliance e multa</span></h2>
-
-            <div class="grid-2" style="margin-top: 2rem;">
-                <div class="glass-card" style="border-color: var(--border);">
-                    <h3 style="color: var(--muted);">AWS: Segurança DA Nuvem</h3>
-                    <p style="font-size: 0.85rem; margin-top: 1rem;">A Amazon cuida da infraestrutura física, do
-                        hardware nos datacenters e da rede global. **Eles garantem que a nuvem não caia.**</p>
-                    <div style="margin-top: 1rem; font-size: 0.75rem; color: var(--green);">Infraestrutura Física<br>
-                        Virtualização<br>Hardware Global</div>
-                </div>
-                <div class="glass-card" style="border-color: var(--accent); background: rgba(255, 177, 66, 0.05);">
-                    <h3 style="color: var(--accent);">VOCÊ: Segurança NA Nuvem</h3>
-                    <p style="font-size: 0.85rem; margin-top: 1rem;">O empresário é o dono do dado. Se o S3 estiver
-                        aberto ou sem criptografia, **a responsabilidade jurídica (LGPD) é sua.**</p>
-                    <div style="margin-top: 1rem; font-size: 0.75rem; color: var(--accent);">Configuração do S3<br>
-                        Gestão de Identidade (IAM)<br>Criptografia LGPD</div>
-                </div>
-            </div>
-
-            <div class="glass-card"
-                style="margin-top: 2rem; border-color: var(--blue); text-align: center; padding: 1.5rem;">
-                <p style="font-weight: 700; color: var(--text);">O Holocron Sentinel é o seu "Seguro de Nuvem".<br><span
-                        style="font-weight: 400; color: var(--muted);">Nós automatizamos a SUA parte da responsabilidade
-                        para que você possa focar no seu negócio.</span></p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ── SLIDE 5: PLANEJAMENTO ÁGIL ── -->
-    <section id="board">
-        <div class="container">
-            <div class="badge"
-                style="color: var(--purple); border-color: var(--purple); background: rgba(139, 92, 246, 0.1);">
-                Metodologia Ágil</div>
-            <h2>Sprint & Progressão.</h2>
-            <div class="board-container">
-                <div class="board-col">
-                    <h4>To Do</h4>
-                    <div class="card"><span class="tag">IA</span>Integração Amazon Bedrock Titan</div>
-                    <div class="card"><span class="tag">Alerts</span>Configurar SNS Notification Alertas</div>
-                </div>
-                <div class="board-col">
-                    <h4>In Progress</h4>
-                    <div class="card"><span class="tag">Dev</span>Refatoração Script Auditoria Python</div>
-                </div>
-                <div class="board-col">
-                    <h4>Done</h4>
-                    <div class="card" style="border-color: var(--green);"><span class="tag"
-                            style="background: var(--green); color: #fff;">Done</span>Identificação Problem/Stakeholders
-                    </div>
-                    <div class="card" style="border-color: var(--green);"><span class="tag"
-                            style="background: var(--green); color: #fff;">Done</span>Hardening de Identidade (IAM/MFA)
-                    </div>
-                    <div class="card" style="border-color: var(--green);"><span class="tag"
-                            style="background: var(--green); color: #fff;">Done</span>Configuração CloudTrail
-                        Multi-Region</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ── SLIDE 5: AUTOMAÇÃO TÉCNICA (PYTHON/BOTO3) ── -->
-    <section id="automation">
-        <div class="container">
-            <div class="badge"
-                style="color: var(--blue); border-color: var(--blue); background: rgba(59, 130, 246, 0.1);">Technical
-                Engine</div>
-            <h2>Segurança Via Boto3.<br><span style="color: var(--muted); font-size: 1.5rem; font-weight: 400;">O
-                    coração do Holocron Sentinel</span></h2>
-
-            <div class="grid-2" style="margin-top: 2rem;">
-                <div class="terminal">
-                    <div class="terminal-header">
-                        <div class="dot t-red"></div>
-                        <div class="dot t-yellow"></div>
-                        <div class="dot t-green"></div>
-                        <span
-                            style="font-size: 0.7rem; color: var(--muted); margin-left: auto;">validate_audit_logs.py</span>
-                    </div>
-                    <div class="terminal-body" style="font-size: 0.8rem;">
-                        <pre><span class="keyword">import</span> boto3
-<span class="keyword">from</span> datetime <span class="keyword">import</span> datetime
-
-<span class="comment"># LGPD Art. 46: Auditoria Automática</span>
-<span class="keyword">def</span> <span class="func">validate_encryption</span>(bucket, key):
-    s3 = boto3.<span class="func">client</span>('s3', region_name='sa-east-1')
-    <span class="keyword">try</span>:
-        response = s3.<span class="func">head_object</span>(Bucket=bucket, Key=key)
-        enc = response.<span class="func">get</span>('ServerSideEncryption')
-        <span class="keyword">return</span> (enc <span class="keyword">in</span> ['AES256', 'aws:kms'])
-    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:
-        <span class="keyword">return</span> <span class="keyword">False</span></pre>
+    <!-- Slide 2: O Problema -->
+    <section id="problem">
+        <div class="content-wrapper">
+            <div class="grid-12">
+                <div class="col-8">
+                    <div class="badge"
+                        style="color: var(--red); background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2);">
+                        A Crise Invisível</div>
+                    <h2>Cegueira Técnica &<br><span class="accent-text">Risco Financeiro.</span></h2>
+                    <p style="font-size: 1.1rem; color: var(--muted); margin-bottom: 2rem;">
+                        Pequenas empresas possuem dados sensíveis (PII) na nuvem, mas falham no **Artigo 37 (Registro)**
+                        e **Artigo 46 (Segurança)** da LGPD. Uma falha pode custar mais que o negócio.
+                    </p>
+                    <div class="glass-card" style="border-left: 4px solid var(--red); padding: 1.5rem;">
+                        <p style="font-weight: 700;">Multas de até R$ 50 Milhões </p>
+                        <p style="font-size: 0.9rem; color: var(--muted);">pela ANPD por falta de trilhas de auditoria
+                            imutáveis.</p>
                     </div>
                 </div>
-                <div>
-                    <h3 style="color: var(--blue); margin-bottom: 1rem;">O Diferencial Técnico</h3>
-                    <p style="font-size: 0.95rem;">Diferente de processos manuais, nossa solução utiliza o **SDK Boto3**
-                        para interagir com a infraestrutura da AWS em tempo real.</p>
-                    <ul
-                        style="list-style: none; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem;">
-                        <li style="font-size: 0.85rem; color: var(--muted);"><strong>setup_iam_structure.py:</strong>
-                            Automação de identidades.</li>
-                        <li style="font-size: 0.85rem; color: var(--muted);"><strong>validate_audit_logs.py:</strong>
-                            Fiscalização de integridade.</li>
-                        <li style="font-size: 0.85rem; color: var(--muted);"><strong>billing_alerts_setup.py:</strong>
-                            Prevenção de custos.</li>
-                    </ul>
+                <div class="col-4" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <div class="glass-card stat-card">
+                        <span class="stat-number">80%</span>
+                        <span class="stat-label">Custo Menor vs On-Prem</span>
+                    </div>
+                    <div class="glass-card stat-card" style="border-color: var(--blue);">
+                        <span class="stat-number" style="color: var(--blue);">100%</span>
+                        <span class="stat-label">Auditabilidade</span>
+                    </div>
+                    <div
+                        style="margin-top: auto; font-size: 0.6rem; color: rgba(255,255,255,0.2); border-top: 1px solid var(--border); padding-top: 0.5rem; text-align: right;">
+                        <strong>Foco do Apresentador (Parte 1):</strong> Introdução, Identificação do Problema e LGPD
+                        (Multas).
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ── SLIDE 6: SOLUÇÃO CENTRALIZADA COM IA ── -->
-    <section id="solution">
-        <div class="container">
-            <div class="badge"
-                style="color: var(--purple); border-color: var(--purple); background: rgba(139, 92, 246, 0.1);">IA
-                Centralizada</div>
-            <h2>O Cérebro da Auditoria.</h2>
-            <div class="ia-flow">
-                <div class="ia-node">
-                    <p style="font-size: 0.7rem; color: var(--muted);">SENTIDO #1</p>
-                    <p style="font-weight: 800; color: var(--accent);">Amazon Macie</p>
-                    <p style="font-size: 0.7rem;">Descobre PII</p>
-                </div>
-                <div class="ia-arrow">></div>
-                <div class="ia-node" style="border-color: var(--purple); background: rgba(139, 92, 246, 0.05);">
-                    <p style="font-size: 0.7rem; color: var(--purple); font-weight: 700;">JULGAMENTO CENTRAL</p>
-                    <p style="font-weight: 900; font-size: 1.2rem;">Amazon Titan</p>
-                    <p style="font-size: 0.75rem;">Análise via Bedrock</p>
-                </div>
-                <div class="ia-arrow">></div>
-                <div class="ia-node">
-                    <p style="font-size: 0.7rem; color: var(--muted);">SENTIDO #2</p>
-                    <p style="font-weight: 800; color: var(--red);">GuardDuty</p>
-                    <p style="font-size: 0.7rem;">Detecta Ameaças</p>
-                </div>
-            </div>
+    <!-- ── PARTE 2: GOVERNANÇA & RISCO ── -->
+    <section id="compliance">
+        <div class="content-wrapper">
+            <div class="badge">Governança & Rigor</div>
+            <h2>Fundações do <span class="accent-text">Sentinel.</span></h2>
 
-            <div class="glass-card" style="margin-top: 2rem; border-color: var(--purple);">
-                <p
-                    style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--muted); border-left: 2px solid var(--purple); padding-left: 1rem;">
-                    [PARECER_SENTINEL]: Detectada tentativa de acesso ao Bucket 'financeiro' via IP 187.x.x.x (GuardDuty
-                    Alert). O Amazon Macie confirma CPFs sem criptografia no local. Conclusão: Executando bloqueio de
-                    usuário e ativando KMS via Lambda.
-                </p>
+            <div class="grid-12">
+                <div class="col-6">
+                    <div class="glass-card">
+                        <h3 style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px;">
+                            <span style="color: var(--blue);">●</span> Requisitos de Engenharia
+                        </h3>
+                        <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem;">
+                            <li style="display: flex; align-items: flex-start; gap: 12px;">
+                                <span
+                                    style="font-family: 'JetBrains Mono'; font-weight: 800; color: var(--blue);">RF01</span>
+                                <span style="font-size: 0.9rem; color: var(--muted);">Identificação automática de PII
+                                    via Amazon Macie.</span>
+                            </li>
+                            <li style="display: flex; align-items: flex-start; gap: 12px;">
+                                <span
+                                    style="font-family: 'JetBrains Mono'; font-weight: 800; color: var(--blue);">RF02</span>
+                                <span style="font-size: 0.9rem; color: var(--muted);">Logs imutáveis protegidos por KMS
+                                    no CloudTrail.</span>
+                            </li>
+                            <li style="display: flex; align-items: flex-start; gap: 12px;">
+                                <span
+                                    style="font-family: 'JetBrains Mono'; font-weight: 800; color: var(--blue);">RNF1</span>
+                                <span style="font-size: 0.9rem; color: var(--muted);">Soberania Nacional: Operação 100%
+                                    em sa-east-1.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="glass-card" style="border-color: var(--accent);">
+                        <div class="badge" style="margin-bottom: 1rem;">Risco Jurídico</div>
+                        <h3>O Modelo Compartilhado</h3>
+                        <p style="font-size: 0.85rem; color: var(--muted); margin: 1rem 0;">
+                            A AWS cuida da segurança <strong>DA</strong> nuvem. Mas a segurança <strong>NA</strong>
+                            nuvem é sua.
+                        </p>
+                        <div style="background: rgba(0,0,0,0.2); border-radius: 12px; padding: 1rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span style="font-size: 0.7rem; font-weight: 800; color: var(--green);">RESP.
+                                    AWS:</span>
+                                <span style="font-size: 0.7rem; color: var(--muted);">Hardware / Infra</span>
+                            </div>
+                            <div
+                                style="height: 4px; background: var(--green); border-radius: 10px; width: 100%; margin-bottom: 1rem;">
+                            </div>
+
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span style="font-size: 0.7rem; font-weight: 800; color: var(--accent);">RESP.
+                                    EMPRESA:</span>
+                                <span style="font-size: 0.7rem; color: var(--muted);">Dados / Configurações</span>
+                            </div>
+                            <div style="height: 4px; background: var(--accent); border-radius: 10px; width: 100%;"
+                                class="pulse"></div>
+                        </div>
+                        <p style="font-size: 0.75rem; margin-top: 1rem; color: var(--accent); font-weight: 700;">
+                            O Sentinel blindagem o "GAP" de responsabilidade do empresário.
+                        </p>
+                    </div>
+                    <div
+                        style="margin-top: 1rem; font-size: 0.6rem; color: rgba(255,255,255,0.2); border-top: 1px solid var(--border); padding-top: 0.5rem; text-align: right;">
+                        <strong>Foco do Apresentador (Parte 2):</strong> Engenharia (Requisitos), Criptografia e
+                        Responsabilidade Compartilhada.
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ── SLIDE 6: RESUMO & EXCELÊNCIA ── -->
-    <section id="summary">
-        <div class="container" style="text-align: center;">
-            <div class="badge">Conclusão</div>
-            <h2>Segurança Por Design.</h2>
-            <div class="grid-2" style="margin-top: 3rem;">
-                <div class="glass-card" style="text-align: left;">
-                    <h3 style="color: var(--blue);">Well-Architected</h3>
-                    <p style="font-size: 0.85rem;">Segurança e Excelência Operacional com automação Python.</p>
+    <!-- ── PARTE 3: O MOTOR TÉCNICO ── -->
+    <section id="engine">
+        <div class="content-wrapper">
+            <div class="grid-12">
+                <div class="col-5">
+                    <div class="badge"
+                        style="color: var(--purple); background: rgba(168, 85, 247, 0.1); border-color: rgba(168, 85, 247, 0.2);">
+                        The Core</div>
+                    <h2>Automação via <br><span class="accent-text">SDK Boto3.</span></h2>
+                    <p style="color: var(--muted); margin-bottom: 2rem;">
+                        Eliminamos o erro humano. A infraestrutura é fiscalizada por código em tempo real.
+                    </p>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div class="glass-card" style="padding: 1rem; border-radius: 16px;">
+                            <p style="font-weight: 700; font-size: 0.8rem; margin-bottom: 4px;">validate_audit_logs.py
+                            </p>
+                            <p style="font-size: 0.75rem; color: var(--muted);">Verificação de integridade de buckets
+                                S3.</p>
+                        </div>
+                        <div class="glass-card" style="padding: 1rem; border-radius: 16px;">
+                            <p style="font-weight: 700; font-size: 0.8rem; margin-bottom: 4px;">setup_iam_structure.py
+                            </p>
+                            <p style="font-size: 0.75rem; color: var(--muted);">Aplicação forçada de MFA e Least
+                                Privilege.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="glass-card" style="text-align: left;">
-                    <h3 style="color: var(--accent);">Custo Otimizado</h3>
-                    <p style="font-size: 0.85rem;">Arquitetura Serverless e Lifecycle Rules (S3 Glacier) para retenção
-                        de 5 anos com custo mínimo.</p>
-                </div>
-                <div class="glass-card" style="text-align: left;">
-                    <h3 style="color: var(--green);">Ready for ANPD</h3>
-                    <p style="font-size: 0.85rem;">Pronto para auditorias a qualquer momento, com trilhas de evidências
-                        100% digitais e seguras.</p>
+                <div class="col-7">
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <div class="dot red"></div>
+                            <div class="dot yellow"></div>
+                            <div class="dot green"></div>
+                            <span
+                                style="font-size: 0.65rem; color: var(--muted); margin-left: auto;">sentinel_engine.py</span>
+                        </div>
+                        <div class="terminal-body">
+                            <pre><span class="keyword">import</span> boto3
+
+<span class="comment"># Garante Criptografia LGPD</span>
+<span class="keyword">def</span> <span class="func">enforce_compliance</span>(s3_client, bucket):
+    config = s3_client.<span class="func">get_bucket_encryption</span>(Bucket=bucket)
+    <span class="keyword">if</span> NOT config:
+        <span class="func">print</span>(<span class="str">"[ALERT] Bucket Vulnerável!"</span>)
+        <span class="func">apply_kms_protection</span>(bucket)
+        
+<span class="comment"># Registro Imutável Art. 37</span>
+cloudtrail = boto3.<span class="func">client</span>(<span class="str">'cloudtrail'</span>)
+cloudtrail.<span class="func">update_trail</span>(
+    Name=<span class="str">'SentinelLog'</span>, 
+    EnableLogFileValidation=<span class="keyword">True</span>
+)</pre>
+                        </div>
+                    </div>
+                    <div style="text-align: right; margin-top: 1rem;">
+                        <span style="font-size: 0.7rem; color: var(--muted);">Planejamento Ágil: <strong>4 Sprints
+                                Concluídas</strong></span>
+                    </div>
+                    <div
+                        style="margin-top: 2rem; font-size: 0.6rem; color: rgba(255,255,255,0.2); border-top: 1px solid var(--border); padding-top: 0.5rem; text-align: right;">
+                        <strong>Foco do Apresentador (Parte 3):</strong> "Como funciona", automação Boto3 e agilidade
+                        Sprints.
+                    </div>
                 </div>
             </div>
-            <p style="margin-top: 3rem; font-weight: 800; color: var(--accent); letter-spacing: 2px;">HOLOCRON SENTINEL
-                — PROTEÇÃO INTELIGENTE</p>
+        </div>
+    </section>
+
+    <!-- ── PARTE 4: IA & VALOR ── -->
+    <section id="ia">
+        <div class="content-wrapper">
+            <div class="grid-12">
+                <div class="col-12" style="text-align: center;">
+                    <div class="badge">Inteligência Centralizada</div>
+                    <h2>O Cérebro da <span class="accent-text">Auditoria.</span></h2>
+                </div>
+
+                <div class="col-12">
+                    <div class="flow-container">
+                        <div class="flow-node">
+                            <p style="font-size: 0.6rem; color: var(--muted); font-weight: 800;">INPUT #1</p>
+                            <p style="font-weight: 800; color: var(--accent);">Amazon Macie</p>
+                            <p style="font-size: 0.65rem;">Detecção PII</p>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-node active pulse">
+                            <div class="badge" style="margin-bottom: 0.5rem; font-size: 0.6rem; padding: 2px 8px;">LLM
+                                Titan</div>
+                            <p style="font-weight: 900; font-size: 1.2rem;">Amazon Bedrock</p>
+                            <p style="font-size: 0.7rem;">Julgamento de Risco</p>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-node">
+                            <p style="font-size: 0.6rem; color: var(--muted); font-weight: 800;">OUTPUT</p>
+                            <p style="font-weight: 800; color: var(--green);">Parecer Executivo</p>
+                            <p style="font-size: 0.65rem;">Ação Automática</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-8">
+                    <div class="glass-card" style="border-color: var(--purple); background: rgba(168, 85, 247, 0.05);">
+                        <p style="font-family: 'JetBrains Mono'; font-size: 0.8rem; line-height: 1.8;">
+                            <span style="color: var(--purple); font-weight: 800;">[IA_SENTINEL_REPORT]</span><br>
+                            Análise: Detectado acesso anômalo no bucket 'financeiro'. <br>
+                            Impacto: Alto (Dados PII expostos). <br>
+                            Ação: Ativando bloqueio de política IAM e gerando evidência para ANPD.<br>
+                            <span style="color: var(--muted); font-size: 0.7rem;">Status: Compliance Restaurado em
+                                1.2s</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="glass-card"
+                        style="text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">Excelência AWS</h3>
+                        <p style="font-size: 0.8rem; color: var(--muted);">
+                            Otimização de custos via Serverless e Lifecycle Rules (S3 Glacier).
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 4rem; text-align: center;">
+                <p style="font-weight: 800; color: var(--accent); letter-spacing: 2px; font-size: 0.8rem;">HOLOCRON
+                    SENTINEL — PROTEÇÃO INTELIGENTE</p>
+                <p style="font-size: 0.7rem; color: var(--muted); margin-top: 0.5rem;">Obrigado pela atenção.</p>
+                <div
+                    style="margin-top: 2rem; font-size: 0.6rem; color: rgba(255,255,255,0.2); border-top: 1px solid var(--border); padding-top: 1rem;">
+                    <strong>Foco do Apresentador (Parte 4):</strong> Visão de futuro, IA como diferencial competitivo e
+                    ROI (Custo-Benefício).
+                </div>
+            </div>
         </div>
     </section>
 
     <script>
+        // Smooth scroll manual
+        function scrollToId(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Intersection Observer para animações e navegação
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('nav a');
+        const dots = document.querySelectorAll('.part-dot');
 
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 150) {
-                    current = section.getAttribute('id');
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+
+                    const id = entry.target.getAttribute('id');
+
+                    // Update Nav
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+
+                    // Update Dots (mapeando slides para as 4 partes)
+                    dots.forEach(dot => dot.classList.remove('active'));
+                    if (id === 'intro') dots[0].classList.add('active');
+                    if (id === 'problem' || id === 'compliance') dots[1].classList.add('active');
+                    if (id === 'engine') dots[2].classList.add('active');
+                    if (id === 'ia') dots[3].classList.add('active');
+
+                    // Sincronizar nav superior com as partes se necessário
+                    if (id === 'problem') {
+                        document.querySelector('nav a[href="#intro"]').classList.add('active');
+                    }
                 }
             });
+        }, observerOptions);
 
-            navLinks.forEach(a => {
-                a.classList.remove('active');
-                if (a.getAttribute('href').includes(current)) {
-                    a.classList.add('active');
-                }
-            });
-        });
+        sections.forEach(section => observer.observe(section));
     </script>
 </body>
 

@@ -45,9 +45,14 @@ Este repositório está organizado para demonstrar prontidão técnica e gerenci
 
 ---
 
-## Autor
-**Guilherme Barreto Gomes**
-*Arquiteto de Soluções Cloud & Especialista em Compliance de Dados*
+## Autores (Grupo 05)
+- **Everton Rodrigues Barbosa**
+- **Guilherme Barreto Gomes**
+- **José Robson Coe De Matos**
+- **Luiz Humberto O. Silva**
+- **Moisés Victor De Oliveira Marques**
+- **Rubens Do Prado Silva**
+- **Vanderson De Castro**
 
 ---
-*"Segurança não é um produto, é um processo automatizado."*
+*"Segurança não é um produto, é um processo automatizado e colaborativo."*
