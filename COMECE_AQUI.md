@@ -42,4 +42,4 @@ Integração de Inteligência Artificial para traduzir logs complexos em parecer
 
 ---
 **Guilherme Barreto Gomes**
-AWS Certified Cloud Practitioner
+[AWS Certified Cloud Practitioner](https://www.credly.com/badges/9f28dc2a-d9b8-4774-ab9f-dfe3a8324ff0/public_url)

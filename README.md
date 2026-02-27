@@ -52,5 +52,9 @@ Como **AWS Certified Cloud Practitioner**, projetei esta solução seguindo os p
 **Guilherme Barreto Gomes**
 *Especialista Cloud | AWS Certified Cloud Practitioner*
 
+[![AWS Certified Cloud Practitioner](https://img.shields.io/badge/AWS-Certified%20Cloud%20Practitioner-blue?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://www.credly.com/badges/9f28dc2a-d9b8-4774-ab9f-dfe3a8324ff0/public_url)
+
+> Como detentor desta certificação, possuo uma compreensão fundamental dos serviços de TI e seus usos na Nuvem AWS, demonstrando fluência em nuvem e conhecimentos fundamentais de AWS para configurar projetos focados no ecossistema Amazon.
+
 ---
 *Segurança não é um produto, é um processo automatizado e resiliente.*
