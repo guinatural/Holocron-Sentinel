@@ -1,52 +1,45 @@
-# Holocron Sentinel: Comece Por Aqui
+# Holocron Sentinel: Direcionamento do Projeto
 
-Este documento é o ponto de partida para avaliadores, mentores e stakeholders. Aqui você encontrará a visão executiva do projeto e como validar a excelência da entrega.
-
----
-
-## Visão Geral
-O **Holocron Sentinel** é uma solução de **Governança de Dados Sensíveis** projetada para resolver a "Cegueira Técnica" de empresas que operam na AWS. Nós traduzimos os requisitos da **LGPD** em scripts de automação e inteligência artificial nativa.
-
-### O Problema que Resolvemos:
-Muitos empresários acreditam que a AWS é responsável por toda a segurança. O **Modelo de Responsabilidade Compartilhada** prova que a proteção do dado **NA** nuvem é responsabilidade do cliente. A falta dessa proteção gera riscos de multas de até **R$ 50 milhões (ANPD)**.
+Bem-vindo ao repositório do **Holocron Sentinel**. Este documento orienta avaliadores e recrutadores sobre a engenharia de segurança aplicada neste projeto de portfólio.
 
 ---
 
-## Pilares da Solução
+## Visão Geral do Arquiteto
+Este projeto foi desenvolvido com foco no **Modelo de Responsabilidade Compartilhada**. Como proponente da solução e **AWS Certified Cloud Practitioner**, o objetivo foi automatizar a camada de responsabilidade do cliente ("Segurança NA Nuvem") para garantir conformidade plena com a LGPD.
 
-### 1. Automação com Python & Boto3
-Diferente de auditorias manuais, o Sentinel utiliza o SDK oficial da AWS para:
-- Provisionar Identidades seguras.
-- Fiscalizar a integridade de 100% dos logs.
-- Gerar alertas de faturamento para evitar surpresas financeiras.
-
-### 2. Inteligência Artificial Nativa (Amazon Titan)
-Utilizamos o **Amazon Bedrock** para centralizar a segurança. O modelo **Amazon Titan** "lê" os sinais complexos do **Amazon Macie** e **GuardDuty**, entregando um parecer executivo em linguagem natural.
-
-### 3. Eficiência Operacional
-- **Custo:** 80% menor que soluções tradicionais (On-Premise).
-- **Tempo:** Detecção de violação em milissegundos, não em dias.
+### Problemas Resolvidos:
+- **Exposição de Dados (PII):** Varredura automática via Amazon Macie.
+- **Vulnerabilidade de Identidade:** MFA forçado via scripts Python.
+- **Risco de Auditoria:** Trilhas do CloudTrail imutáveis e criptografadas.
 
 ---
 
-## Guia de Navegação Rápida
+## Pilares Técnicos
 
-| Objetivo | Localização |
+### 1. Automação via Boto3
+Utilizei o SDK oficial da AWS para criar um kit de ferramentas DevOps que fiscaliza a infraestrutura em tempo real. Isso reduz o custo operacional e elimina o erro humano em configurações de segurança.
+
+### 2. Governança com IA (Amazon Bedrock)
+Integração de Inteligência Artificial para traduzir logs complexos em pareceres executivos. O Amazon Titan atua como um assistente de compliance, centralizando a tomada de decisão para CEOs e DPOs.
+
+---
+
+## Guia de Avaliação
+
+| Pasta | Conteúdo de Valor |
 | :--- | :--- |
-| **Apresentação Final** | [`06_PRESENTATION/index.html`](./06_PRESENTATION/index.html) |
-| **Roteiro da Banca** | [`06_PRESENTATION/FINAL_PRESENTATION_SCRIPT.md`](./06_PRESENTATION/FINAL_PRESENTATION_SCRIPT.md) |
-| **Plano do Projeto** | [`Projeto Final/PROJECT_FINAL_PLAN.md`](./Projeto%20Final/PROJECT_FINAL_PLAN.md) |
-| **Código Fonte (Boto3)** | [`04_CODE/scripts/`](./04_CODE/scripts/) |
-| **Mapeamento LGPD** | [`02_ARCHITECTURE/LGPD_AWS_MAPPING.md`](./02_ARCHITECTURE/LGPD_AWS_MAPPING.md) |
+| **04_CODE** | Scripts Python com lógica de auditoria e automação IAM. |
+| **06_PRESENTATION** | Dashboard interativo para apresentação executiva. |
+| **02_ARCHITECTURE** | Matriz de rastreabilidade (Artigos da LGPD vs Serviços AWS). |
+| **05_EVIDENCE** | Exemplos de relatórios gerados pela IA e logs de conformidade. |
 
 ---
 
-## Como demonstrar o projeto agora?
-1.  Abra o **Dashboard Interativo** (`06_PRESENTATION/index.html`) no navegador.
-2.  Use o **Roteiro de 15 Minutos** para guiar sua fala.
-3.  Mostre as **Evidências Técnicas** na pasta `05_EVIDENCE`.
+## Como Validar a Entrega?
+1. Abra o arquivo [`index.html`](./06_PRESENTATION/index.html) para visualizar o Storytelling do projeto.
+2. Revise o [`PROJECT_FINAL_PLAN.md`](./Projeto%20Final/PROJECT_FINAL_PLAN.md) para entender a metodologia ágil aplicada.
+3. Analise o código em [`validate_audit_logs.py`](./04_CODE/validate_audit_logs.py) para confirmar a aplicação de boas práticas de Clean Code.
 
 ---
-**Grupo 05 — AWS re/Start**  
-*Everton R. Barbosa, Guilherme B. Gomes, José Robson Coe, Luiz Humberto, Moisés Victor, Rubens do Prado, Vanderson De Castro.*
-
+**Guilherme Barreto Gomes**
+AWS Certified Cloud Practitioner
